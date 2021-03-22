@@ -129,8 +129,20 @@ public class JAMNode{
 		return node;
 	}
 
+	public JAMNode getFolder(String name){
+		return this.folders.get(name);
+	}
+
 	public Map<String,JAMNode> getFolders(){
 		return this.folders;
+	}
+
+	public byte[] getFile(String name){
+		return this.files.get(name);
+	}
+
+	public byte[] setFile(String name,byte[] content){
+		return this.files.put(name,content);
 	}
 
 	public Map<String,byte[]> getFiles(){

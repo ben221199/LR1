@@ -30,9 +30,8 @@ public class BinaryString extends BinaryToken{
 		return baos.toByteArray();
 	}
 
-	public static BinaryString from(ByteBuffer bb){
+	public static BinaryString from(BinaryFile file,ByteBuffer bb){
 		bb.order(ByteOrder.LITTLE_ENDIAN);
-		bb.get();
 		StringBuilder sb = new StringBuilder();
 		byte b;
 		while((b = bb.get())!=0x00){

@@ -2,6 +2,7 @@ package com.lego.racers.binary;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.Arrays;
 
 public class BinaryToken{
 
@@ -36,27 +37,39 @@ public class BinaryToken{
 	}
 
 	public static BinaryToken from(ByteBuffer bb){
+		return BinaryToken.from(null,bb);
+	}
+
+	public static BinaryToken from(BinaryFile file,ByteBuffer bb){
 		bb.order(ByteOrder.LITTLE_ENDIAN);
 		byte token = bb.get();
-		bb.position(bb.position()-1);
+		return BinaryToken.from(file,bb,token);
+	}
+
+	public static BinaryToken from(BinaryFile file,ByteBuffer bb,byte token){
+		bb.order(ByteOrder.LITTLE_ENDIAN);
 		switch(token){
-			case 0x02:return BinaryString.from(bb);
-			case 0x03:return BinaryFloat.from(bb);
-			case 0x04:return BinaryIntegerSigned.from(bb);
-			case 0x05:return BinaryObjectStart.from(bb);
-			case 0x06:return BinaryObjectEnd.from(bb);
-			case 0x07:return BinaryLengthStart.from(bb);
-			case 0x08:return BinaryLengthEnd.from(bb);
+			case 0x02:return BinaryString.from(file,bb);
+			case 0x03:return BinaryFloat.from(file,bb);
+			case 0x04:return BinaryIntegerSigned.from(file,bb);
+			case 0x05:return BinaryObjectStart.from(file,bb);
+			case 0x06:return BinaryObjectEnd.from(file,bb);
+			case 0x07:return BinaryLengthStart.from(file,bb);
+			case 0x08:return BinaryLengthEnd.from(file,bb);
 			//
-			case 0x0B:return BinaryByteSigned.from(bb);
-			case 0x0C:return BinaryByteUnsigned.from(bb);
-			case 0x0D:return BinaryShortSigned.from(bb);
-			case 0x0E:return BinaryShortUnsigned.from(bb);
+			case 0x0B:return BinaryByteSigned.from(file,bb);
+			case 0x0C:return BinaryByteUnsigned.from(file,bb);
+			case 0x0D:return BinaryShortSigned.from(file,bb);
+			case 0x0E:return BinaryShortUnsigned.from(file,bb);
 			//
-			case 0x14:return BinaryArray.from(bb);
-			case 0x16:return BinaryStruct.from(bb);
+			case 0x14:return BinaryArray.from(file,bb);
+			case 0x16:return BinaryStruct.from(file,bb);
 		}
-		bb.position(bb.position()+1);
+		BinaryStruct struct = file.getStructByToken(token);
+		if(struct!=null){
+			bb.position(bb.position()-1);
+			return BinaryStructInstance.from(file,bb);
+		}
 		return new BinaryToken(token);
 	}
 

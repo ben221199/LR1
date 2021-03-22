@@ -21,9 +21,8 @@ public class BinaryShortUnsigned extends BinaryToken{
 		return ByteBuffer.allocate(3).order(ByteOrder.LITTLE_ENDIAN).put(this.getToken()).putShort(this._short).array();
 	}
 
-	public static BinaryShortUnsigned from(ByteBuffer bb){
+	public static BinaryShortUnsigned from(BinaryFile file,ByteBuffer bb){
 		bb.order(ByteOrder.LITTLE_ENDIAN);
-		bb.get();
 		return new BinaryShortUnsigned(bb.getShort());
 	}
 

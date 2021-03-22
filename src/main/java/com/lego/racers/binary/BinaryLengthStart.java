@@ -9,9 +9,8 @@ public class BinaryLengthStart extends BinaryToken{
 		super(BinaryToken.TOKEN_LENGTH_START);
 	}
 
-	public static BinaryLengthStart from(ByteBuffer bb){
+	public static BinaryLengthStart from(BinaryFile file,ByteBuffer bb){
 		bb.order(ByteOrder.LITTLE_ENDIAN);
-		bb.get();
 		return new BinaryLengthStart();
 	}
 

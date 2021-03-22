@@ -5,23 +5,26 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class BinaryFile{
+public class BinaryStructInstance extends BinaryToken{
 
 	private List<BinaryToken> tokens = new ArrayList<>();
-	private List<BinaryStruct> structs = new ArrayList<>();
 
-	public void addTemporaryStruct(BinaryStruct struct){
-		this.structs.add(struct);
+	public BinaryStructInstance(){
+		super(BinaryToken.TOKEN_STRUCT);
+	}
+
+	public BinaryStructInstance(byte id){
+		super(id);
+	}
+
+	public List<BinaryToken> getTokens(){
+		return this.tokens;
 	}
 
 	public BinaryStruct getStructByToken(byte token){
-		for(BinaryStruct t : this.structs){
-			if(t.getId()==token){
-				return t;
-			}
-		}
 		for(BinaryToken t : this.tokens){
 			if(t instanceof BinaryStruct){
 				if(((BinaryStruct) t).getId()==token){
@@ -41,15 +44,16 @@ public class BinaryFile{
 		return null;
 	}
 
-	public List<BinaryToken> getTokens(){
-		return this.tokens;
-	}
-
+	@Override
 	public byte[] toBytes(){
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		try{
-			for(BinaryToken token : this.tokens){
-				baos.write(token.toBytes());
+			baos.write(this.getToken());
+			for(BinaryToken t : this.tokens){
+				if(!t.getClass().equals(BinaryToken.class)){
+					byte[] out = t.toBytes();
+					baos.write(Arrays.copyOfRange(out,1,out.length));
+				}
 			}
 		}catch(IOException e){
 			e.printStackTrace();
@@ -57,23 +61,21 @@ public class BinaryFile{
 		return baos.toByteArray();
 	}
 
-	public static BinaryFile from(byte[] bytes){
-		return BinaryFile.from(ByteBuffer.wrap(bytes));
-	}
-
-	public static BinaryFile from(ByteBuffer bb){
+	public static BinaryStructInstance from(BinaryFile file,ByteBuffer bb){
 		bb.order(ByteOrder.LITTLE_ENDIAN);
-		BinaryFile file = new BinaryFile();
-		file.tokens.addAll(BinaryObject.from(file,bb).getTokens());
-		file.structs.clear();
-		return file;
+		byte token = bb.get();
+		BinaryStruct struct = file.getStructByToken(token);
+		BinaryStructInstance instance = new BinaryStructInstance(token);
+		for(byte b : struct.getTokens()){
+			instance.tokens.add(BinaryToken.from(file,bb,b));
+		}
+		return instance;
 	}
 
 	@Override
 	public String toString() {
-		return "BinaryFile{" +
+		return "BinaryStructInstance{" +
 				"tokens=" + tokens +
-				", structs=" + structs +
 				'}';
 	}
 

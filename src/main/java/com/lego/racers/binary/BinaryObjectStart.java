@@ -9,9 +9,8 @@ public class BinaryObjectStart extends BinaryToken{
 		super(BinaryToken.TOKEN_OBJECT_START);
 	}
 
-	public static BinaryObjectStart from(ByteBuffer bb){
+	public static BinaryObjectStart from(BinaryFile file,ByteBuffer bb){
 		bb.order(ByteOrder.LITTLE_ENDIAN);
-		bb.get();
 		return new BinaryObjectStart();
 	}
 

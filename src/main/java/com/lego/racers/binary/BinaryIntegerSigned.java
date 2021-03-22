@@ -16,14 +16,17 @@ public class BinaryIntegerSigned extends BinaryToken{
 		return this.integerSigned;
 	}
 
+	public void setIntegerSigned(int integerSigned){
+		this.integerSigned = integerSigned;
+	}
+
 	@Override
 	public byte[] toBytes(){
 		return ByteBuffer.allocate(5).order(ByteOrder.LITTLE_ENDIAN).put(this.getToken()).putInt(this.integerSigned).array();
 	}
 
-	public static BinaryIntegerSigned from(ByteBuffer bb){
+	public static BinaryIntegerSigned from(BinaryFile file,ByteBuffer bb){
 		bb.order(ByteOrder.LITTLE_ENDIAN);
-		bb.get();
 		return new BinaryIntegerSigned(bb.getInt());
 	}
 

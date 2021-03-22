@@ -14,7 +14,33 @@ public class BinaryObject extends BinaryToken{
 	private BinaryObjectEnd end;
 
 	public BinaryObject(){
-		super(BinaryToken.TOKEN_OBJECT_START);
+		super((byte) -1);
+	}
+
+	public BinaryObject(BinaryObjectStart start,BinaryObjectEnd end){
+		this();
+		this.start = start;
+		this.end = end;
+	}
+
+	public BinaryStruct getStructByToken(byte token){
+		for(BinaryToken t : this.tokens){
+			if(t instanceof BinaryStruct){
+				if(((BinaryStruct) t).getId()==token){
+					return (BinaryStruct) t;
+				}
+			}
+			if(t instanceof BinaryStructInstance){
+				return ((BinaryStructInstance) t).getStructByToken(token);
+			}
+			if(t instanceof BinaryArray){
+				return ((BinaryArray) t).getStructByToken(token);
+			}
+			if(t instanceof BinaryObject){
+				return ((BinaryObject) t).getStructByToken(token);
+			}
+		}
+		return null;
 	}
 
 	public List<BinaryToken> getTokens(){
@@ -35,20 +61,19 @@ public class BinaryObject extends BinaryToken{
 		return baos.toByteArray();
 	}
 
-	public static BinaryObject from(ByteBuffer bb){
+	public static BinaryObject from(BinaryFile file,ByteBuffer bb){
 		bb.order(ByteOrder.LITTLE_ENDIAN);
+
 		BinaryObject object = new BinaryObject();
-		object.start = (BinaryObjectStart) BinaryToken.from(bb);
+		object.start = new BinaryObjectStart();
 		while(bb.hasRemaining()){
-			BinaryToken token = BinaryToken.from(bb);
+			BinaryToken token = BinaryToken.from(file,bb);
 			if(token instanceof BinaryObjectStart){
-				bb.position(bb.position()-1);
-				object.tokens.add(BinaryObject.from(bb));
+				object.tokens.add(BinaryObject.from(file,bb));
 				continue;
 			}
 			if(token instanceof BinaryLengthStart){
-				bb.position(bb.position()-1);
-				object.tokens.add(BinaryLength.from(bb));
+				object.tokens.add(BinaryLength.from(file,bb));
 				continue;
 			}
 			if(token instanceof BinaryObjectEnd){

@@ -9,9 +9,8 @@ public class BinaryObjectEnd extends BinaryToken{
 		super(BinaryToken.TOKEN_OBJECT_END);
 	}
 
-	public static BinaryObjectEnd from(ByteBuffer bb){
+	public static BinaryObjectEnd from(BinaryFile file,ByteBuffer bb){
 		bb.order(ByteOrder.LITTLE_ENDIAN);
-		bb.get();
 		return new BinaryObjectEnd();
 	}
 

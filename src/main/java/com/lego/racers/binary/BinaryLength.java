@@ -18,6 +18,10 @@ public class BinaryLength extends BinaryToken{
 		this.end = end;
 	}
 
+	public BinaryIntegerSigned getLength(){
+		return this.length;
+	}
+
 	public byte[] toBytes(){
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		try{
@@ -30,11 +34,11 @@ public class BinaryLength extends BinaryToken{
 		return baos.toByteArray();
 	}
 
-	public static BinaryLength from(ByteBuffer bb){
+	public static BinaryLength from(BinaryFile file,ByteBuffer bb){
 		bb.order(ByteOrder.LITTLE_ENDIAN);
-		BinaryLengthStart start = (BinaryLengthStart) BinaryToken.from(bb);
-		BinaryIntegerSigned length = (BinaryIntegerSigned) BinaryToken.from(bb);
-		BinaryLengthEnd end = (BinaryLengthEnd) BinaryToken.from(bb);
+		BinaryLengthStart start = new BinaryLengthStart();
+		BinaryIntegerSigned length = (BinaryIntegerSigned) BinaryToken.from(file,bb);
+		BinaryLengthEnd end = (BinaryLengthEnd) BinaryToken.from(file,bb);
 		return new BinaryLength(start,length,end);
 	}
 

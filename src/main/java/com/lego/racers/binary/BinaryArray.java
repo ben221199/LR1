@@ -2,18 +2,35 @@ package com.lego.racers.binary;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BinaryArray extends BinaryToken{
 
-	private float _float;
+	private List<BinaryToken> tokens = new ArrayList<>();
 
 	public BinaryArray(float _float){
 		super(BinaryToken.TOKEN_FLOAT);
-		this._float = _float;
 	}
 
-	public float getFloat(){
-		return this._float;
+	public BinaryStruct getStructByToken(byte token){
+		for(BinaryToken t : this.tokens){
+			if(t instanceof BinaryStruct){
+				if(((BinaryStruct) t).getId()==token){
+					return (BinaryStruct) t;
+				}
+			}
+			if(t instanceof BinaryStructInstance){
+				return ((BinaryStructInstance) t).getStructByToken(token);
+			}
+			if(t instanceof BinaryArray){
+				return ((BinaryArray) t).getStructByToken(token);
+			}
+			if(t instanceof BinaryObject){
+				return ((BinaryObject) t).getStructByToken(token);
+			}
+		}
+		return null;
 	}
 
 	@Override
@@ -22,7 +39,7 @@ public class BinaryArray extends BinaryToken{
 		return new byte[0];
 	}
 
-	public static BinaryArray from(ByteBuffer bb){
+	public static BinaryArray from(BinaryFile file,ByteBuffer bb){
 		bb.order(ByteOrder.LITTLE_ENDIAN);
 		//TODO
 		return new BinaryArray(0);
@@ -31,7 +48,7 @@ public class BinaryArray extends BinaryToken{
 	@Override
 	public String toString() {
 		return "BinaryArray{" +
-				"_float=" + _float +
+				"tokens=" + tokens +
 				'}';
 	}
 
