@@ -1,4 +1,4 @@
-package com.lego.racers.jam;
+package com.lego.racers.file.jam;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
