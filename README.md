@@ -1,10 +1,10 @@
-# API for Stichting Garantiefonds ZonneEnergie
+# LEGO Racers
 
-This Java library enables your project to connect with the API of Stichting Garantiefonds ZonneEnergie.
+This Java library enables you to mod LEGO Racers.
 
 ## Status
 
-[![Build Status](https://travis-ci.com/ben221199/sgze-api.svg?branch=master)](https://travis-ci.com/ben221199/sgze-api)
+[![Build Status](https://travis-ci.com/ben221199/LR1.svg?branch=master)](https://travis-ci.com/ben221199/LR1)
 
 ## Installation
 
