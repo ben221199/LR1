@@ -5,22 +5,17 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class BinaryObject extends BinaryToken{
+public class BinaryList extends BinaryToken{
 
-	private BinaryObjectStart start;
+	private byte type;
 	private List<BinaryToken> tokens = new ArrayList<>();
-	private BinaryObjectEnd end;
 
-	public BinaryObject(){
-		super((byte) -1);
-	}
-
-	public BinaryObject(BinaryObjectStart start,BinaryObjectEnd end){
-		this();
-		this.start = start;
-		this.end = end;
+	public BinaryList(byte type){
+		super(BinaryToken.TOKEN_ARRAY);
+		this.type = type;
 	}
 
 	public BinaryStruct getStructByToken(byte token){
@@ -47,48 +42,42 @@ public class BinaryObject extends BinaryToken{
 		return this.tokens;
 	}
 
+	@Override
 	public byte[] toBytes(){
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		try{
-			baos.write(this.start.toBytes());
-			for(BinaryToken token : this.tokens){
-				baos.write(token.toBytes());
+			baos.write(this.getToken());
+			baos.write(ByteBuffer.allocate(2).order(ByteOrder.LITTLE_ENDIAN).putShort((short) this.tokens.size()).array());
+			baos.write(this.type);
+			for(BinaryToken t : this.tokens){
+				byte[] out = t.toBytes();
+				if(t.getClass().equals(BinaryToken.class)){
+					baos.write(out);
+				}else{
+					baos.write(Arrays.copyOfRange(out,1,out.length));
+				}
 			}
-			baos.write(this.end.toBytes());
 		}catch(IOException e){
 			e.printStackTrace();
 		}
 		return baos.toByteArray();
 	}
 
-	public static BinaryObject from(BinaryFile file,ByteBuffer bb){
+	public static BinaryList from(BinaryFile file, ByteBuffer bb){
 		bb.order(ByteOrder.LITTLE_ENDIAN);
-
-		BinaryObject object = new BinaryObject();
-		object.start = new BinaryObjectStart();
-		while(bb.hasRemaining()){
-			BinaryToken token = BinaryToken.from(file,bb);
-			if(token instanceof BinaryObjectStart){
-				object.tokens.add(BinaryObject.from(file,bb));
-				continue;
-			}
-			if(token instanceof BinaryArrayStart){
-				object.tokens.add(BinaryArray.from(file,bb));
-				continue;
-			}
-			if(token instanceof BinaryObjectEnd){
-				object.end = (BinaryObjectEnd) token;
-				break;
-			}
-			object.tokens.add(token);
+		short length = bb.getShort();
+		BinaryList arr = new BinaryList(bb.get());
+		for(int i=0;i<length;i++){
+			arr.tokens.add(BinaryToken.from(file,bb,arr.type));
 		}
-		return object;
+		return arr;
 	}
 
 	@Override
 	public String toString() {
-		return "BinaryObject{" +
-				"tokens=" + tokens +
+		return "BinaryList{" +
+				"type=" + type +
+				", tokens=" + tokens +
 				'}';
 	}
 

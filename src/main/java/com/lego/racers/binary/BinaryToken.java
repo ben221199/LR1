@@ -2,7 +2,6 @@ package com.lego.racers.binary;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.util.Arrays;
 
 public class BinaryToken{
 
@@ -54,21 +53,20 @@ public class BinaryToken{
 			case 0x04:return BinaryIntegerSigned.from(file,bb);
 			case 0x05:return BinaryObjectStart.from(file,bb);
 			case 0x06:return BinaryObjectEnd.from(file,bb);
-			case 0x07:return BinaryLengthStart.from(file,bb);
-			case 0x08:return BinaryLengthEnd.from(file,bb);
+			case 0x07:return BinaryArrayStart.from(file,bb);
+			case 0x08:return BinaryArrayEnd.from(file,bb);
 			//
 			case 0x0B:return BinaryByteSigned.from(file,bb);
 			case 0x0C:return BinaryByteUnsigned.from(file,bb);
 			case 0x0D:return BinaryShortSigned.from(file,bb);
 			case 0x0E:return BinaryShortUnsigned.from(file,bb);
 			//
-			case 0x14:return BinaryArray.from(file,bb);
+			case 0x14:return BinaryList.from(file,bb);
 			case 0x16:return BinaryStruct.from(file,bb);
 		}
 		BinaryStruct struct = file.getStructByToken(token);
 		if(struct!=null){
-			bb.position(bb.position()-1);
-			return BinaryStructInstance.from(file,bb);
+			return BinaryStructInstance.from(file,bb,struct);
 		}
 		return new BinaryToken(token);
 	}

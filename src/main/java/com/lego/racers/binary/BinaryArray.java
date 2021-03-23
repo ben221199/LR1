@@ -1,5 +1,7 @@
 package com.lego.racers.binary;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
@@ -7,48 +9,71 @@ import java.util.List;
 
 public class BinaryArray extends BinaryToken{
 
+	private BinaryArrayStart start;
 	private List<BinaryToken> tokens = new ArrayList<>();
+	private BinaryArrayEnd end;
 
-	public BinaryArray(float _float){
-		super(BinaryToken.TOKEN_FLOAT);
+	public BinaryArray(){
+		super((byte) -1);
+		this.start = new BinaryArrayStart();
+		this.end = new BinaryArrayEnd();
 	}
 
-	public BinaryStruct getStructByToken(byte token){
-		for(BinaryToken t : this.tokens){
-			if(t instanceof BinaryStruct){
-				if(((BinaryStruct) t).getId()==token){
-					return (BinaryStruct) t;
-				}
-			}
-			if(t instanceof BinaryStructInstance){
-				return ((BinaryStructInstance) t).getStructByToken(token);
-			}
-			if(t instanceof BinaryArray){
-				return ((BinaryArray) t).getStructByToken(token);
-			}
-			if(t instanceof BinaryObject){
-				return ((BinaryObject) t).getStructByToken(token);
-			}
-		}
-		return null;
+	public BinaryArray(BinaryArrayStart start, BinaryArrayEnd end){
+		this();
+		this.start = start;
+		this.end = end;
 	}
 
-	@Override
+	public List<BinaryToken> getTokens(){
+		return this.tokens;
+	}
+
 	public byte[] toBytes(){
-		//TODO
-		return new byte[0];
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		try{
+			baos.write(this.start.toBytes());
+			for(BinaryToken token : this.tokens){
+				baos.write(token.toBytes());
+			}
+			baos.write(this.end.toBytes());
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		return baos.toByteArray();
 	}
 
-	public static BinaryArray from(BinaryFile file,ByteBuffer bb){
+	public static BinaryArray from(BinaryFile file, ByteBuffer bb){
 		bb.order(ByteOrder.LITTLE_ENDIAN);
-		//TODO
-		return new BinaryArray(0);
+
+		BinaryArray length = new BinaryArray();
+		length.start = new BinaryArrayStart();
+		while(bb.hasRemaining()){
+			BinaryToken token = BinaryToken.from(file,bb);
+			if(token instanceof BinaryObjectStart){
+				length.tokens.add(BinaryObject.from(file,bb));
+				continue;
+			}
+			if(token instanceof BinaryArrayStart){
+				length.tokens.add(BinaryArray.from(file,bb));
+				continue;
+			}
+			if(token instanceof BinaryArrayEnd){
+				length.end = (BinaryArrayEnd) token;
+				break;
+			}
+			length.tokens.add(token);
+		}
+		return length;
 	}
+
 
 	@Override
 	public String toString() {
 		return "BinaryArray{" +
-				"tokens=" + tokens +
+				"start=" + start +
+				", tokens=" + tokens +
+				", end=" + end +
 				'}';
 	}
 

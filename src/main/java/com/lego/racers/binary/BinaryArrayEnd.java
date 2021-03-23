@@ -3,20 +3,20 @@ package com.lego.racers.binary;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-public class BinaryLengthEnd extends BinaryToken{
+public class BinaryArrayEnd extends BinaryToken{
 
-	public BinaryLengthEnd(){
+	public BinaryArrayEnd(){
 		super(BinaryToken.TOKEN_LENGTH_END);
 	}
 
-	public static BinaryLengthEnd from(BinaryFile file,ByteBuffer bb){
+	public static BinaryArrayEnd from(BinaryFile file, ByteBuffer bb){
 		bb.order(ByteOrder.LITTLE_ENDIAN);
-		return new BinaryLengthEnd();
+		return new BinaryArrayEnd();
 	}
 
 	@Override
 	public String toString() {
-		return "BinaryLengthEnd{" +
+		return "BinaryArrayEnd{" +
 				'}';
 	}
 

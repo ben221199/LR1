@@ -34,8 +34,8 @@ public class BinaryStructInstance extends BinaryToken{
 			if(t instanceof BinaryStructInstance){
 				return ((BinaryStructInstance) t).getStructByToken(token);
 			}
-			if(t instanceof BinaryArray){
-				return ((BinaryArray) t).getStructByToken(token);
+			if(t instanceof BinaryList){
+				return ((BinaryList) t).getStructByToken(token);
 			}
 			if(t instanceof BinaryObject){
 				return ((BinaryObject) t).getStructByToken(token);
@@ -61,11 +61,12 @@ public class BinaryStructInstance extends BinaryToken{
 		return baos.toByteArray();
 	}
 
-	public static BinaryStructInstance from(BinaryFile file,ByteBuffer bb){
+	public static BinaryStructInstance from(BinaryFile file,ByteBuffer bb,BinaryStruct struct){
 		bb.order(ByteOrder.LITTLE_ENDIAN);
-		byte token = bb.get();
-		BinaryStruct struct = file.getStructByToken(token);
-		BinaryStructInstance instance = new BinaryStructInstance(token);
+		if(struct==null){
+			throw new RuntimeException("Cannot find struct");
+		}
+		BinaryStructInstance instance = new BinaryStructInstance(struct.getId());
 		for(byte b : struct.getTokens()){
 			instance.tokens.add(BinaryToken.from(file,bb,b));
 		}

@@ -31,8 +31,8 @@ public class BinaryFile{
 			if(t instanceof BinaryStructInstance){
 				return ((BinaryStructInstance) t).getStructByToken(token);
 			}
-			if(t instanceof BinaryArray){
-				return ((BinaryArray) t).getStructByToken(token);
+			if(t instanceof BinaryList){
+				return ((BinaryList) t).getStructByToken(token);
 			}
 			if(t instanceof BinaryObject){
 				return ((BinaryObject) t).getStructByToken(token);
