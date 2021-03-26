@@ -15,6 +15,8 @@ public class BinaryObject extends BinaryToken{
 
 	public BinaryObject(){
 		super((byte) -1);
+		this.start = new BinaryObjectStart();
+		this.end = new BinaryObjectEnd();
 	}
 
 	public BinaryObject(BinaryObjectStart start,BinaryObjectEnd end){

@@ -19,7 +19,7 @@ public class BinaryArray extends BinaryToken{
 		this.end = new BinaryArrayEnd();
 	}
 
-	public BinaryArray(BinaryArrayStart start, BinaryArrayEnd end){
+	public BinaryArray(BinaryArrayStart start,BinaryArrayEnd end){
 		this();
 		this.start = start;
 		this.end = end;

@@ -12,10 +12,6 @@ public class BinaryStructInstance extends BinaryToken{
 
 	private List<BinaryToken> tokens = new ArrayList<>();
 
-	public BinaryStructInstance(){
-		super(BinaryToken.TOKEN_STRUCT);
-	}
-
 	public BinaryStructInstance(byte id){
 		super(id);
 	}

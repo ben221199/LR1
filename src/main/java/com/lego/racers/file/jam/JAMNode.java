@@ -133,6 +133,10 @@ public class JAMNode{
 		return this.folders.get(name);
 	}
 
+	public JAMNode setFolder(String name,JAMNode node){
+		return this.folders.put(name,node);
+	}
+
 	public Map<String,JAMNode> getFolders(){
 		return this.folders;
 	}

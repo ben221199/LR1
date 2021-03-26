@@ -18,6 +18,10 @@ public class BinaryString extends BinaryToken{
 		return this.string;
 	}
 
+	public void setString(String str){
+		this.string = str;
+	}
+
 	public byte[] toBytes(){
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		try{
