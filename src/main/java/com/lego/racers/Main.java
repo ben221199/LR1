@@ -10,8 +10,12 @@ import com.lego.racers.binary.BinaryObjectStart;
 import com.lego.racers.binary.BinaryString;
 import com.lego.racers.binary.BinaryStructInstance;
 import com.lego.racers.binary.BinaryToken;
+import com.lego.racers.file.cpb.CPBFile;
 import com.lego.racers.file.jam.JAMFile;
 import com.lego.racers.file.jam.JAMNode;
+import com.lego.racers.file.pwb.PWBFile;
+import com.lego.racers.file.spb.SPBFile;
+import com.lego.racers.file.tdb.TDBFile;
 import com.yocto.io.BetterInputStream;
 import com.yocto.io.BetterOutputStream;
 
@@ -37,9 +41,11 @@ public class Main{
 		printDepth(file.getRootNode(),0);
 
 		JAMNode MENUDATA = file.getRootNode().getFolder("MENUDATA");
-		fix_MENUDATA_SINGRACE0IDB(MENUDATA);
-		fix_MENUDATA_LEGORACE0RCB(MENUDATA);
-		fix_MENUDATA_LEGORACE0CRB(MENUDATA);
+		JAMNode GAMEDATA = file.getRootNode().getFolder("GAMEDATA");
+//		fix_MENUDATA_SINGRACE0IDB(MENUDATA);
+//		fix_MENUDATA_LEGORACE0RCB(MENUDATA);
+//		fix_MENUDATA_LEGORACE0CRB(MENUDATA);
+		fix_RR(MENUDATA,GAMEDATA);
 		MENUDATA.setFile("KAAS.BMP",MENUDATA.getFile("ADVENTUR.BMP"));
 		dos.write(file.toBytes());
 		dos.flush();
@@ -60,6 +66,88 @@ public class Main{
 //		dos.flush();
 
 //		JAMFile file2 = JAMFile.from(dis2.readByteArray(dis2.available()));
+	}
+
+	private static void fix_RR(JAMNode MENUDATA,JAMNode GAMEDATA) throws IOException{
+		BinaryFile binFile = BinaryFile.from(MENUDATA.getFile("LEGORACE.RCB"));
+
+		BinaryArray lengthArray = (BinaryArray) binFile.getTokens().get(1);
+		BinaryIntegerSigned length = (BinaryIntegerSigned) lengthArray.getTokens().get(0);
+		length.setIntegerSigned(length.getIntegerSigned()+1);
+
+		BinaryObject tracks = (BinaryObject) binFile.getTokens().get(2);
+		int i = 0;
+		while(true){
+			BinaryToken token = tracks.getTokens().get(i);
+			if(token instanceof BinaryString){
+				if(((BinaryString) token).getString().equalsIgnoreCase("rr2")){
+					break;
+				}
+			}
+			i++;
+		}
+		BinaryObject track = (BinaryObject) tracks.getTokens().get(i+1);
+
+		BinaryIntegerSigned nameIndex = (BinaryIntegerSigned) track.getTokens().get(1);
+		nameIndex.setIntegerSigned(nameIndex.getIntegerSigned()-5);
+
+		BinaryString folderName = (BinaryString) track.getTokens().get(3);
+		folderName.setString("racec0r1");
+
+		track.getTokens().add(new BinaryToken((byte) 0x2A));// Circuit ID
+		track.getTokens().add(new BinaryString("c6"));
+		track.getTokens().add(new BinaryToken((byte) 0x28));// Position in circuit
+		track.getTokens().add(new BinaryIntegerSigned(1));
+		track.getTokens().add(new BinaryToken((byte) 0x2D));// Theme string
+		track.getTokens().add(new BinaryString("space2"));
+		track.getTokens().add(new BinaryToken((byte) 0x2E));// Mascot character
+		track.getTokens().add(new BinaryString("RR"));
+
+		//////////////
+
+		BinaryObject track2 = new BinaryObject();
+		tracks.getTokens().add(new BinaryToken((byte) 0x27));
+		tracks.getTokens().add(new BinaryString("rr3"));
+		tracks.getTokens().add(track2);
+
+		track2.getTokens().add(new BinaryToken((byte) 0x2B));// Name Index (/MENUDATA/<lang>/CIRCUIT.SRF)
+		track2.getTokens().add(new BinaryIntegerSigned(12));
+		track2.getTokens().add(new BinaryToken((byte) 0x29));// Folder (/GAMEDATA/<this>/)
+		track2.getTokens().add(new BinaryString("racec6r8"));
+
+		track2.getTokens().add(new BinaryToken((byte) 0x2A));// Circuit ID
+		track2.getTokens().add(new BinaryString("c6"));
+		track2.getTokens().add(new BinaryToken((byte) 0x28));// Position in circuit
+		track2.getTokens().add(new BinaryIntegerSigned(2));
+		track2.getTokens().add(new BinaryToken((byte) 0x2D));// Theme string
+		track2.getTokens().add(new BinaryString("advntr1"));
+		track2.getTokens().add(new BinaryToken((byte) 0x2E));// Mascot character
+		track2.getTokens().add(new BinaryString("RH"));
+
+		BinaryFile RAB = new BinaryFile();
+
+		BinaryObject RAB_INFO = new BinaryObject();
+
+		RAB.getTokens().add(new BinaryToken((byte) 0x35));
+		RAB.getTokens().add(new BinaryString("Yocto Plantage"));
+		RAB.getTokens().add(RAB_INFO);
+
+		RAB_INFO.getTokens().add(new BinaryToken((byte) 0x2D));
+		RAB_INFO.getTokens().add(new BinaryString("legofnts.fdf"));
+
+		JAMNode RACEC6R8 = new JAMNode();
+//		RACEC6R8.setFile("RACEC6R8.RAB",RAB.toBytes());
+		RACEC6R8.setFile("RACEC6R8.RAB",GAMEDATA.getFolder("RACEC0R0").getFile("RACEC0R0.RAB"));
+		RACEC6R8.setFile("LOADSCRN.LSB",GAMEDATA.getFolder("RACEC0R0").getFile("LOADSCRN.LSB"));
+		RACEC6R8.setFile("RKR.BMP",GAMEDATA.getFolder("RACEC0R0").getFile("RKR.BMP"));
+		RACEC6R8.setFile("LOADSCRN.IDB",GAMEDATA.getFolder("RACEC0R0").getFile("LOADSCRN.IDB"));
+		RACEC6R8.setFile("TICK.BMP",GAMEDATA.getFolder("RACEC0R0").getFile("TICK.BMP"));
+
+		RACEC6R8.setFile("RRTRK.WDB",GAMEDATA.getFolder("RACEC0R0").getFile("RRTRK.WDB"));
+
+		GAMEDATA.setFolder("RACEC6R8",RACEC6R8);
+
+		MENUDATA.setFile("LEGORACE.RCB",binFile.toBytes());
 	}
 
 	private static void fix_MENUDATA_SINGRACE0IDB(JAMNode MENUDATA) throws IOException{
@@ -99,22 +187,31 @@ public class Main{
 		BinaryArray length = (BinaryArray) binFile.getTokens().get(1);
 		BinaryIntegerSigned binaryInteger = (BinaryIntegerSigned) length.getTokens().get(0);
 		binaryInteger.setIntegerSigned(binaryInteger.getIntegerSigned()+1);
+
+
 		BinaryObject object = (BinaryObject) binFile.getTokens().get(2);
 		object.getTokens().add(new BinaryToken((byte) 0x27));
-		object.getTokens().add(new BinaryString("kaas"));
+		object.getTokens().add(new BinaryString("kaas2"));
+
 		BinaryObject track = new BinaryObject(new BinaryObjectStart(),new BinaryObjectEnd());
+		// Name Index (/MENUDATA/<lang>/CIRCUIT.SRF)
 		track.getTokens().add(new BinaryToken((byte) 0x2B));
-		track.getTokens().add(new BinaryIntegerSigned(16));
+		track.getTokens().add(new BinaryIntegerSigned(3));
+		// Folder (/GAMEDATA/<this>/)
 		track.getTokens().add(new BinaryToken((byte) 0x29));
 		track.getTokens().add(new BinaryString("racec0r4"));
+		// Circuit ID
 		track.getTokens().add(new BinaryToken((byte) 0x2A));
-		track.getTokens().add(new BinaryString("c4"));
+		track.getTokens().add(new BinaryString("c7"));
+		// Position in circuit
 		track.getTokens().add(new BinaryToken((byte) 0x28));
-		track.getTokens().add(new BinaryIntegerSigned(4));
+		track.getTokens().add(new BinaryIntegerSigned(0));
+		// Theme string
 		track.getTokens().add(new BinaryToken((byte) 0x2D));
-		track.getTokens().add(new BinaryString("pirate1"));
+		track.getTokens().add(new BinaryString("myTheme"));
+		// Mascot character
 		track.getTokens().add(new BinaryToken((byte) 0x2E));
-		track.getTokens().add(new BinaryString("GB"));
+		track.getTokens().add(new BinaryString("YOC"));
 
 		object.getTokens().add(track);
 		MENUDATA.setFile("LEGORACE.RCB",binFile.toBytes());
@@ -194,15 +291,56 @@ public class Main{
 			prefix += "---";
 		}
 		for(Map.Entry<String,byte[]> name : node.getFiles().entrySet()){
-			if(name.getKey().contains(".PCM") || name.getKey().contains(".BMP") || name.getKey().contains(".SRF") || name.getKey().contains(".SBK") || name.getKey().contains(".TGA") || !name.getKey().contains(".") || name.getKey().contains(".LRS")){
+			if(name.getKey().endsWith(".BMP")){
+				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] BITMAP (IMAGE)");
 				continue;
 			}
-			if(!name.getKey().contains(".MSB")){
+			if(name.getKey().endsWith(".CPB")){
+				System.out.println(prefix+name.getKey()+" => "+ CPBFile.from(name.getValue()));
 				continue;
 			}
-			System.out.print(prefix+""+name.getKey()+" :: ");//+name.getValue().length+
-			String debug = BinaryFile.from(name.getValue()).toString();////new String(name.getValue()).contains("c4");
-			System.out.println(debug);
+			if(name.getKey().endsWith(".LRS")){
+				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] LEGO RACERS SAVE (???)");
+				continue;
+			}
+			if(name.getKey().endsWith(".PCM")){
+				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] PULSE-CODE MODULATION (AUDIO)");
+				continue;
+			}
+			if(name.getKey().endsWith(".PWB")){
+				System.out.println(prefix+name.getKey()+" => "+PWBFile.from(name.getValue()));
+				continue;
+			}
+			if(name.getKey().endsWith(".RRB")){
+//				System.out.println(prefix+name.getKey()+" => "+BinaryFile.from(name.getValue()));//PWBFile.from(name.getValue())
+				continue;
+			}
+			if(name.getKey().endsWith(".SBK")){
+				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] ??? (???)");
+				continue;
+			}
+			if(name.getKey().endsWith(".SPB")){
+				System.out.println(prefix+name.getKey()+" => "+ SPBFile.from(name.getValue()));
+				continue;
+			}
+			if(name.getKey().endsWith(".SRF")){
+				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] String Reference (???)");
+				continue;
+			}
+			if(name.getKey().endsWith(".TDB")){
+				System.out.println(prefix+name.getKey()+" => "+ TDBFile.from(name.getValue()));
+				continue;
+			}
+			if(name.getKey().endsWith(".TGA")){
+				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] TRUEVISION GRAPHICS ADAPTER (IMAGE)");
+				continue;
+			}
+			if(!name.getKey().contains(".")){
+				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] EXTENSIONLESS");
+				continue;
+			}
+			String data = "";//BinaryFile.from(name.getValue()).toString();
+			System.out.println(prefix+name.getKey()+" <<>> "+data);
 		}
 		for(Map.Entry<String,JAMNode> name : node.getFolders().entrySet()){
 			System.out.println(prefix+""+name.getKey()+" <> "+name.getValue().calculateSize());

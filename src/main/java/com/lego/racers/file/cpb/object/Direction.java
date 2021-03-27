@@ -2,10 +2,10 @@ package com.lego.racers.file.cpb.object;
 
 public class Direction{
 
-	private float varA;
-	private float varB;
-	private float varC;
-	private float varD;
+	private float varA;//Unknown?
+	private float varB;//Unknown?
+	private float varC;//Unknown?
+	private float varD;//Unknown?
 
 	public float getVarA(){
 		return this.varA;

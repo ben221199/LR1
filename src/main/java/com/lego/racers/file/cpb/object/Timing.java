@@ -2,10 +2,10 @@ package com.lego.racers.file.cpb.object;
 
 public class Timing{
 
-	private int varA;
-	private int varB;
-	private int varC;
-	private int varD;
+	private int varA;//Unknown?
+	private int varB;//Unknown?
+	private int varC;//Unknown?
+	private int varD;//Unknown?
 
 	public int getVarA(){
 		return this.varA;

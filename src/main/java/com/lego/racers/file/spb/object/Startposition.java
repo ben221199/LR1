@@ -2,14 +2,14 @@ package com.lego.racers.file.spb.object;
 
 import com.lego.racers.binary.object.Position;
 
-public class StartPosition{
+public class Startposition {
 
 	private Position position;
 	private Orientation orientation;
 
-	public StartPosition(){}
+	public Startposition(){}
 
-	public StartPosition(Position position,Orientation orientation){
+	public Startposition(Position position, Orientation orientation){
 		this.position = position;
 		this.orientation = orientation;
 	}

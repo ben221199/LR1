@@ -10,8 +10,8 @@ import com.lego.racers.binary.BinaryStructInstance;
 import com.lego.racers.binary.BinaryToken;
 import com.lego.racers.binary.object.Position;
 import com.lego.racers.file.spb.object.Orientation;
-import com.lego.racers.file.spb.object.StartPosition;
-import com.lego.racers.file.spb.object.StartPositions;
+import com.lego.racers.file.spb.object.Startposition;
+import com.lego.racers.file.spb.object.Startpositions;
 
 import java.util.Map;
 
@@ -23,7 +23,7 @@ public class SPBFile{
 	public static final byte PROPERTY_POSITION = 0x28;
 	public static final byte PROPERTY_ORIENTATION = 0x29;
 
-	private StartPositions startPositions;
+	private Startpositions startPositions;
 
 	public byte[] toBytes(){
 		BinaryFile bin = new BinaryFile();
@@ -36,7 +36,7 @@ public class SPBFile{
 			bin.getTokens().add(length);
 			BinaryObject obj = new BinaryObject();
 			int i = 0;
-			for(Map.Entry<Integer,StartPosition> entry : this.startPositions.entrySet()){
+			for(Map.Entry<Integer, Startposition> entry : this.startPositions.entrySet()){
 				obj.getTokens().add(new BinaryToken(SPBFile.PROPERTY_STARTPOSITION));
 				obj.getTokens().add(new BinaryIntegerSigned(entry.getKey()));
 				if(i==0 && !struct23){
@@ -48,7 +48,7 @@ public class SPBFile{
 					startPositionObj.getTokens().add(new BinaryStruct((byte) 0x18,(byte)7,new byte[]{0x29,3,3,3,3,3,3}));
 					struct24 = true;
 				}
-				StartPosition startPosition = entry.getValue();
+				Startposition startPosition = entry.getValue();
 				if(startPosition.getPosition()!=null){
 					BinaryStructInstance position = new BinaryStructInstance((byte) 0x17);
 					position.getTokens().add(new BinaryFloat(startPosition.getPosition().getX()));
@@ -87,7 +87,7 @@ public class SPBFile{
 	}
 
 	private static void initStartPositions(SPBFile file,BinaryObject obj){
-		StartPositions startPositions = new StartPositions();
+		Startpositions startPositions = new Startpositions();
 		for(int i=0;i<obj.getTokens().size();i++){
 			BinaryToken token = obj.getTokens().get(i);
 			if(token.getToken()==SPBFile.PROPERTY_STARTPOSITION){
@@ -102,8 +102,8 @@ public class SPBFile{
 		file.startPositions = startPositions;
 	}
 
-	private static void initStartPosition(StartPositions startPositions,int index,BinaryObject obj){
-		StartPosition startPosition = new StartPosition();
+	private static void initStartPosition(Startpositions startPositions, int index, BinaryObject obj){
+		Startposition startPosition = new Startposition();
 
 		for(BinaryToken token : obj.getTokens()){
 			if(token instanceof BinaryStructInstance){
@@ -119,7 +119,7 @@ public class SPBFile{
 		startPositions.put(index,startPosition);
 	}
 
-	private static void initPosition(StartPosition startPosition,BinaryStructInstance structInstance){
+	private static void initPosition(Startposition startPosition, BinaryStructInstance structInstance){
 		if(structInstance.getTokens().size()>0 && structInstance.getTokens().get(0).getToken()==SPBFile.PROPERTY_POSITION){
 			Position position = new Position();
 			position.setX(((BinaryFloat)structInstance.getTokens().get(1)).getFloat());
@@ -129,7 +129,7 @@ public class SPBFile{
 		}
 	}
 
-	private static void initOrientation(StartPosition startPosition,BinaryStructInstance structInstance){
+	private static void initOrientation(Startposition startPosition, BinaryStructInstance structInstance){
 		if(structInstance.getTokens().size()>0 && structInstance.getTokens().get(0).getToken()==SPBFile.PROPERTY_ORIENTATION){
 			Orientation orientation = new Orientation();
 			orientation.setRotationX(((BinaryFloat)structInstance.getTokens().get(1)).getFloat());
