@@ -52,13 +52,11 @@ public class SRFFile{
 		SRFFile srf = new SRFFile();
 		for(short index : indices){
 			stringBuffer.position(index*2);
-			System.err.println("[S]"+index%2);
 			StringBuilder sb = new StringBuilder();
 			char c;
 			while((c = stringBuffer.getChar())!=0){
 				sb.append(c);
 			}
-			System.err.println();
 			srf.strings.add(sb.toString());
 		}
 		return srf;

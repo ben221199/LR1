@@ -14,6 +14,7 @@ import com.lego.racers.file.cpb.CPBFile;
 import com.lego.racers.file.jam.JAMFile;
 import com.lego.racers.file.jam.JAMNode;
 import com.lego.racers.file.pwb.PWBFile;
+import com.lego.racers.file.sbk.SBKFile;
 import com.lego.racers.file.spb.SPBFile;
 import com.lego.racers.file.srf.SRFFile;
 import com.lego.racers.file.tdb.TDBFile;
@@ -317,7 +318,7 @@ public class Main{
 				continue;
 			}
 			if(name.getKey().endsWith(".SBK")){
-				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] ??? (???)");
+				System.out.println(prefix+name.getKey()+" => [NON] => "+ SBKFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".SPB")){

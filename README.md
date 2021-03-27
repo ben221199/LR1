@@ -27,7 +27,7 @@ This library supports the following file types:
 **Other LEGO Files**
  - `JAM` - *Unknown meaning*
  - `LRS` - <ins>**L**</ins>EGO <ins>**R**</ins>acers <ins>**S**</ins>ave
- - `SBK` - *Unknown meaning*
+ - `SBK` - *Unknown meaning* (Plain text)
  - `SRF` - <ins>**S**</ins>tring <ins>**R**</ins>e<ins>**f**</ins>erence
 
 **Other files**
