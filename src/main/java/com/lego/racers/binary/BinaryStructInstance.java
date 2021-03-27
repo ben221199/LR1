@@ -16,6 +16,10 @@ public class BinaryStructInstance extends BinaryToken{
 		super(id);
 	}
 
+	public int getId(){
+		return this.getToken();
+	}
+
 	public List<BinaryToken> getTokens(){
 		return this.tokens;
 	}
@@ -72,7 +76,8 @@ public class BinaryStructInstance extends BinaryToken{
 	@Override
 	public String toString() {
 		return "BinaryStructInstance{" +
-				"tokens=" + tokens +
+				"id=" + this.getToken() +
+				", tokens=" + tokens +
 				'}';
 	}
 

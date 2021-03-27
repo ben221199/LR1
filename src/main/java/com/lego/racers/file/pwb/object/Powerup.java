@@ -1,5 +1,7 @@
 package com.lego.racers.file.pwb.object;
 
+import com.lego.racers.binary.object.Position;
+
 public abstract class Powerup{
 
 	protected Position position;

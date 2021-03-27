@@ -1,5 +1,7 @@
 package com.lego.racers.file.pwb.object;
 
+import com.lego.racers.binary.object.Position;
+
 public class ColoredPowerup extends Powerup{
 
 	public static final byte COLOR_RED = 0x2A;

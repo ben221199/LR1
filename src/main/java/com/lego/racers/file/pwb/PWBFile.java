@@ -10,7 +10,7 @@ import com.lego.racers.binary.BinaryStructInstance;
 import com.lego.racers.binary.BinaryToken;
 import com.lego.racers.file.pwb.object.ColoredPowerup;
 import com.lego.racers.file.pwb.object.ColoredPowerups;
-import com.lego.racers.file.pwb.object.Position;
+import com.lego.racers.binary.object.Position;
 import com.lego.racers.file.pwb.object.Powerup;
 import com.lego.racers.file.pwb.object.WhitePowerup;
 import com.lego.racers.file.pwb.object.WhitePowerups;
@@ -135,7 +135,9 @@ public class PWBFile{
 
 		for(BinaryToken token : obj.getTokens()){
 			if(token instanceof BinaryStructInstance){
-				initPosition(powerup,(BinaryStructInstance) token);
+				if(token.getToken()==0x28){
+					initPosition(powerup,(BinaryStructInstance) token);
+				}
 			}
 		}
 
@@ -181,7 +183,9 @@ public class PWBFile{
 
 		for(BinaryToken token : obj.getTokens()){
 			if(token instanceof BinaryStructInstance){
-				initPosition(powerup,(BinaryStructInstance) token);
+				if(token.getToken()==0x28){
+					initPosition(powerup,(BinaryStructInstance) token);
+				}
 			}
 		}
 

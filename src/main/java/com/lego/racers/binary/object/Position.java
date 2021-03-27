@@ -1,4 +1,4 @@
-package com.lego.racers.file.pwb.object;
+package com.lego.racers.binary.object;
 
 public class Position{
 
