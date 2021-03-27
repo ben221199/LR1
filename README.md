@@ -28,7 +28,7 @@ This library supports the following file types:
  - `JAM` - *Unknown meaning*
  - `LRS` - <ins>**L**</ins>EGO <ins>**R**</ins>acers <ins>**S**</ins>ave
  - `SBK` - *Unknown meaning*
- - `SRF` - <ins>**S**</ins>tring <ins>**R**</ins>eference <ins>**F**</ins>ile
+ - `SRF` - <ins>**S**</ins>tring <ins>**R**</ins>e<ins>**f**</ins>erence
 
 **Other files**
  - `BMP` - <ins>**B**</ins>it<ins>**m**</ins>a<ins>**p**</ins> (Image)

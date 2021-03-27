@@ -15,6 +15,7 @@ import com.lego.racers.file.jam.JAMFile;
 import com.lego.racers.file.jam.JAMNode;
 import com.lego.racers.file.pwb.PWBFile;
 import com.lego.racers.file.spb.SPBFile;
+import com.lego.racers.file.srf.SRFFile;
 import com.lego.racers.file.tdb.TDBFile;
 import com.yocto.io.BetterInputStream;
 import com.yocto.io.BetterOutputStream;
@@ -324,7 +325,7 @@ public class Main{
 				continue;
 			}
 			if(name.getKey().endsWith(".SRF")){
-				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] String Reference (???)");
+				System.out.println(prefix+name.getKey()+" => [NON] => "+ SRFFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".TDB")){
