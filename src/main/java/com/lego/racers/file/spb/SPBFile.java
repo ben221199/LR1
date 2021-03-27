@@ -49,20 +49,23 @@ public class SPBFile{
 					struct24 = true;
 				}
 				StartPosition startPosition = entry.getValue();
-				BinaryStructInstance position = new BinaryStructInstance((byte) 0x17);
-				position.getTokens().add(new BinaryFloat(startPosition.getPosition().getX()));
-				position.getTokens().add(new BinaryFloat(startPosition.getPosition().getY()));
-				position.getTokens().add(new BinaryFloat(startPosition.getPosition().getZ()));
-				startPositionObj.getTokens().add(position);
-
-				BinaryStructInstance orientation = new BinaryStructInstance((byte) 0x18);
-				orientation.getTokens().add(new BinaryFloat(startPosition.getOrientation().getRotationX()));
-				orientation.getTokens().add(new BinaryFloat(startPosition.getOrientation().getRotationY()));
-				orientation.getTokens().add(new BinaryFloat(startPosition.getOrientation().getRotationZ()));
-				orientation.getTokens().add(new BinaryFloat(startPosition.getOrientation().getFlipX()));
-				orientation.getTokens().add(new BinaryFloat(startPosition.getOrientation().getFlipY()));
-				orientation.getTokens().add(new BinaryFloat(startPosition.getOrientation().getFlipZ()));
-				startPositionObj.getTokens().add(orientation);
+				if(startPosition.getPosition()!=null){
+					BinaryStructInstance position = new BinaryStructInstance((byte) 0x17);
+					position.getTokens().add(new BinaryFloat(startPosition.getPosition().getX()));
+					position.getTokens().add(new BinaryFloat(startPosition.getPosition().getY()));
+					position.getTokens().add(new BinaryFloat(startPosition.getPosition().getZ()));
+					startPositionObj.getTokens().add(position);
+				}
+				if(startPosition.getOrientation()!=null){
+					BinaryStructInstance orientation = new BinaryStructInstance((byte) 0x18);
+					orientation.getTokens().add(new BinaryFloat(startPosition.getOrientation().getRotationX()));
+					orientation.getTokens().add(new BinaryFloat(startPosition.getOrientation().getRotationY()));
+					orientation.getTokens().add(new BinaryFloat(startPosition.getOrientation().getRotationZ()));
+					orientation.getTokens().add(new BinaryFloat(startPosition.getOrientation().getFlipX()));
+					orientation.getTokens().add(new BinaryFloat(startPosition.getOrientation().getFlipY()));
+					orientation.getTokens().add(new BinaryFloat(startPosition.getOrientation().getFlipZ()));
+					startPositionObj.getTokens().add(orientation);
+				}
 				obj.getTokens().add(startPositionObj);
 				i++;
 			}

@@ -64,11 +64,13 @@ public class PWBFile{
 				}
 				BinaryObject powerupObj = new BinaryObject();
 				ColoredPowerup powerup = this.coloredPowerups.get(i);
-				BinaryStructInstance position = new BinaryStructInstance((byte) 0x17);
-				position.getTokens().add(new BinaryFloat(powerup.getPosition().getX()));
-				position.getTokens().add(new BinaryFloat(powerup.getPosition().getY()));
-				position.getTokens().add(new BinaryFloat(powerup.getPosition().getZ()));
-				powerupObj.getTokens().add(position);
+				if(powerup.getPosition()!=null){
+					BinaryStructInstance position = new BinaryStructInstance((byte) 0x17);
+					position.getTokens().add(new BinaryFloat(powerup.getPosition().getX()));
+					position.getTokens().add(new BinaryFloat(powerup.getPosition().getY()));
+					position.getTokens().add(new BinaryFloat(powerup.getPosition().getZ()));
+					powerupObj.getTokens().add(position);
+				}
 				powerupObj.getTokens().add(new BinaryToken(powerup.getColor()));
 				obj.getTokens().add(powerupObj);
 			}
@@ -88,11 +90,13 @@ public class PWBFile{
 				}
 				BinaryObject powerupObj = new BinaryObject();
 				WhitePowerup powerup = this.whitePowerups.get(i);
-				BinaryStructInstance position = new BinaryStructInstance((byte) 0x17);
-				position.getTokens().add(new BinaryFloat(powerup.getPosition().getX()));
-				position.getTokens().add(new BinaryFloat(powerup.getPosition().getY()));
-				position.getTokens().add(new BinaryFloat(powerup.getPosition().getZ()));
-				powerupObj.getTokens().add(position);
+				if(powerup.getPosition()!=null){
+					BinaryStructInstance position = new BinaryStructInstance((byte) 0x17);
+					position.getTokens().add(new BinaryFloat(powerup.getPosition().getX()));
+					position.getTokens().add(new BinaryFloat(powerup.getPosition().getY()));
+					position.getTokens().add(new BinaryFloat(powerup.getPosition().getZ()));
+					powerupObj.getTokens().add(position);
+				}
 				obj.getTokens().add(powerupObj);
 			}
 			bin.getTokens().add(obj);
