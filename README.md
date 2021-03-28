@@ -24,6 +24,7 @@ This library supports the following file types:
  - `EMB` - <ins>**E**</ins><ins>**m**</ins>itter <ins>**B**</ins>inary
  - `EVB` - <ins>**E**</ins><ins>**v**</ins>ent <ins>**B**</ins>inary
  - `FDB` - <ins>**F**</ins>ont <ins>**D**</ins>ata <ins>**B**</ins>inary
+ - `MDB` - <ins>**M**</ins>aterial <ins>**D**</ins>ata <ins>**B**</ins>inary
  - `PWB` - <ins>**P**</ins>o<ins>**w**</ins>erup <ins>**B**</ins>inary
  - `SPB` - <ins>**S**</ins>tart<ins>**p**</ins>osition <ins>**B**</ins>inary
  - `TDB` - <ins>**T**</ins>exture <ins>**D**</ins>ata <ins>**B**</ins>inary

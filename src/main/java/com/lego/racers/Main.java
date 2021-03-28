@@ -16,6 +16,7 @@ import com.lego.racers.file.emb.EMBFile;
 import com.lego.racers.file.fdb.FDBFile;
 import com.lego.racers.file.jam.JAMFile;
 import com.lego.racers.file.jam.JAMNode;
+import com.lego.racers.file.mdb.MDBFile;
 import com.lego.racers.file.pwb.PWBFile;
 import com.lego.racers.file.sbk.SBKFile;
 import com.lego.racers.file.spb.SPBFile;
@@ -303,7 +304,7 @@ public class Main{
 				continue;
 			}
 			if(name.getKey().endsWith(".DDB")){
-				System.out.println(prefix+name.getKey()+" => "+ DDBFile.from(name.getValue()));
+//				System.out.println(prefix+name.getKey()+" => "+ DDBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".EMB")){
@@ -316,6 +317,11 @@ public class Main{
 			}
 			if(name.getKey().endsWith(".LRS")){
 //				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] LEGO RACERS SAVE (???)");
+				continue;
+			}
+			if(name.getKey().endsWith(".MDB")){
+				System.out.println(prefix+name.getKey()+" => "+ BinaryFile.from(name.getValue()));
+				System.out.println(prefix+name.getKey()+" => "+ MDBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".PCM")){
