@@ -10,6 +10,7 @@ import com.lego.racers.binary.BinaryString;
 import com.lego.racers.binary.BinaryToken;
 import com.lego.racers.file.emb.object.Emitter;
 import com.lego.racers.file.emb.object.Emitters;
+import com.lego.racers.file.emb.object.Gravity;
 import com.lego.racers.file.emb.object.TMPEmitterObject;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class EMBFile{
 	public static final byte PROPERTY_43 = 0x2B;
 	public static final byte PROPERTY_START_WIDTH = 0x2C;
 	public static final byte PROPERTY_START_HEIGHT = 0x2D;
+	public static final byte PROPERTY_46 = 0x2E;
 	public static final byte PROPERTY_47 = 0x2F;
 	public static final byte PROPERTY_48 = 0x30;
 	public static final byte PROPERTY_END_WIDTH = 0x31;
@@ -49,28 +51,20 @@ public class EMBFile{
 				obj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_EMITTER));
 				obj.getTokens().add(new BinaryString(entry.getKey()));
 				BinaryObject emitterObj = new BinaryObject();
-				emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_40));
-				emitterObj.getTokens().add(new BinaryFloat(entry.getValue().get40()));
-				emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_41));
-				emitterObj.getTokens().add(new BinaryFloat(entry.getValue().get41()));
-				emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_START_WIDTH));
-				emitterObj.getTokens().add(new BinaryFloat(entry.getValue().getStartWidth()));
-				emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_START_HEIGHT));
-				emitterObj.getTokens().add(new BinaryFloat(entry.getValue().getStartHeight()));
-				emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_END_WIDTH));
-				emitterObj.getTokens().add(new BinaryFloat(entry.getValue().getEndWidth()));
-				emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_END_HEIGHT));
-				emitterObj.getTokens().add(new BinaryFloat(entry.getValue().getEndHeight()));
-				emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_47));
-				emitterObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get47()));
-				emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_48));
-				emitterObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get48()));
-				emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_DURATION));
-				emitterObj.getTokens().add(new BinaryFloat(entry.getValue().getDuration()));
-				emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_GRAVITY));
-				emitterObj.getTokens().add(new BinaryFloat(entry.getValue().getGravityX()));
-				emitterObj.getTokens().add(new BinaryFloat(entry.getValue().getGravityY()));
-				emitterObj.getTokens().add(new BinaryFloat(entry.getValue().getGravityZ()));
+				if(entry.getValue().get40()!=null){
+					emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_40));
+					emitterObj.getTokens().add(new BinaryFloat(entry.getValue().get40()));
+				}
+				if(entry.getValue().get41()!=null){
+					emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_41));
+					emitterObj.getTokens().add(new BinaryFloat(entry.getValue().get41()));
+				}
+				if(entry.getValue().getGravity()!=null){
+					emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_GRAVITY));
+					emitterObj.getTokens().add(new BinaryFloat(entry.getValue().getGravity().getX()));
+					emitterObj.getTokens().add(new BinaryFloat(entry.getValue().getGravity().getY()));
+					emitterObj.getTokens().add(new BinaryFloat(entry.getValue().getGravity().getZ()));
+				}
 				if(entry.getValue().get43()!=null){
 					emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_43));
 					BinaryArray tmpArr = new BinaryArray();
@@ -86,11 +80,47 @@ public class EMBFile{
 					tmpObj.getTokens().add(list);
 					emitterObj.getTokens().add(tmpObj);
 				}
-				emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_53));
-				emitterObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get53()));
+				if(entry.getValue().getStartWidth()!=null){
+					emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_START_WIDTH));
+					emitterObj.getTokens().add(new BinaryFloat(entry.getValue().getStartWidth()));
+				}
+				if(entry.getValue().getStartHeight()!=null){
+					emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_START_HEIGHT));
+					emitterObj.getTokens().add(new BinaryFloat(entry.getValue().getStartHeight()));
+				}
+				if(entry.getValue().get46()!=null){
+					emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_46));
+					emitterObj.getTokens().add(new BinaryFloat(entry.getValue().getGravity().getX()));
+					emitterObj.getTokens().add(new BinaryFloat(entry.getValue().getGravity().getY()));
+					emitterObj.getTokens().add(new BinaryFloat(entry.getValue().getGravity().getZ()));
+				}
+				if(entry.getValue().get47()!=null){
+					emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_47));
+					emitterObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get47()));
+				}
+				if(entry.getValue().get48()!=null){
+					emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_48));
+					emitterObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get48()));
+				}
+				if(entry.getValue().getEndWidth()!=null){
+					emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_END_WIDTH));
+					emitterObj.getTokens().add(new BinaryFloat(entry.getValue().getEndWidth()));
+				}
+				if(entry.getValue().getEndWidth()!=null){
+					emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_END_HEIGHT));
+					emitterObj.getTokens().add(new BinaryFloat(entry.getValue().getEndHeight()));
+				}
+				if(entry.getValue().getDuration()!=null){
+					emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_DURATION));
+					emitterObj.getTokens().add(new BinaryFloat(entry.getValue().getDuration()));
+				}
 				if(entry.getValue().getMaterial()!=null){
 					emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_MATERIAL));
 					emitterObj.getTokens().add(new BinaryString(entry.getValue().getMaterial()));
+				}
+				if(entry.getValue().get53()!=null){
+					emitterObj.getTokens().add(new BinaryToken(EMBFile.PROPERTY_53));
+					emitterObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get53()));
 				}
 				obj.getTokens().add(emitterObj);
 			}
@@ -135,6 +165,19 @@ public class EMBFile{
 				BinaryFloat f = (BinaryFloat) obj.getTokens().get(i+1);
 				emitter.set41(f.getFloat());
 			}
+			if(token.getToken()==EMBFile.PROPERTY_GRAVITY){
+				Gravity gravity = new Gravity();
+				BinaryFloat x = (BinaryFloat) obj.getTokens().get(i+1);
+				BinaryFloat y = (BinaryFloat) obj.getTokens().get(i+2);
+				BinaryFloat z = (BinaryFloat) obj.getTokens().get(i+3);
+				gravity.setX(x.getFloat());
+				gravity.setY(y.getFloat());
+				gravity.setZ(z.getFloat());
+				emitter.setGravity(gravity);
+			}
+			if(token.getToken()==EMBFile.PROPERTY_43){
+				EMBFile.initTMPEmitterObject(emitter,(BinaryObject) obj.getTokens().get(i+2));
+			}
 			if(token.getToken()==EMBFile.PROPERTY_START_WIDTH){
 				BinaryFloat f = (BinaryFloat) obj.getTokens().get(i+1);
 				emitter.setStartWidth(f.getFloat());
@@ -143,13 +186,9 @@ public class EMBFile{
 				BinaryFloat f = (BinaryFloat) obj.getTokens().get(i+1);
 				emitter.setStartHeight(f.getFloat());
 			}
-			if(token.getToken()==EMBFile.PROPERTY_END_WIDTH){
-				BinaryFloat f = (BinaryFloat) obj.getTokens().get(i+1);
-				emitter.setEndWidth(f.getFloat());
-			}
-			if(token.getToken()==EMBFile.PROPERTY_END_HEIGHT){
-				BinaryFloat f = (BinaryFloat) obj.getTokens().get(i+1);
-				emitter.setEndHeight(f.getFloat());
+			if(token.getToken()==EMBFile.PROPERTY_46){
+				BinaryIntegerSigned f = (BinaryIntegerSigned) obj.getTokens().get(i+1);
+				emitter.set46(f.getIntegerSigned());
 			}
 			if(token.getToken()==EMBFile.PROPERTY_47){
 				BinaryIntegerSigned f = (BinaryIntegerSigned) obj.getTokens().get(i+1);
@@ -159,28 +198,25 @@ public class EMBFile{
 				BinaryIntegerSigned f = (BinaryIntegerSigned) obj.getTokens().get(i+1);
 				emitter.set48(f.getIntegerSigned());
 			}
+			if(token.getToken()==EMBFile.PROPERTY_END_WIDTH){
+				BinaryFloat f = (BinaryFloat) obj.getTokens().get(i+1);
+				emitter.setEndWidth(f.getFloat());
+			}
+			if(token.getToken()==EMBFile.PROPERTY_END_HEIGHT){
+				BinaryFloat f = (BinaryFloat) obj.getTokens().get(i+1);
+				emitter.setEndHeight(f.getFloat());
+			}
 			if(token.getToken()==EMBFile.PROPERTY_DURATION){
 				BinaryFloat f = (BinaryFloat) obj.getTokens().get(i+1);
 				emitter.setDuration(f.getFloat());
 			}
-			if(token.getToken()==EMBFile.PROPERTY_GRAVITY){
-				BinaryFloat x = (BinaryFloat) obj.getTokens().get(i+1);
-				BinaryFloat y = (BinaryFloat) obj.getTokens().get(i+2);
-				BinaryFloat z = (BinaryFloat) obj.getTokens().get(i+3);
-				emitter.setGravityX(x.getFloat());
-				emitter.setGravityY(y.getFloat());
-				emitter.setGravityZ(z.getFloat());
-			}
-			if(token.getToken()==EMBFile.PROPERTY_43){
-				EMBFile.initTMPEmitterObject(emitter,(BinaryObject) obj.getTokens().get(i+2));
+			if(token.getToken()==EMBFile.PROPERTY_MATERIAL){
+				BinaryString string = (BinaryString) obj.getTokens().get(i+1);
+				emitter.setMaterial(string.getString());
 			}
 			if(token.getToken()==EMBFile.PROPERTY_53){
 				BinaryIntegerSigned f = (BinaryIntegerSigned) obj.getTokens().get(i+1);
 				emitter.set53(f.getIntegerSigned());
-			}
-			if(token.getToken()==EMBFile.PROPERTY_MATERIAL){
-				BinaryString string = (BinaryString) obj.getTokens().get(i+1);
-				emitter.setMaterial(string.getString());
 			}
 		}
 

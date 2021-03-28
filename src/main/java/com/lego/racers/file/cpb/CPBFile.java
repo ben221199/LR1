@@ -10,6 +10,7 @@ import com.lego.racers.binary.BinaryToken;
 import com.lego.racers.file.cpb.object.Checkpoint;
 import com.lego.racers.file.cpb.object.Checkpoints;
 import com.lego.racers.file.cpb.object.Direction;
+import com.lego.racers.file.cpb.object.Location;
 import com.lego.racers.file.cpb.object.Timing;
 
 public class CPBFile{
@@ -43,11 +44,7 @@ public class CPBFile{
 					arr.getTokens().add(new BinaryFloat(checkpoint.getDirection().getVarD()));
 					checkpointObj.getTokens().add(arr);
 				}
-				checkpointObj.getTokens().add(new BinaryToken(CPBFile.PROPERTY_LOCATION));
-				checkpointObj.getTokens().add(new BinaryFloat(checkpoint.getLocationX()));
-				checkpointObj.getTokens().add(new BinaryFloat(checkpoint.getLocationY()));
-				checkpointObj.getTokens().add(new BinaryFloat(checkpoint.getLocationZ()));
-				if (checkpoint.getDirection() != null) {
+				if (checkpoint.getTiming() != null) {
 					checkpointObj.getTokens().add(new BinaryToken(CPBFile.PROPERTY_TIMING));
 					BinaryArray arr = new BinaryArray();
 					arr.getTokens().add(new BinaryIntegerSigned(checkpoint.getTiming().getVarA()));
@@ -55,6 +52,12 @@ public class CPBFile{
 					arr.getTokens().add(new BinaryIntegerSigned(checkpoint.getTiming().getVarC()));
 					arr.getTokens().add(new BinaryIntegerSigned(checkpoint.getTiming().getVarD()));
 					checkpointObj.getTokens().add(arr);
+				}
+				if(checkpoint.getLocation()!=null){
+					checkpointObj.getTokens().add(new BinaryToken(CPBFile.PROPERTY_LOCATION));
+					checkpointObj.getTokens().add(new BinaryFloat(checkpoint.getLocation().getX()));
+					checkpointObj.getTokens().add(new BinaryFloat(checkpoint.getLocation().getY()));
+					checkpointObj.getTokens().add(new BinaryFloat(checkpoint.getLocation().getZ()));
 				}
 				obj.getTokens().add(checkpointObj);
 			}
@@ -94,11 +97,11 @@ public class CPBFile{
 			if(token.getToken()==CPBFile.PROPERTY_DIRECTION){
 				CPBFile.initDirection(checkpoint,(BinaryList) obj.getTokens().get(i+1));
 			}
-			if(token.getToken()==CPBFile.PROPERTY_LOCATION){
-				CPBFile.initLocation(checkpoint,(BinaryFloat) obj.getTokens().get(i+1),(BinaryFloat) obj.getTokens().get(i+2),(BinaryFloat) obj.getTokens().get(i+3));
-			}
 			if(token.getToken()==CPBFile.PROPERTY_TIMING){
 				CPBFile.initTiming(checkpoint,(BinaryList) obj.getTokens().get(i+1));
+			}
+			if(token.getToken()==CPBFile.PROPERTY_LOCATION){
+				CPBFile.initLocation(checkpoint,(BinaryFloat) obj.getTokens().get(i+1),(BinaryFloat) obj.getTokens().get(i+2),(BinaryFloat) obj.getTokens().get(i+3));
 			}
 		}
 
@@ -115,9 +118,11 @@ public class CPBFile{
 	}
 
 	private static void initLocation(Checkpoint checkpoint,BinaryFloat locationX,BinaryFloat locationY,BinaryFloat locationZ){
-		checkpoint.setLocationX(locationX.getFloat());
-		checkpoint.setLocationY(locationY.getFloat());
-		checkpoint.setLocationZ(locationZ.getFloat());
+		Location location = new Location();
+		location.setX(locationX.getFloat());
+		location.setX(locationY.getFloat());
+		location.setX(locationZ.getFloat());
+		checkpoint.setLocation(location);
 	}
 
 	private static void initTiming(Checkpoint checkpoint,BinaryList list){

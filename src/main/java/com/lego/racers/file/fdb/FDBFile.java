@@ -7,6 +7,7 @@ import com.lego.racers.binary.BinaryList;
 import com.lego.racers.binary.BinaryObject;
 import com.lego.racers.binary.BinaryString;
 import com.lego.racers.binary.BinaryToken;
+import com.lego.racers.binary.object.TransparentColor;
 import com.lego.racers.file.fdb.object.Font;
 import com.lego.racers.file.fdb.object.Fonts;
 
@@ -38,18 +39,15 @@ public class FDBFile{
 				obj.getTokens().add(new BinaryToken(FDBFile.PROPERTY_FONT));
 				obj.getTokens().add(new BinaryString(entry.getKey()));
 				BinaryObject fontObj = new BinaryObject();
-				if(entry.getValue().get40()){
+				if(entry.getValue().get40()!=null && entry.getValue().get40()){
 					fontObj.getTokens().add(new BinaryToken(FDBFile.PROPERTY_40));
 				}
-				//TODO Improve TransparentColor???
-				fontObj.getTokens().add(new BinaryToken(FDBFile.PROPERTY_TRANSPARENT_COLOR));
-				fontObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().getTransparentColorRed()));
-				fontObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().getTransparentColorGreen()));
-				fontObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().getTransparentColorBlue()));
-
-				fontObj.getTokens().add(new BinaryToken(FDBFile.PROPERTY_SPACING));
-				fontObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().getSpacing()));
-
+				if(entry.getValue().getTransparentColor()!=null){
+					fontObj.getTokens().add(new BinaryToken(FDBFile.PROPERTY_TRANSPARENT_COLOR));
+					fontObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().getTransparentColor().getRed()));
+					fontObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().getTransparentColor().getGreen()));
+					fontObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().getTransparentColor().getBlue()));
+				}
 				if(entry.getValue().getOrder()!=null){
 					fontObj.getTokens().add(new BinaryToken(FDBFile.PROPERTY_ORDER));
 					BinaryArray arr = new BinaryArray();
@@ -76,6 +74,10 @@ public class FDBFile{
 						}
 					}
 					fontObj.getTokens().add(arr);
+				}
+				if(entry.getValue().getSpacing()!=null){
+					fontObj.getTokens().add(new BinaryToken(FDBFile.PROPERTY_SPACING));
+					fontObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().getSpacing()));
 				}
 				obj.getTokens().add(fontObj);
 			}
@@ -116,20 +118,22 @@ public class FDBFile{
 				font.set40(true);
 			}
 			if(token.getToken()==FDBFile.PROPERTY_TRANSPARENT_COLOR){
+				TransparentColor transparentColor = new TransparentColor();
 				BinaryIntegerSigned red = (BinaryIntegerSigned) obj.getTokens().get(i+1);
 				BinaryIntegerSigned green = (BinaryIntegerSigned) obj.getTokens().get(i+2);
 				BinaryIntegerSigned blue = (BinaryIntegerSigned) obj.getTokens().get(i+3);
-				font.setTransparentColorRed(red.getIntegerSigned());
-				font.setTransparentColorGreen(green.getIntegerSigned());
-				font.setTransparentColorBlue(blue.getIntegerSigned());
-			}
-			if(token.getToken()==FDBFile.PROPERTY_SPACING){
-				BinaryIntegerSigned spacing = (BinaryIntegerSigned) obj.getTokens().get(i+1);
-				font.setSpacing(spacing.getIntegerSigned());
+				transparentColor.setRed(red.getIntegerSigned());
+				transparentColor.setGreen(green.getIntegerSigned());
+				transparentColor.setBlue(blue.getIntegerSigned());
+				font.setTransparentColor(transparentColor);
 			}
 			if(token.getToken()==FDBFile.PROPERTY_ORDER){
 				BinaryArray order = (BinaryArray) obj.getTokens().get(i+1);
 				FDBFile.initOrder(font,order);
+			}
+			if(token.getToken()==FDBFile.PROPERTY_SPACING){
+				BinaryIntegerSigned spacing = (BinaryIntegerSigned) obj.getTokens().get(i+1);
+				font.setSpacing(spacing.getIntegerSigned());
 			}
 		}
 

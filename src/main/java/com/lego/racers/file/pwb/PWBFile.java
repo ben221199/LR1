@@ -22,10 +22,10 @@ public class PWBFile{
 
 	public static final byte PROPERTY_POWERUP_COLORED = 0x27;
 	public static final byte PROPERTY_POSITION = 0x28;
-	public static final byte PROPERTY_COLOR_RED = ColoredPowerup.COLOR_RED;
-	public static final byte PROPERTY_COLOR_YELLOW = ColoredPowerup.COLOR_YELLOW;
-	public static final byte PROPERTY_COLOR_BLUE = ColoredPowerup.COLOR_BLUE;
-	public static final byte PROPERTY_COLOR_GREEN = ColoredPowerup.COLOR_GREEN;
+	public static final byte PROPERTY_COLOR_RED = 0x2A;
+	public static final byte PROPERTY_COLOR_YELLOW = 0x2B;
+	public static final byte PROPERTY_COLOR_BLUE = 0x2C;
+	public static final byte PROPERTY_COLOR_GREEN = 0x2D;
 	public static final byte PROPERTY_POWERUP_WHITE = 0x2F;
 
 	private ColoredPowerups coloredPowerups;
@@ -71,7 +71,18 @@ public class PWBFile{
 					position.getTokens().add(new BinaryFloat(powerup.getPosition().getZ()));
 					powerupObj.getTokens().add(position);
 				}
-				powerupObj.getTokens().add(new BinaryToken(powerup.getColor()));
+				if(powerup.getColorRed()!=null){
+					powerupObj.getTokens().add(new BinaryToken(PWBFile.PROPERTY_COLOR_RED));
+				}
+				if(powerup.getColorYellow()!=null){
+					powerupObj.getTokens().add(new BinaryToken(PWBFile.PROPERTY_COLOR_YELLOW));
+				}
+				if(powerup.getColorBlue()!=null){
+					powerupObj.getTokens().add(new BinaryToken(PWBFile.PROPERTY_COLOR_BLUE));
+				}
+				if(powerup.getColorGreen()!=null){
+					powerupObj.getTokens().add(new BinaryToken(PWBFile.PROPERTY_COLOR_GREEN));
+				}
 				obj.getTokens().add(powerupObj);
 			}
 			bin.getTokens().add(obj);
@@ -139,31 +150,27 @@ public class PWBFile{
 
 		for(BinaryToken token : obj.getTokens()){
 			if(token instanceof BinaryStructInstance){
-				if(token.getToken()==0x28){
+				if(token.getToken()==PWBFile.PROPERTY_POSITION){
 					initPosition(powerup,(BinaryStructInstance) token);
 				}
 			}
-		}
-
-		for(BinaryToken token : obj.getTokens()){
 			if(token.getToken()==PWBFile.PROPERTY_COLOR_RED){
-				powerup.setColor(ColoredPowerup.COLOR_RED);
+				powerup.setColorRed(true);
 				break;
 			}
 			if(token.getToken()==PWBFile.PROPERTY_COLOR_YELLOW){
-				powerup.setColor(ColoredPowerup.COLOR_YELLOW);
+				powerup.setColorYellow(true);
 				break;
 			}
 			if(token.getToken()==PWBFile.PROPERTY_COLOR_BLUE){
-				powerup.setColor(ColoredPowerup.COLOR_BLUE);
+				powerup.setColorBlue(true);
 				break;
 			}
 			if(token.getToken()==PWBFile.PROPERTY_COLOR_GREEN){
-				powerup.setColor(ColoredPowerup.COLOR_GREEN);
+				powerup.setColorGreen(true);
 				break;
 			}
 		}
-
 		powerups.add(powerup);
 	}
 

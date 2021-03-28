@@ -76,36 +76,36 @@ public class MDBFile{
 					structInstance.getTokens().add(new BinaryIntegerSigned(entry.getValue().getDiffuseColor().getAlpha()));
 					materialObj.getTokens().add(structInstance);
 				}
-				if(entry.getValue().get43()!=null){
+				if(entry.getValue().get43()!=null && entry.getValue().get43()){
 					materialObj.getTokens().add(new BinaryToken(MDBFile.PROPERTY_43));
 				}
 				if(entry.getValue().getTexture()!=null){
 					materialObj.getTokens().add(new BinaryToken(MDBFile.PROPERTY_TEXTURE));
 					materialObj.getTokens().add(new BinaryString(entry.getValue().getTexture()));
 				}
-				if(entry.getValue().get45()!=null){
+				if(entry.getValue().get45()!=null && entry.getValue().get45()){
 					materialObj.getTokens().add(new BinaryToken(MDBFile.PROPERTY_45));
 				}
-				if(entry.getValue().get46()!=null){
+				if(entry.getValue().get46()!=null && entry.getValue().get46()){
 					materialObj.getTokens().add(new BinaryToken(MDBFile.PROPERTY_46));
 				}
-				if(entry.getValue().get56()!=null){
+				if(entry.getValue().get56()!=null && entry.getValue().get56()){
 					materialObj.getTokens().add(new BinaryToken(MDBFile.PROPERTY_56));
 				}
-				if(entry.getValue().get63()!=null){
+				if(entry.getValue().get63()!=null && entry.getValue().get63()){
 					materialObj.getTokens().add(new BinaryToken(MDBFile.PROPERTY_63));
 				}
-				if(entry.getValue().get65()!=null){
+				if(entry.getValue().get65()!=null && entry.getValue().get65()){
 					materialObj.getTokens().add(new BinaryToken(MDBFile.PROPERTY_65));
 				}
-				if(entry.getValue().get69()!=null){
+				if(entry.getValue().get69()!=null && entry.getValue().get69()){
 					materialObj.getTokens().add(new BinaryToken(MDBFile.PROPERTY_69));
 				}
 				if(entry.getValue().getAlpha()!=null){
 					materialObj.getTokens().add(new BinaryToken(MDBFile.PROPERTY_ALPHA));
 					materialObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().getAlpha()));
 				}
-				if(entry.getValue().get74()!=null){
+				if(entry.getValue().get74()!=null && entry.getValue().get74()){
 					materialObj.getTokens().add(new BinaryToken(MDBFile.PROPERTY_74));
 				}
 				obj.getTokens().add(materialObj);

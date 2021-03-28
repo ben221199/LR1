@@ -3,25 +3,15 @@ package com.lego.racers.file.cpb.object;
 public class Checkpoint{
 
 	private Direction direction;
-	private float locationX;
-	private float locationY;
-	private float locationZ;
 	private Timing timing;
+	private Location location;
 
 	public Direction getDirection(){
 		return this.direction;
 	}
 
-	public float getLocationX(){
-		return this.locationX;
-	}
-
-	public float getLocationY(){
-		return this.locationY;
-	}
-
-	public float getLocationZ(){
-		return this.locationZ;
+	public Location getLocation(){
+		return this.location;
 	}
 
 	public Timing getTiming(){
@@ -32,16 +22,8 @@ public class Checkpoint{
 		this.direction = direction;
 	}
 
-	public void setLocationX(float locationX){
-		this.locationX = locationX;
-	}
-
-	public void setLocationY(float locationY){
-		this.locationY = locationY;
-	}
-
-	public void setLocationZ(float locationZ){
-		this.locationZ = locationZ;
+	public void setLocation(Location location){
+		this.location = location;
 	}
 
 	public void setTiming(Timing timing){
@@ -52,10 +34,8 @@ public class Checkpoint{
 	public String toString() {
 		return "Checkpoint{" +
 				"direction=" + direction +
-				", locationX=" + locationX +
-				", locationY=" + locationY +
-				", locationZ=" + locationZ +
 				", timing=" + timing +
+				", location=" + location +
 				'}';
 	}
 

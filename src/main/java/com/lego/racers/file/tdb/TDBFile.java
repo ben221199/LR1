@@ -21,6 +21,7 @@ public class TDBFile{
 	public static final byte PROPERTY_TEXTURE = 0x27;
 	public static final byte PROPERTY_40 = 0x28;
 	public static final byte PROPERTY_BITMAP = 0x2A;
+	public static final byte PROPERTY_43 = 0x2B;
 	public static final byte PROPERTY_TRANSPARENT_COLOR = 0x2C;
 	public static final byte PROPERTY_45 = 0x2D;
 
@@ -40,18 +41,18 @@ public class TDBFile{
 				obj.getTokens().add(new BinaryToken(TDBFile.PROPERTY_TEXTURE));
 				obj.getTokens().add(new BinaryString(entry.getKey()));
 				BinaryObject textureObj = new BinaryObject();
-				if(entry.getValue().getIsBitmap()){
+				if(entry.getValue().get40()!=null && entry.getValue().get40()){
+					textureObj.getTokens().add(new BinaryToken(TDBFile.PROPERTY_40));
+				}
+				if(entry.getValue().getBitmap()!=null && entry.getValue().getBitmap()){
 					textureObj.getTokens().add(new BinaryToken(TDBFile.PROPERTY_BITMAP));
+				}
+				if(entry.getValue().get43()!=null && entry.getValue().get43()){
+					textureObj.getTokens().add(new BinaryToken(TDBFile.PROPERTY_43));
 				}
 				if(i==0 && !struct23){
 					textureObj.getTokens().add(new BinaryStruct((byte) 0x17,(byte)4,new byte[]{0x28,4,4,4}));
 					struct23 = true;
-				}
-				if(entry.getValue().get40()){
-					textureObj.getTokens().add(new BinaryToken(TDBFile.PROPERTY_40));
-				}
-				if(entry.getValue().get45()){
-					textureObj.getTokens().add(new BinaryToken(TDBFile.PROPERTY_40));
 				}
 				if(entry.getValue().getTransparentColor()!=null){
 					BinaryStructInstance transparentColor = new BinaryStructInstance((byte) 0x17);
@@ -60,6 +61,9 @@ public class TDBFile{
 					transparentColor.getTokens().add(new BinaryIntegerSigned(entry.getValue().getTransparentColor().getGreen()));
 					transparentColor.getTokens().add(new BinaryIntegerSigned(entry.getValue().getTransparentColor().getBlue()));
 					textureObj.getTokens().add(transparentColor);
+				}
+				if(entry.getValue().get45()){
+					textureObj.getTokens().add(new BinaryToken(TDBFile.PROPERTY_45));
 				}
 				obj.getTokens().add(textureObj);
 				i++;
@@ -97,19 +101,22 @@ public class TDBFile{
 
 		for(int i=0;i<obj.getTokens().size();i++){
 			BinaryToken token = obj.getTokens().get(i);
-			if(token.getToken()==TDBFile.PROPERTY_BITMAP){
-				texture.setIsBitmap(true);
-			}
 			if(token.getToken()==TDBFile.PROPERTY_40){
 				texture.set40(true);
 			}
-			if(token.getToken()==TDBFile.PROPERTY_45){
-				texture.set45(true);
+			if(token.getToken()==TDBFile.PROPERTY_BITMAP){
+				texture.setBitmap(true);
+			}
+			if(token.getToken()==TDBFile.PROPERTY_43){
+				texture.set43(true);
 			}
 			if(token instanceof BinaryStructInstance){
 				if(((BinaryStructInstance) token).getId()==0x17){
 					initTransparentColor(texture,(BinaryStructInstance) token);
 				}
+			}
+			if(token.getToken()==TDBFile.PROPERTY_45){
+				texture.set45(true);
 			}
 		}
 

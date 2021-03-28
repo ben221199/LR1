@@ -8,6 +8,7 @@ import com.lego.racers.binary.BinaryString;
 import com.lego.racers.binary.BinaryToken;
 import com.lego.racers.file.ddb.object.Driver;
 import com.lego.racers.file.ddb.object.Drivers;
+import com.lego.racers.file.ddb.object.TMPDriverObject;
 
 import java.util.Map;
 
@@ -48,41 +49,75 @@ public class DDBFile{
 				obj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_DRIVER));
 				obj.getTokens().add(new BinaryString(entry.getKey()));
 				BinaryObject driverObj = new BinaryObject();
-				driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_51));
-				driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get51()));
-				driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_41));
-				driverObj.getTokens().add(new BinaryString(entry.getValue().get41()));
-				driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_40));
-				driverObj.getTokens().add(new BinaryString(entry.getValue().get40()));
-				driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_42));
-				driverObj.getTokens().add(new BinaryString(entry.getValue().get42()));
-				driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_43));
-				driverObj.getTokens().add(new BinaryString(entry.getValue().get43()));
-				driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_44));
-				driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get44()));
-				driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_45));
-				driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get45()));
-				driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_46));
-				driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get46()));
-				driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_47));
-				driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get47()));
-				driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_48));
-				driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get48()));
-				driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_49));
-				driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get49()));
-				driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_52));
-				driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get52()));
-				driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_53));
-				driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get53()));
-				driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_54));
-				driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get54()));
-				driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_55));
-				driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get55()));
-				driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_56));
-				driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get56()));
-				driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_58));
-				driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get58A()));
-				driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get58B()));
+				if(entry.getValue().get40()!=null){
+					driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_40));
+					driverObj.getTokens().add(new BinaryString(entry.getValue().get40()));
+				}
+				if(entry.getValue().get41()!=null){
+					driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_41));
+					driverObj.getTokens().add(new BinaryString(entry.getValue().get41()));
+				}
+				if(entry.getValue().get42()!=null){
+					driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_42));
+					driverObj.getTokens().add(new BinaryString(entry.getValue().get42()));
+				}
+				if(entry.getValue().get43()!=null){
+					driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_43));
+					driverObj.getTokens().add(new BinaryString(entry.getValue().get43()));
+				}
+				if(entry.getValue().get44()!=null){
+					driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_44));
+					driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get44()));
+				}
+				if(entry.getValue().get45()!=null){
+					driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_45));
+					driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get45()));
+				}
+				if(entry.getValue().get46()!=null) {
+					driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_46));
+					driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get46()));
+				}
+				if(entry.getValue().get47()!=null) {
+					driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_47));
+					driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get47()));
+				}
+				if(entry.getValue().get48()!=null) {
+					driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_48));
+					driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get48()));
+				}
+				if(entry.getValue().get49()!=null) {
+					driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_49));
+					driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get49()));
+				}
+				if(entry.getValue().get51()!=null) {
+					driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_51));
+					driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get51()));
+				}
+				if(entry.getValue().get52()!=null) {
+					driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_52));
+					driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get52()));
+				}
+				if(entry.getValue().get53()!=null) {
+					driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_53));
+					driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get53()));
+				}
+				if(entry.getValue().get54()!=null) {
+					driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_54));
+					driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get54()));
+				}
+				if(entry.getValue().get55()!=null) {
+					driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_55));
+					driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get55()));
+				}
+				if(entry.getValue().get56()!=null) {
+					driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_56));
+					driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get56()));
+				}
+				if(entry.getValue().get58()!=null){
+					driverObj.getTokens().add(new BinaryToken(DDBFile.PROPERTY_58));
+					driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get58().getVarA()));
+					driverObj.getTokens().add(new BinaryIntegerSigned(entry.getValue().get58().getVarB()));
+				}
 				obj.getTokens().add(driverObj);
 			}
 			bin.getTokens().add(obj);
@@ -185,8 +220,10 @@ public class DDBFile{
 			if(token.getToken()== DDBFile.PROPERTY_58){
 				BinaryIntegerSigned a = (BinaryIntegerSigned) obj.getTokens().get(i+1);
 				BinaryIntegerSigned b = (BinaryIntegerSigned) obj.getTokens().get(i+2);
-				driver.set58A(a.getIntegerSigned());
-				driver.set58B(b.getIntegerSigned());
+				TMPDriverObject tmp = new TMPDriverObject();
+				tmp.setVarA(a.getIntegerSigned());
+				tmp.setVarB(b.getIntegerSigned());
+				driver.set58(tmp);
 			}
 		}
 
