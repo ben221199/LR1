@@ -1,5 +1,7 @@
 package com.lego.racers.file.tdb.object;
 
+import com.lego.racers.binary.object.TransparentColor;
+
 public class Texture{
 
 	private boolean isBitmap;

@@ -10,7 +10,7 @@ import com.lego.racers.binary.BinaryStructInstance;
 import com.lego.racers.binary.BinaryToken;
 import com.lego.racers.file.tdb.object.Texture;
 import com.lego.racers.file.tdb.object.Textures;
-import com.lego.racers.file.tdb.object.TransparentColor;
+import com.lego.racers.binary.object.TransparentColor;
 
 import java.util.Map;
 

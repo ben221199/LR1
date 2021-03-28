@@ -1,4 +1,4 @@
-package com.lego.racers.file.tdb.object;
+package com.lego.racers.binary.object;
 
 public class TransparentColor{
 

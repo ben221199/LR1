@@ -18,6 +18,10 @@ public class BinaryList extends BinaryToken{
 		this.type = type;
 	}
 
+	public byte getType(){
+		return this.type;
+	}
+
 	public BinaryStruct getStructByToken(byte token){
 		for(BinaryToken t : this.tokens){
 			if(t instanceof BinaryStruct){

@@ -39,7 +39,7 @@ public class BinaryString extends BinaryToken{
 		StringBuilder sb = new StringBuilder();
 		byte b;
 		while((b = bb.get())!=0x00){
-			sb.append((char)b);
+			sb.append((char) (b & 0xFF));
 		}
 		return new BinaryString(sb.toString());
 	}
