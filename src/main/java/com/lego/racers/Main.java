@@ -11,6 +11,7 @@ import com.lego.racers.binary.BinaryString;
 import com.lego.racers.binary.BinaryStructInstance;
 import com.lego.racers.binary.BinaryToken;
 import com.lego.racers.file.cpb.CPBFile;
+import com.lego.racers.file.ddb.DDBFile;
 import com.lego.racers.file.emb.EMBFile;
 import com.lego.racers.file.fdb.FDBFile;
 import com.lego.racers.file.jam.JAMFile;
@@ -106,8 +107,6 @@ public class Main{
 		track.getTokens().add(new BinaryString("space2"));
 		track.getTokens().add(new BinaryToken((byte) 0x2E));// Mascot character
 		track.getTokens().add(new BinaryString("RR"));
-
-		//////////////
 
 		BinaryObject track2 = new BinaryObject();
 		tracks.getTokens().add(new BinaryToken((byte) 0x27));
@@ -242,7 +241,7 @@ public class Main{
 		BinaryArray l = new BinaryArray();
 		l.getTokens().add(new BinaryIntegerSigned(6));
 		track.getTokens().add(l);
-		//
+
 		BinaryObject obj = new BinaryObject(new BinaryObjectStart(),new BinaryObjectEnd());
 		BinaryList arr = new BinaryList(BinaryToken.TOKEN_STRING);
 		arr.getTokens().add(new BinaryString("KK"));
@@ -253,7 +252,7 @@ public class Main{
 		arr.getTokens().add(new BinaryString("PH"));
 		obj.getTokens().add(arr);
 		track.getTokens().add(obj);
-		//
+
 		track.getTokens().add(new BinaryToken((byte) 0x2A));
 		track.getTokens().add(new BinaryIntegerSigned(7));
 		track.getTokens().add(new BinaryToken((byte) 0x2B));
@@ -303,8 +302,12 @@ public class Main{
 //				System.out.println(prefix+name.getKey()+" => "+ CPBFile.from(name.getValue()));
 				continue;
 			}
+			if(name.getKey().endsWith(".DDB")){
+				System.out.println(prefix+name.getKey()+" => "+ DDBFile.from(name.getValue()));
+				continue;
+			}
 			if(name.getKey().endsWith(".EMB")){
-				System.out.println(prefix+name.getKey()+" => "+ EMBFile.from(name.getValue()));
+//				System.out.println(prefix+name.getKey()+" => "+ EMBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".FDB")){
@@ -329,6 +332,11 @@ public class Main{
 			}
 			if(name.getKey().endsWith(".SBK") || "LEGOMSC".equals(name.getKey())){
 //				System.out.println(prefix+name.getKey()+" => [NON] => "+ SBKFile.from(name.getValue()));
+				continue;
+			}
+			if(name.getKey().endsWith(".SDB")){
+				//TODO
+//				System.out.println(prefix+name.getKey()+" => "+ SDBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".SPB")){

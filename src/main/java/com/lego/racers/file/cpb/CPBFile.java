@@ -85,7 +85,7 @@ public class CPBFile{
 		}
 		file.checkpoints = checkpoints;
 	}
-//
+
 	private static void initCheckpoint(Checkpoints checkpoints,BinaryObject obj){
 		Checkpoint checkpoint = new Checkpoint();
 
@@ -104,7 +104,7 @@ public class CPBFile{
 
 		checkpoints.add(checkpoint);
 	}
-//
+
 	private static void initDirection(Checkpoint checkpoint,BinaryList list){
 		Direction direction = new Direction();
 		direction.setVarA(((BinaryFloat)list.getTokens().get(0)).getFloat());

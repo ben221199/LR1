@@ -121,10 +121,10 @@ public class EMBFile{
 		}
 		file.emitters = emitters;
 	}
-//
+
 	private static void initEmitter(Emitters emitters,BinaryString str,BinaryObject obj){
 		Emitter emitter = new Emitter();
-//
+
 		for(int i=0;i<obj.getTokens().size();i++){
 			BinaryToken token = obj.getTokens().get(i);
 			if(token.getToken()==EMBFile.PROPERTY_40){
