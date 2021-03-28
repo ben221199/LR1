@@ -20,6 +20,8 @@ This library supports the following file types:
 
 **LEGO Binary**
  - `CPB` - <ins>**C**</ins>heck<ins>**p**</ins>oint <ins>**B**</ins>inary
+ - `EMB` - <ins>**E**</ins><ins>**m**</ins>itter <ins>**B**</ins>inary
+ - `FDB` - <ins>**Font**</ins> <ins>**D**</ins>ata <ins>**B**</ins>inary
  - `PWB` - <ins>**P**</ins>o<ins>**w**</ins>erup <ins>**B**</ins>inary
  - `SPB` - <ins>**S**</ins>tart<ins>**p**</ins>osition <ins>**B**</ins>inary
  - `TDB` - <ins>**T**</ins>exture <ins>**D**</ins>ata <ins>**B**</ins>inary

@@ -11,6 +11,7 @@ import com.lego.racers.binary.BinaryString;
 import com.lego.racers.binary.BinaryStructInstance;
 import com.lego.racers.binary.BinaryToken;
 import com.lego.racers.file.cpb.CPBFile;
+import com.lego.racers.file.emb.EMBFile;
 import com.lego.racers.file.fdb.FDBFile;
 import com.lego.racers.file.jam.JAMFile;
 import com.lego.racers.file.jam.JAMNode;
@@ -302,8 +303,12 @@ public class Main{
 //				System.out.println(prefix+name.getKey()+" => "+ CPBFile.from(name.getValue()));
 				continue;
 			}
+			if(name.getKey().endsWith(".EMB")){
+				System.out.println(prefix+name.getKey()+" => "+ EMBFile.from(name.getValue()));
+				continue;
+			}
 			if(name.getKey().endsWith(".FDB")){
-				System.out.println(prefix+name.getKey()+" => "+ FDBFile.from(name.getValue()));
+//				System.out.println(prefix+name.getKey()+" => "+ FDBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".LRS")){
