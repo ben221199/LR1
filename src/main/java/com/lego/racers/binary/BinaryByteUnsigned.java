@@ -12,7 +12,7 @@ public class BinaryByteUnsigned extends BinaryToken{
 		this._byte = _byte;
 	}
 
-	public int getByteUnsigned(){
+	public byte getByteUnsigned(){
 		return this._byte;
 	}
 

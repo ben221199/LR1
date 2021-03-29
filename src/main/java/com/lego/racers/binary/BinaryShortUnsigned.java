@@ -12,7 +12,7 @@ public class BinaryShortUnsigned extends BinaryToken{
 		this._short = _short;
 	}
 
-	public int getShortUnsigned(){
+	public short getShortUnsigned(){
 		return this._short;
 	}
 

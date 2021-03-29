@@ -14,6 +14,7 @@ import com.lego.racers.file.cpb.CPBFile;
 import com.lego.racers.file.ddb.DDBFile;
 import com.lego.racers.file.emb.EMBFile;
 import com.lego.racers.file.fdb.FDBFile;
+import com.lego.racers.file.gdb.GDBFile;
 import com.lego.racers.file.jam.JAMFile;
 import com.lego.racers.file.jam.JAMNode;
 import com.lego.racers.file.mdb.MDBFile;
@@ -315,6 +316,13 @@ public class Main{
 //				System.out.println(prefix+name.getKey()+" => "+ FDBFile.from(name.getValue()));
 				continue;
 			}
+			if(name.getKey().endsWith(".GDB")){
+				//TODO
+//				System.out.println(prefix+name.getKey()+" => "+ BinaryFile.from(name.getValue()));
+				System.out.println(prefix+name.getKey()+" => "+ GDBFile.from(name.getValue()));
+				GDBFile.from(name.getValue());
+				continue;
+			}
 			if(name.getKey().endsWith(".LRS")){
 //				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] LEGO RACERS SAVE (???)");
 				continue;
@@ -361,10 +369,10 @@ public class Main{
 				continue;
 			}
 			String data = "";//BinaryFile.from(name.getValue()).toString();
-			System.out.println(prefix+name.getKey()+" <<>> "+data);
+//			System.out.println(prefix+name.getKey()+" <<>> "+data);
 		}
 		for(Map.Entry<String,JAMNode> name : node.getFolders().entrySet()){
-			System.out.println(prefix+""+name.getKey()+" <> "+name.getValue().calculateSize());
+//			System.out.println(prefix+""+name.getKey()+" <> "+name.getValue().calculateSize());
 			printDepth(name.getValue(),depth+1);
 		}
 	}
