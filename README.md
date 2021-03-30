@@ -20,17 +20,44 @@ This library supports the following file types:
 
 **LEGO Binary**
  - `ADB` - <ins>**A**</ins>nimation <ins>**D**</ins>ata <ins>**B**</ins>inary
+ - `BDB`
+ - `BVB`
+ - `CCB`
+ - `CDB`
+ - `CEB`
+ - `CMB`
  - `CPB` - <ins>**C**</ins>heck<ins>**p**</ins>oint <ins>**B**</ins>inary
+ - `CRB`
  - `DDB` - <ins>**D**</ins>river <ins>**D**</ins>ata <ins>**B**</ins>inary
  - `EMB` - <ins>**E**</ins><ins>**m**</ins>itter <ins>**B**</ins>inary
  - `EVB` - <ins>**E**</ins><ins>**v**</ins>ent <ins>**B**</ins>inary
  - `FDB` - <ins>**F**</ins>ont <ins>**D**</ins>ata <ins>**B**</ins>inary
+ - `GCB`
  - `GDB` - <ins>**G**</ins>raph <ins>**D**</ins>ata <ins>**B**</ins>inary
+ - `GHB` - <ins>**G**</ins><ins>**h**</ins>ost <ins>**B**</ins>inary
+ - `HZB`
+ - `IDB`
+ - `LEB`
+ - `LSB`
+ - `MAB`
  - `MDB` - <ins>**M**</ins>aterial <ins>**D**</ins>ata <ins>**B**</ins>inary
+ - `MIB`
+ - `MSB`
+ - `PCB`
  - `PWB` - <ins>**P**</ins>o<ins>**w**</ins>erup <ins>**B**</ins>inary
+ - `RAB`
+ - `RCB`
+ - `RRB`
+ - `SDB`
+ - `SKB` - <ins>**S**</ins><ins>**k**</ins>y <ins>**B**</ins>inary
  - `SPB` - <ins>**S**</ins>tart<ins>**p**</ins>osition <ins>**B**</ins>inary
  - `TDB` - <ins>**T**</ins>exture <ins>**D**</ins>ata <ins>**B**</ins>inary
-
+ - `TGB`
+ - `TIB`
+ - `TMB`
+ - `TRB`
+ - `WDB`
+ 
 **Other LEGO Files**
  - `JAM` - *Unknown meaning*
  - `LRS` - <ins>**L**</ins>EGO <ins>**R**</ins>acers <ins>**S**</ins>ave

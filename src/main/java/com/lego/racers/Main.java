@@ -11,21 +11,46 @@ import com.lego.racers.binary.BinaryString;
 import com.lego.racers.binary.BinaryStructInstance;
 import com.lego.racers.binary.BinaryToken;
 import com.lego.racers.file.adb.ADBFile;
+import com.lego.racers.file.bdb.BDBFile;
+import com.lego.racers.file.bvb.BVBFile;
+import com.lego.racers.file.ccb.CCBFile;
+import com.lego.racers.file.cdb.CDBFile;
+import com.lego.racers.file.ceb.CEBFile;
+import com.lego.racers.file.cmb.CMBFile;
 import com.lego.racers.file.cpb.CPBFile;
+import com.lego.racers.file.crb.CRBFile;
 import com.lego.racers.file.ddb.DDBFile;
 import com.lego.racers.file.emb.EMBFile;
+import com.lego.racers.file.evb.EVBFile;
 import com.lego.racers.file.fdb.FDBFile;
+import com.lego.racers.file.gcb.GCBFile;
 import com.lego.racers.file.gdb.GDBFile;
+import com.lego.racers.file.ghb.GHBFile;
+import com.lego.racers.file.hzb.HZBFile;
+import com.lego.racers.file.idb.IDBFile;
 import com.lego.racers.file.jam.JAMFile;
 import com.lego.racers.file.jam.JAMNode;
+import com.lego.racers.file.leb.LEBFile;
+import com.lego.racers.file.lsb.LSBFile;
+import com.lego.racers.file.mab.MABFile;
 import com.lego.racers.file.mdb.MDBFile;
+import com.lego.racers.file.mib.MIBFile;
+import com.lego.racers.file.msb.MSBFile;
+import com.lego.racers.file.pcb.PCBFile;
 import com.lego.racers.file.pwb.PWBFile;
+import com.lego.racers.file.rab.RABFile;
 import com.lego.racers.file.rcb.RCBFile;
 import com.lego.racers.file.rrb.RRBFile;
 import com.lego.racers.file.sbk.SBKFile;
+import com.lego.racers.file.sdb.SDBFile;
+import com.lego.racers.file.skb.SKBFile;
 import com.lego.racers.file.spb.SPBFile;
 import com.lego.racers.file.srf.SRFFile;
 import com.lego.racers.file.tdb.TDBFile;
+import com.lego.racers.file.tgb.TGBFile;
+import com.lego.racers.file.tib.TIBFile;
+import com.lego.racers.file.tmb.TMBFile;
+import com.lego.racers.file.trb.TRBFile;
 import com.lego.racers.file.wdb.WDBFile;
 import com.yocto.io.BetterInputStream;
 import com.yocto.io.BetterOutputStream;
@@ -301,215 +326,220 @@ public class Main{
 		}
 		for(Map.Entry<String,byte[]> name : node.getFiles().entrySet()){
 			if(name.getKey().endsWith(".ADB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ ADBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ ADBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".BMP")){
-//				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] BITMAP (IMAGE)");
+				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] BITMAP (IMAGE)");
 				continue;
 			}
 			if(name.getKey().endsWith(".BVB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ BVBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ BVBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".BDB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ BDBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ BDBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".CCB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ CCBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ CCBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".CEB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ CEBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ CEBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".CDB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ CDBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ CDBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".CMB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ CMBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ CMBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".CPB")){
-//				System.out.println(prefix+name.getKey()+" => "+ CPBFile.from(name.getValue()));
+				System.out.println(prefix+name.getKey()+" => "+ CPBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".CRB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ CRBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ CRBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".DDB")){
-//				System.out.println(prefix+name.getKey()+" => "+ DDBFile.from(name.getValue()));
+				System.out.println(prefix+name.getKey()+" => "+ DDBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".EMB")){
-//				System.out.println(prefix+name.getKey()+" => "+ EMBFile.from(name.getValue()));
+				System.out.println(prefix+name.getKey()+" => "+ EMBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".EVB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ EVBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ EVBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".FDB")){
-//				System.out.println(prefix+name.getKey()+" => "+ FDBFile.from(name.getValue()));
+				System.out.println(prefix+name.getKey()+" => "+ FDBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".GCB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ GCBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ GCBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".GDB")){
-//				System.out.println(prefix+name.getKey()+" => "+ GDBFile.from(name.getValue()));
+				//TODO Serialization
+				System.out.println(prefix+name.getKey()+" => "+ GDBFile.from(name.getValue()));
 				GDBFile.from(name.getValue());
 				continue;
 			}
 			if(name.getKey().endsWith(".GHB")){
-//				System.out.println(prefix+name.getKey()+" => "+ GHBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ GHBFile.from(name.getValue()));
 				GDBFile.from(name.getValue());
 				continue;
 			}
 			if(name.getKey().endsWith(".HZB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ HZBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ HZBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".IDB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ IDBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ IDBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".LSB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ LSBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ LSBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".LEB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ LEBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ LEBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".LRS")){
-//				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] LEGO RACERS SAVE (???)");
+				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] LEGO RACERS SAVE (???)");
 				continue;
 			}
 			if(name.getKey().endsWith(".MDB")){
-//				System.out.println(prefix+name.getKey()+" => "+ MDBFile.from(name.getValue()));
+				System.out.println(prefix+name.getKey()+" => "+ MDBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".MAB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ MABFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ MABFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".MIB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ MIBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ MIBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".MSB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ MSBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ MSBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".PCB")){
 				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ PCBFile.from(name.getValue()));
+				System.out.println(prefix+name.getKey()+" => "+ PCBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".PCM")){
-//				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] PULSE-CODE MODULATION (AUDIO)");
+				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] PULSE-CODE MODULATION (AUDIO)");
 				continue;
 			}
 			if(name.getKey().endsWith(".PWB")){
-//				System.out.println(prefix+name.getKey()+" => "+PWBFile.from(name.getValue()));
+				System.out.println(prefix+name.getKey()+" => "+PWBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".RAB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ RABFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ RABFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".RCB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ RCBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ RCBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".RRB")){
-//				System.out.println(prefix+name.getKey()+" => "+ RRBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ RRBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".SBK") || "LEGOMSC".equals(name.getKey())){
-//				System.out.println(prefix+name.getKey()+" => [NON] => "+ SBKFile.from(name.getValue()));
+				System.out.println(prefix+name.getKey()+" => [NON] => "+ SBKFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".SDB")){
 				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ SDBFile.from(name.getValue()));
+				System.out.println(prefix+name.getKey()+" => "+ SDBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".SKB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ SKBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ SKBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".SPB")){
-//				System.out.println(prefix+name.getKey()+" => "+ SPBFile.from(name.getValue()));
+				System.out.println(prefix+name.getKey()+" => "+ SPBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".SRF")){
-//				System.out.println(prefix+name.getKey()+" => [NON] => "+ SRFFile.from(name.getValue()));
+				System.out.println(prefix+name.getKey()+" => [NON] => "+ SRFFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".TDB")){
-//				System.out.println(prefix+name.getKey()+" => "+ TDBFile.from(name.getValue()));
+				System.out.println(prefix+name.getKey()+" => "+ TDBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".TGA")){
-//				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] TRUEVISION GRAPHICS ADAPTER (IMAGE)");
+				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] TRUEVISION GRAPHICS ADAPTER (IMAGE)");
 				continue;
 			}
 			if(name.getKey().endsWith(".TGB")){
-//				System.out.println(prefix+name.getKey()+" => "+ TGBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ TGBFile.from(name.getValue()));
 				GDBFile.from(name.getValue());
 				continue;
 			}
 			if(name.getKey().endsWith(".TIB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ TIBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ TIBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".TMB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ TMBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ TMBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".TRB")){
-//				System.out.println(prefix+name.getKey()+" => "+ TRBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ TRBFile.from(name.getValue()));
 				GDBFile.from(name.getValue());
 				continue;
 			}
 			if(name.getKey().endsWith(".WDB")){
-//				//TODO
-//				System.out.println(prefix+name.getKey()+" => "+ WDBFile.from(name.getValue()));
+				//TODO
+				System.out.println(prefix+name.getKey()+" => "+ WDBFile.from(name.getValue()));
 				continue;
 			}
 			String data = "";//BinaryFile.from(name.getValue()).toString();
 			System.out.println(prefix+name.getKey()+" <<>> "+data);
 		}
 		for(Map.Entry<String,JAMNode> name : node.getFolders().entrySet()){
-			System.out.println(prefix+""+name.getKey()+" <> "+name.getValue().calculateSize());
+			System.out.println(prefix+""+name.getKey()+" <> "+name.getValue().calculateSize()+" ---------------------------------------------------");
 			printDepth(name.getValue(),depth+1);
 		}
 	}
