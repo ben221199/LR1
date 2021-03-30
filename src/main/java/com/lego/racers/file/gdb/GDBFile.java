@@ -51,6 +51,11 @@ public class GDBFile{
 	private IndicesMetas indicesMetas;
 	private Float scale;
 
+	public byte[] toBytes(){
+		//TODO
+		return new byte[0];
+	}
+
 	public static GDBFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);
 		GDBFile gdb = new GDBFile();
