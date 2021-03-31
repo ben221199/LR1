@@ -1,5 +1,6 @@
 package com.lego.racers;
 
+import com.lego.racers.binary.BinaryFloat;
 import com.lego.racers.binary.BinaryList;
 import com.lego.racers.binary.BinaryFile;
 import com.lego.racers.binary.BinaryIntegerSigned;
@@ -331,7 +332,7 @@ public class Main{
 				continue;
 			}
 			if(name.getKey().endsWith(".BMP")){
-				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] BITMAP (IMAGE)");
+//				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] BITMAP (IMAGE)");
 				continue;
 			}
 			if(name.getKey().endsWith(".BVB")){
@@ -365,7 +366,7 @@ public class Main{
 				continue;
 			}
 			if(name.getKey().endsWith(".CPB")){
-				System.out.println(prefix+name.getKey()+" => "+ CPBFile.from(name.getValue()));
+//				System.out.println(prefix+name.getKey()+" => "+ CPBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".CRB")){
@@ -374,11 +375,11 @@ public class Main{
 				continue;
 			}
 			if(name.getKey().endsWith(".DDB")){
-				System.out.println(prefix+name.getKey()+" => "+ DDBFile.from(name.getValue()));
+//				System.out.println(prefix+name.getKey()+" => "+ DDBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".EMB")){
-				System.out.println(prefix+name.getKey()+" => "+ EMBFile.from(name.getValue()));
+//				System.out.println(prefix+name.getKey()+" => "+ EMBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".EVB")){
@@ -387,7 +388,7 @@ public class Main{
 				continue;
 			}
 			if(name.getKey().endsWith(".FDB")){
-				System.out.println(prefix+name.getKey()+" => "+ FDBFile.from(name.getValue()));
+//				System.out.println(prefix+name.getKey()+" => "+ FDBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".GCB")){
@@ -397,7 +398,7 @@ public class Main{
 			}
 			if(name.getKey().endsWith(".GDB")){
 				//TODO Serialization
-				System.out.println(prefix+name.getKey()+" => "+ GDBFile.from(name.getValue()));
+//				System.out.println(prefix+name.getKey()+" => "+ GDBFile.from(name.getValue()));
 				GDBFile.from(name.getValue());
 				continue;
 			}
@@ -428,11 +429,11 @@ public class Main{
 				continue;
 			}
 			if(name.getKey().endsWith(".LRS")){
-				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] LEGO RACERS SAVE (???)");
+//				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] LEGO RACERS SAVE (???)");
 				continue;
 			}
 			if(name.getKey().endsWith(".MDB")){
-				System.out.println(prefix+name.getKey()+" => "+ MDBFile.from(name.getValue()));
+//				System.out.println(prefix+name.getKey()+" => "+ MDBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".MAB")){
@@ -456,11 +457,11 @@ public class Main{
 				continue;
 			}
 			if(name.getKey().endsWith(".PCM")){
-				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] PULSE-CODE MODULATION (AUDIO)");
+//				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] PULSE-CODE MODULATION (AUDIO)");
 				continue;
 			}
 			if(name.getKey().endsWith(".PWB")){
-				System.out.println(prefix+name.getKey()+" => "+PWBFile.from(name.getValue()));
+//				System.out.println(prefix+name.getKey()+" => "+PWBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".RAB")){
@@ -479,7 +480,7 @@ public class Main{
 				continue;
 			}
 			if(name.getKey().endsWith(".SBK") || "LEGOMSC".equals(name.getKey())){
-				System.out.println(prefix+name.getKey()+" => [NON] => "+ SBKFile.from(name.getValue()));
+//				System.out.println(prefix+name.getKey()+" => [NON] => "+ SBKFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".SDB")){
@@ -493,19 +494,19 @@ public class Main{
 				continue;
 			}
 			if(name.getKey().endsWith(".SPB")){
-				System.out.println(prefix+name.getKey()+" => "+ SPBFile.from(name.getValue()));
+//				System.out.println(prefix+name.getKey()+" => "+ SPBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".SRF")){
-				System.out.println(prefix+name.getKey()+" => [NON] => "+ SRFFile.from(name.getValue()));
+//				System.out.println(prefix+name.getKey()+" => [NON] => "+ SRFFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".TDB")){
-				System.out.println(prefix+name.getKey()+" => "+ TDBFile.from(name.getValue()));
+//				System.out.println(prefix+name.getKey()+" => "+ TDBFile.from(name.getValue()));
 				continue;
 			}
 			if(name.getKey().endsWith(".TGA")){
-				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] TRUEVISION GRAPHICS ADAPTER (IMAGE)");
+//				System.out.println(prefix+name.getKey()+" => [NON-LEGO-BINARY] TRUEVISION GRAPHICS ADAPTER (IMAGE)");
 				continue;
 			}
 			if(name.getKey().endsWith(".TGB")){
