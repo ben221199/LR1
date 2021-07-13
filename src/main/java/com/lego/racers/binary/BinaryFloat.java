@@ -18,7 +18,7 @@ public class BinaryFloat extends BinaryToken{
 
 	@Override
 	public byte[] toBytes(){
-		return ByteBuffer.allocate(2).order(ByteOrder.LITTLE_ENDIAN).put(this.getToken()).putFloat(this._float).array();
+		return ByteBuffer.allocate(5).order(ByteOrder.LITTLE_ENDIAN).put(this.getToken()).putFloat(this._float).array();
 	}
 
 	public static BinaryFloat from(BinaryFile file,ByteBuffer bb){

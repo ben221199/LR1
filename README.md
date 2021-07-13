@@ -35,10 +35,10 @@ This library supports the following file types:
  - `GCB`
  - `GDB` - <ins>**G**</ins>raph <ins>**D**</ins>ata <ins>**B**</ins>inary
  - `GHB` - <ins>**G**</ins><ins>**h**</ins>ost <ins>**B**</ins>inary
- - `HZB`
+ - `HZB` - <ins>**H**</ins>a<ins>**z**</ins>ards <ins>**B**</ins>inary
  - `IDB`
  - `LEB`
- - `LSB`
+ - `LSB` - <ins>**L**</ins>oading <ins>**S**</ins>creen <ins>**B**</ins>inary
  - `MAB`
  - `MDB` - <ins>**M**</ins>aterial <ins>**D**</ins>ata <ins>**B**</ins>inary
  - `MIB`

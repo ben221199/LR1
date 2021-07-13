@@ -25,11 +25,11 @@ public class SKBFile{
 	public static final byte PROPERTY_COLOR_MIDDLE = 0x2A;
 	public static final byte PROPERTY_COLOR_END = 0x2B;
 	public static final byte PROPERTY_DEFAULT = 0x2D;
-	public static final byte PROPERTY_46 = 0x2E;
+	public static final byte PROPERTY_HORIZON = 0x2E;
 
 	private Sky sky;
-	private String _default;
-	private Float p46;
+	private String defaultGradient;
+	private Float horizon;
 
 	public Sky getSky() {
 		return this.sky;
@@ -39,20 +39,20 @@ public class SKBFile{
 		this.sky = sky;
 	}
 
-	public String getDefault() {
-		return this._default;
+	public String getDefaultGradient() {
+		return this.defaultGradient;
 	}
 
-	public void setDefault(String _default) {
-		this._default = _default;
+	public void setDefaultGradient(String defaultGradient) {
+		this.defaultGradient = defaultGradient;
 	}
 
-	public Float get46() {
-		return this.p46;
+	public Float getHorizon() {
+		return this.horizon;
 	}
 
-	public void set46(Float p46) {
-		this.p46 = p46;
+	public void setHorizon(Float horizon) {
+		this.horizon = horizon;
 	}
 
 	public byte[] toBytes(){
@@ -70,7 +70,7 @@ public class SKBFile{
 				obj.getTokens().add(new BinaryToken(SKBFile.PROPERTY_SKYGRADIENT));
 				BinaryArray gradientLength = new BinaryArray();
 				gradientLength.getTokens().add(new BinaryIntegerSigned(entry.getValue().size()));
-				bin.getTokens().add(gradientLength);
+				obj.getTokens().add(gradientLength);
 				obj.getTokens().add(new BinaryString(entry.getKey()));
 				BinaryObject skyGradientsObj = new BinaryObject();
 				for(int i=0;i<entry.getValue().size();i++){
@@ -78,7 +78,7 @@ public class SKBFile{
 					BinaryObject skyGradientObj = new BinaryObject();
 					if(skyGradient.get40()!=null){
 						skyGradientObj.getTokens().add(new BinaryToken(SKBFile.PROPERTY_40));
-						skyGradientObj.getTokens().add(new BinaryFloat(skyGradient.get40()));
+						skyGradientObj.getTokens().add(new BinaryIntegerSigned(skyGradient.get40()));
 					}
 					if(!struct23){
 						BinaryStruct struct = new BinaryStruct((byte)0x17,(byte)4,new byte[]{SKBFile.PROPERTY_COLOR_START,BinaryToken.TOKEN_INTEGER_SIGNED,BinaryToken.TOKEN_INTEGER_SIGNED,BinaryToken.TOKEN_INTEGER_SIGNED});
@@ -119,19 +119,20 @@ public class SKBFile{
 						structInstance.getTokens().add(new BinaryIntegerSigned(skyGradient.getColorEnd().getBlue()));
 						skyGradientObj.getTokens().add(structInstance);
 					}
+					skyGradientsObj.getTokens().add(new BinaryToken(SKBFile.PROPERTY_SKYGRADIENT));
 					skyGradientsObj.getTokens().add(skyGradientObj);
 				}
 				obj.getTokens().add(skyGradientsObj);
 			}
 			bin.getTokens().add(obj);
 		}
-		if(this._default!=null){
+		if(this.defaultGradient!=null){
 			bin.getTokens().add(new BinaryToken(SKBFile.PROPERTY_DEFAULT));
-			bin.getTokens().add(new BinaryString(this._default));
+			bin.getTokens().add(new BinaryString(this.defaultGradient));
 		}
-		if(this.p46!=null){
-			bin.getTokens().add(new BinaryToken(SKBFile.PROPERTY_46));
-			bin.getTokens().add(new BinaryFloat(this.p46));
+		if(this.horizon!=null){
+			bin.getTokens().add(new BinaryToken(SKBFile.PROPERTY_HORIZON));
+			bin.getTokens().add(new BinaryFloat(this.horizon));
 		}
 		return bin.toBytes();
 	}
@@ -146,11 +147,11 @@ public class SKBFile{
 			}
 			if(token.getToken()==SKBFile.PROPERTY_DEFAULT){
 				BinaryString str = (BinaryString) bin.getTokens().get(i+1);
-				skb._default = str.getString();
+				skb.defaultGradient = str.getString();
 			}
-			if(token.getToken()==SKBFile.PROPERTY_46){
+			if(token.getToken()==SKBFile.PROPERTY_HORIZON){
 				BinaryFloat f = (BinaryFloat) bin.getTokens().get(i+1);
-				skb.p46 = f.getFloat();
+				skb.horizon = f.getFloat();
 			}
 		}
 		return skb;
@@ -198,8 +199,8 @@ public class SKBFile{
 				BinaryToken subToken = structInstance.getTokens().get(0);
 				Color color = new Color();
 				color.setRed(((BinaryIntegerSigned) structInstance.getTokens().get(1)).getIntegerSigned());
-				color.setRed(((BinaryIntegerSigned) structInstance.getTokens().get(2)).getIntegerSigned());
-				color.setRed(((BinaryIntegerSigned) structInstance.getTokens().get(3)).getIntegerSigned());
+				color.setGreen(((BinaryIntegerSigned) structInstance.getTokens().get(2)).getIntegerSigned());
+				color.setBlue(((BinaryIntegerSigned) structInstance.getTokens().get(3)).getIntegerSigned());
 				if(subToken.getToken()==SKBFile.PROPERTY_COLOR_START){
 					skyGradient.setColorStart(color);
 				}
@@ -219,8 +220,8 @@ public class SKBFile{
 	public String toString() {
 		return "SKBFile{" +
 				"sky=" + sky +
-				", _default='" + _default + '\'' +
-				", p46=" + p46 +
+				", defaultGradient='" + defaultGradient + '\'' +
+				", horizon=" + horizon +
 				'}';
 	}
 
