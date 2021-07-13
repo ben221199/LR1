@@ -6,7 +6,7 @@ public class TIBFile {
 
 	public static TIBFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);
-		TIBFile adb = new TIBFile();
+		TIBFile tib = new TIBFile();
 //		for(int i=0;i<bin.getTokens().size();i++){
 //			BinaryToken token = bin.getTokens().get(i);
 //			if(token.getToken()==GDBFile.BLOCK_MATERIALS){
@@ -45,7 +45,7 @@ public class TIBFile {
 //				gdb.scale = f.getFloat();
 //			}
 //		}
-		return adb;
+		return tib;
 	}
 
 }
