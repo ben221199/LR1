@@ -53,7 +53,7 @@ This library supports the following file types:
  - `SPB` - <ins>**S**</ins>tart<ins>**p**</ins>osition <ins>**B**</ins>inary
  - `TDB` - <ins>**T**</ins>exture <ins>**D**</ins>ata <ins>**B**</ins>inary
  - `TGB`
- - `TIB`
+ - `TIB` - <ins>**T**</ins><ins>**i**</ins>mer <ins>**B**</ins>inary
  - `TMB`
  - `TRB`
  - `WDB`
