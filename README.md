@@ -36,7 +36,7 @@ This library supports the following file types:
  - `GDB` - <ins>**G**</ins>raph <ins>**D**</ins>ata <ins>**B**</ins>inary
  - `GHB` - <ins>**G**</ins><ins>**h**</ins>ost <ins>**B**</ins>inary
  - `HZB` - <ins>**H**</ins>a<ins>**z**</ins>ards <ins>**B**</ins>inary
- - `IDB`
+ - `IDB` - <ins>**I**</ins>mage <ins>**D**</ins>ata <ins>**B**</ins>inary
  - `LEB`
  - `LSB` - <ins>**L**</ins>oading <ins>**S**</ins>creen <ins>**B**</ins>inary
  - `MAB`
