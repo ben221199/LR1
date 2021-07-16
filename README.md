@@ -47,12 +47,12 @@ This library supports the following file types:
  - `PWB` - <ins>**P**</ins>o<ins>**w**</ins>erup <ins>**B**</ins>inary
  - `RAB`
  - `RCB`
- - `RRB`
+ - `RRB` - (?) <ins>**R**</ins>ace <ins>**R**</ins>obot <ins>**B**</ins>inary
  - `SDB`
  - `SKB` - <ins>**S**</ins><ins>**k**</ins>y <ins>**B**</ins>inary
  - `SPB` - <ins>**S**</ins>tart<ins>**p**</ins>osition <ins>**B**</ins>inary
  - `TDB` - <ins>**T**</ins>exture <ins>**D**</ins>ata <ins>**B**</ins>inary
- - `TGB`
+ - `TGB` - <ins>**T**</ins>ri<ins>**g**</ins>ger <ins>**B**</ins>inary
  - `TIB` - <ins>**T**</ins><ins>**i**</ins>mer <ins>**B**</ins>inary
  - `TMB`
  - `TRB`
