@@ -23,7 +23,7 @@ This library supports the following file types:
  - `BDB`
  - `BVB`
  - `CCB`
- - `CDB`
+ - `CDB` - <ins>**C**</ins>utscene <ins>**D**</ins>ata <ins>**B**</ins>inary
  - `CEB`
  - `CMB`
  - `CPB` - <ins>**C**</ins>heck<ins>**p**</ins>oint <ins>**B**</ins>inary
@@ -39,7 +39,7 @@ This library supports the following file types:
  - `IDB` - <ins>**I**</ins>mage <ins>**D**</ins>ata <ins>**B**</ins>inary
  - `LEB`
  - `LSB` - <ins>**L**</ins>oading <ins>**S**</ins>creen <ins>**B**</ins>inary
- - `MAB`
+ - `MAB` - <ins>**M**</ins>aterial <ins>**A**</ins>nimations <ins>**B**</ins>inary
  - `MDB` - <ins>**M**</ins>aterial <ins>**D**</ins>ata <ins>**B**</ins>inary
  - `MIB`
  - `MSB`
