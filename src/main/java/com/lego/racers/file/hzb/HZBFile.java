@@ -2,7 +2,7 @@ package com.lego.racers.file.hzb;
 
 import com.lego.racers.binary.BinaryFile;
 
-public class HZBFile {
+public class HZBFile{
 
 	public static HZBFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);

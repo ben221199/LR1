@@ -24,7 +24,7 @@ This library supports the following file types:
  - `BVB`
  - `CCB`
  - `CDB` - <ins>**C**</ins>utscene <ins>**D**</ins>ata <ins>**B**</ins>inary
- - `CEB`
+ - `CEB` - <ins>**C**</ins>utscene <ins>**E**</ins>vent <ins>**B**</ins>inary
  - `CMB`
  - `CPB` - <ins>**C**</ins>heck<ins>**p**</ins>oint <ins>**B**</ins>inary
  - `CRB`
@@ -61,7 +61,7 @@ This library supports the following file types:
 **Other LEGO Files**
  - `JAM` - *Unknown meaning*
  - `LRS` - <ins>**L**</ins>EGO <ins>**R**</ins>acers <ins>**S**</ins>ave
- - `SBK` - *Unknown meaning* (Plain text)
+ - `SBK` - <ins>**S**</ins>ound <ins>**B**</ins>an<ins>**k**</ins>
  - `SRF` - <ins>**S**</ins>tring <ins>**R**</ins>e<ins>**f**</ins>erence
 
 **Other files**
