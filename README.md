@@ -20,8 +20,8 @@ This library supports the following file types:
 
 **LEGO Binary**
  - `ADB` - <ins>**A**</ins>nimation <ins>**D**</ins>ata <ins>**B**</ins>inary
- - `BDB`
- - `BVB`
+ - `BDB` - (?) <ins>**B**</ins>ox <ins>**D**</ins>ata <ins>**B**</ins>inary
+ - `BVB` - <ins>**B**</ins>order <ins>**V**</ins>ertices <ins>**B**</ins>inary
  - `CCB`
  - `CDB` - <ins>**C**</ins>utscene <ins>**D**</ins>ata <ins>**B**</ins>inary
  - `CEB` - <ins>**C**</ins>utscene <ins>**E**</ins>vent <ins>**B**</ins>inary
