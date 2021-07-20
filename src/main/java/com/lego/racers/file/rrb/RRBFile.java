@@ -16,10 +16,6 @@ import com.lego.racers.binary.object.Position;
 import com.lego.racers.file.rrb.object.Node;
 import com.lego.racers.file.rrb.object.Nodes;
 import com.lego.racers.file.rrb.object.Orientation;
-import com.lego.racers.file.spb.SPBFile;
-import com.lego.racers.file.spb.object.Startposition;
-
-import java.util.Map;
 
 public class RRBFile{
 

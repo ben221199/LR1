@@ -1,7 +1,5 @@
 package com.lego.racers.file.mab.object;
 
-import java.util.Arrays;
-
 public class Animation{
 
 	private int frameOffset;

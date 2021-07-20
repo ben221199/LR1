@@ -51,7 +51,6 @@ public class BVBFile{
 			}
 			if(token.getToken()==BVBFile.PROPERTY_142){
 				BinaryArray arr = (BinaryArray) bin.getTokens().get(i+1);
-				System.err.println("[LENGTH] = "+arr.getTokens().get(0));
 				BVBFile.init_Unknowns142(bvb,(BinaryObject) bin.getTokens().get(i+2));
 			}
 		}
