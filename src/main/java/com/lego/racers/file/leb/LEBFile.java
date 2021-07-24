@@ -61,6 +61,94 @@ public class LEBFile{
 	private BrickColors brickColors;
 	private String chassis;
 
+	public Parts getParts(){
+		return this.parts;
+	}
+
+	public void setParts(Parts parts){
+		this.parts = parts;
+	}
+
+	public Triangles getTriangles(){
+		return this.triangles;
+	}
+
+	public void setTriangles(Triangles triangles){
+		this.triangles = triangles;
+	}
+
+	public Positions getPositions(){
+		return this.positions;
+	}
+
+	public void setPositions(Positions positions){
+		this.positions = positions;
+	}
+
+	public Normals getNormals(){
+		return this.normals;
+	}
+
+	public void setNormals(Normals normals){
+		this.normals = normals;
+	}
+
+	public TextureTuples getTextures(){
+		return this.textures;
+	}
+
+	public void setTextures(TextureTuples textures){
+		this.textures = textures;
+	}
+
+	public StudTuples getStuds(){
+		return this.studs;
+	}
+
+	public void setStuds(StudTuples studs){
+		this.studs = studs;
+	}
+
+	public ColorNames getColorNames(){
+		return this.colorNames;
+	}
+
+	public void setColorNames(ColorNames colorNames){
+		this.colorNames = colorNames;
+	}
+
+	public Integer getP46(){
+		return this.p46;
+	}
+
+	public void setP46(Integer p46){
+		this.p46 = p46;
+	}
+
+	public CarSets getCarSets(){
+		return this.carSets;
+	}
+
+	public void setCarSets(CarSets carSets){
+		this.carSets = carSets;
+	}
+
+	public BrickColors getBrickColors(){
+		return this.brickColors;
+	}
+
+	public void setBrickColors(BrickColors brickColors){
+		this.brickColors = brickColors;
+	}
+
+	public String getChassis(){
+		return this.chassis;
+	}
+
+	public void setChassis(String chassis){
+		this.chassis = chassis;
+	}
+
 	public static LEBFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);
 		LEBFile leb = new LEBFile();
@@ -274,7 +362,6 @@ public class LEBFile{
 				}
 			}
 		}
-		System.err.println("ABC"+triangles.size());
 		file.triangles = triangles;
 	}
 
