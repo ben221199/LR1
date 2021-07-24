@@ -137,6 +137,7 @@ public class LEBFile{
 		int lastType = -1;
 
 		while(i<tokens.size()){
+			int offset = i;
 			BinaryIntegerSigned ii = (BinaryIntegerSigned) tokens.get(i++);
 
 			int first = ii.getIntegerSigned();
@@ -152,7 +153,7 @@ public class LEBFile{
 				triangle.setN1(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
 				triangle.setP2(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
 				triangle.setP3(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
-				triangles.add(triangle);
+				triangles.put(offset,triangle);
 			}
 			// (p,n,u),(p,u),(p,u)
 			if(type==0x1){
@@ -167,7 +168,7 @@ public class LEBFile{
 				triangle.setU2(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
 				triangle.setP3(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
 				triangle.setU3(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
-				triangles.add(triangle);
+				triangles.put(offset,triangle);
 			}
 
 			// (p,n),(p,n),(p,n)
@@ -182,7 +183,7 @@ public class LEBFile{
 				triangle.setN2(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
 				triangle.setP3(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
 				triangle.setN3(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
-				triangles.add(triangle);
+				triangles.put(offset,triangle);
 			}
 			// (p,n,u),(p,n,u),(p,n,u)
 			if(type==0x5){
@@ -199,7 +200,7 @@ public class LEBFile{
 				triangle.setP3(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
 				triangle.setN3(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
 				triangle.setU3(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
-				triangles.add(triangle);
+				triangles.put(offset,triangle);
 			}
 			// var
 			if(type==0x6){
@@ -211,7 +212,7 @@ public class LEBFile{
 					triangle.setV1(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
 					triangle.setV2(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
 					triangle.setV3(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
-					triangles.add(triangle);
+					triangles.put(offset,triangle);
 				}else{
 					lastType = type;
 
@@ -219,7 +220,7 @@ public class LEBFile{
 					triangle.setType(first);
 					triangle.setV1(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
 					triangle.setV2(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
-					triangles.add(triangle);
+					triangles.put(offset,triangle);
 				}
 			}
 
@@ -232,7 +233,7 @@ public class LEBFile{
 				triangle.setP1(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
 				triangle.setP2(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
 				triangle.setP3(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
-				triangles.add(triangle);
+				triangles.put(offset,triangle);
 			}
 			// (p,u),(p,u),(p,u)
 			if(type==0x9){
@@ -246,7 +247,7 @@ public class LEBFile{
 				triangle.setU2(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
 				triangle.setP3(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
 				triangle.setU3(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
-				triangles.add(triangle);
+				triangles.put(offset,triangle);
 			}
 			// var
 			if(type==0xA){
@@ -254,14 +255,14 @@ public class LEBFile{
 					TriangleA_08 triangle = new TriangleA_08();
 					triangle.setType(first);
 					triangle.setV1(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
-					triangles.add(triangle);
+					triangles.put(offset,triangle);
 				}
 				if(lastType==0x1 || lastType==0x4 || lastType==0x9){
 					TriangleA_149 triangle = new TriangleA_149();
 					triangle.setType(first);
 					triangle.setV1(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
 					triangle.setV2(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
-					triangles.add(triangle);
+					triangles.put(offset,triangle);
 				}
 				if(lastType==0x5){
 					TriangleA_5 triangle = new TriangleA_5();
@@ -269,10 +270,11 @@ public class LEBFile{
 					triangle.setV1(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
 					triangle.setV2(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
 					triangle.setV3(((BinaryIntegerSigned) tokens.get(i++)).getIntegerSigned());
-					triangles.add(triangle);
+					triangles.put(offset,triangle);
 				}
 			}
 		}
+		System.err.println("ABC"+triangles.size());
 		file.triangles = triangles;
 	}
 

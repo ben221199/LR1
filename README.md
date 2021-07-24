@@ -37,7 +37,7 @@ This library supports the following file types:
  - `GHB` - <ins>**G**</ins><ins>**h**</ins>ost <ins>**B**</ins>inary
  - `HZB` - <ins>**H**</ins>a<ins>**z**</ins>ards <ins>**B**</ins>inary
  - `IDB` - <ins>**I**</ins>mage <ins>**D**</ins>ata <ins>**B**</ins>inary
- - `LEB`
+ - `LEB` - <ins>**L**</ins><ins>**E**</ins>GOgit <ins>**B**</ins>inary
  - `LSB` - <ins>**L**</ins>oading <ins>**S**</ins>creen <ins>**B**</ins>inary
  - `MAB` - <ins>**M**</ins>aterial <ins>**A**</ins>nimations <ins>**B**</ins>inary
  - `MDB` - <ins>**M**</ins>aterial <ins>**D**</ins>ata <ins>**B**</ins>inary
