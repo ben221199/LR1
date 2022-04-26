@@ -7,10 +7,14 @@ import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BinaryFile{
+public class BinaryFile extends BinaryContainer{
 
-	private List<BinaryToken> tokens = new ArrayList<>();
+//	private List<BinaryToken> tokens = new ArrayList<>();
 	private List<BinaryStruct> structs = new ArrayList<>();
+
+	public BinaryFile(){
+		super((byte) 0xFF);
+	}
 
 	public void addTemporaryStruct(BinaryStruct struct){
 		this.structs.add(struct);
@@ -41,9 +45,9 @@ public class BinaryFile{
 		return null;
 	}
 
-	public List<BinaryToken> getTokens(){
-		return this.tokens;
-	}
+//	public List<BinaryToken> getTokens(){
+//		return this.tokens;
+//	}
 
 	public byte[] toBytes(){
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();

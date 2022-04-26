@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class BinaryStructInstance extends BinaryToken{
-
-	private List<BinaryToken> tokens = new ArrayList<>();
+public class BinaryStructInstance extends BinaryContainer{
 
 	public BinaryStructInstance(byte id){
 		super(id);
@@ -18,10 +16,6 @@ public class BinaryStructInstance extends BinaryToken{
 
 	public int getId(){
 		return this.getToken();
-	}
-
-	public List<BinaryToken> getTokens(){
-		return this.tokens;
 	}
 
 	public BinaryStruct getStructByToken(byte token){

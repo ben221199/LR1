@@ -4,13 +4,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.util.ArrayList;
-import java.util.List;
 
-public class BinaryObject extends BinaryToken{
+public class BinaryObject extends BinaryContainer{
 
 	private BinaryObjectStart start;
-	private List<BinaryToken> tokens = new ArrayList<>();
 	private BinaryObjectEnd end;
 
 	public BinaryObject(){
@@ -45,9 +42,7 @@ public class BinaryObject extends BinaryToken{
 		return null;
 	}
 
-	public List<BinaryToken> getTokens(){
-		return this.tokens;
-	}
+
 
 	public byte[] toBytes(){
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();

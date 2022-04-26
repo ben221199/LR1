@@ -4,13 +4,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.util.ArrayList;
-import java.util.List;
 
-public class BinaryArray extends BinaryToken{
+public class BinaryArray extends BinaryContainer{
 
 	private BinaryArrayStart start;
-	private List<BinaryToken> tokens = new ArrayList<>();
 	private BinaryArrayEnd end;
 
 	public BinaryArray(){
@@ -23,10 +20,6 @@ public class BinaryArray extends BinaryToken{
 		this();
 		this.start = start;
 		this.end = end;
-	}
-
-	public List<BinaryToken> getTokens(){
-		return this.tokens;
 	}
 
 	public byte[] toBytes(){
@@ -67,13 +60,10 @@ public class BinaryArray extends BinaryToken{
 		return length;
 	}
 
-
 	@Override
 	public String toString() {
 		return "BinaryArray{" +
-				"start=" + start +
-				", tokens=" + tokens +
-				", end=" + end +
+				"tokens=" + tokens +
 				'}';
 	}
 

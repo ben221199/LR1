@@ -4,14 +4,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
-public class BinaryList extends BinaryToken{
+public class BinaryList extends BinaryContainer{
 
 	private byte type;
-	private List<BinaryToken> tokens = new ArrayList<>();
 
 	public BinaryList(byte type){
 		super(BinaryToken.TOKEN_ARRAY);
@@ -40,10 +37,6 @@ public class BinaryList extends BinaryToken{
 			}
 		}
 		return null;
-	}
-
-	public List<BinaryToken> getTokens(){
-		return this.tokens;
 	}
 
 	@Override
