@@ -1,6 +1,6 @@
 package com.lego.racers.file.mib.object;
 
-public class Rectangle {
+public class Rectangle{
 
 	private int x1;
 	private int y1;

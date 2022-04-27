@@ -32,4 +32,9 @@ public abstract class BinaryContainer extends BinaryToken{
 		return properties;
 	}
 
+	public void addProperty(BinaryProperty property){
+		this.tokens.add(property.getKey());
+		this.tokens.addAll(property.getValues());
+	}
+
 }

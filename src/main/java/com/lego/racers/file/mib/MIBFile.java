@@ -42,6 +42,7 @@ import com.lego.racers.file.mib.object.Text;
 import com.lego.racers.file.mib.object.Texts;
 import com.lego.racers.file.mib.object.X2B;
 
+import java.util.List;
 import java.util.Map;
 
 public class MIBFile{
@@ -221,7 +222,777 @@ public class MIBFile{
 
 	public byte[] toBytes(){
 		BinaryFile bin = new BinaryFile();
+		if(this.amount!=null){
+			BinaryProperty amountProp = new BinaryProperty();
+			amountProp.setKey(new BinaryToken(MIBFile.PROPERTY_AMOUNT));
+			amountProp.setValues(List.of(new BinaryIntegerSigned(this.amount)));
+			bin.addProperty(amountProp);
+		}
+		if(this.colorings!=null){
+			BinaryProperty coloringsProp = new BinaryProperty();
+			coloringsProp.setKey(new BinaryToken(MIBFile.PROPERTY_COLORINGS));
+			BinaryArray arr = new BinaryArray();
+			arr.getTokens().add(new BinaryIntegerSigned(this.colorings.size()));
+			BinaryObject obj = new BinaryObject();
+			this.toBytesColorings(this.colorings,obj);
+			coloringsProp.setValues(List.of(arr,obj));
+			bin.addProperty(coloringsProp);
+		}
+		if(this.images!=null){
+			BinaryProperty imagesProp = new BinaryProperty();
+			imagesProp.setKey(new BinaryToken(MIBFile.PROPERTY_IMAGES));
+			BinaryArray arr = new BinaryArray();
+			arr.getTokens().add(new BinaryIntegerSigned(this.images.size()));
+			BinaryObject obj = new BinaryObject();
+			this.toBytesImages(this.images,obj);
+			imagesProp.setValues(List.of(arr,obj));
+			bin.addProperty(imagesProp);
+		}
+		if(this.texts!=null){
+			BinaryProperty textsProp = new BinaryProperty();
+			textsProp.setKey(new BinaryToken(MIBFile.PROPERTY_TEXTS));
+			BinaryArray arr = new BinaryArray();
+			arr.getTokens().add(new BinaryIntegerSigned(this.texts.size()));
+			BinaryObject obj = new BinaryObject();
+			this.toBytesTexts(this.texts,obj);
+			textsProp.setValues(List.of(arr,obj));
+			bin.addProperty(textsProp);
+		}
+		if(this.frames!=null){
+			BinaryProperty framesProp = new BinaryProperty();
+			framesProp.setKey(new BinaryToken(MIBFile.PROPERTY_FRAMES));
+			BinaryArray arr = new BinaryArray();
+			arr.getTokens().add(new BinaryIntegerSigned(this.frames.size()));
+			BinaryObject obj = new BinaryObject();
+			this.toBytesFrames(this.frames,obj);
+			framesProp.setValues(List.of(arr,obj));
+			bin.addProperty(framesProp);
+		}
+		if(this.arrows!=null){
+			BinaryProperty arrowsProp = new BinaryProperty();
+			arrowsProp.setKey(new BinaryToken(MIBFile.PROPERTY_ARROWS));
+			BinaryArray arr = new BinaryArray();
+			arr.getTokens().add(new BinaryIntegerSigned(this.arrows.size()));
+			BinaryObject obj = new BinaryObject();
+			this.toBytesArrows(this.arrows,obj);
+			arrowsProp.setValues(List.of(arr,obj));
+			bin.addProperty(arrowsProp);
+		}
+		if(this.rockers!=null){
+			BinaryProperty rockersProp = new BinaryProperty();
+			rockersProp.setKey(new BinaryToken(MIBFile.PROPERTY_ROCKERS));
+			BinaryArray arr = new BinaryArray();
+			arr.getTokens().add(new BinaryIntegerSigned(this.rockers.size()));
+			BinaryObject obj = new BinaryObject();
+			this.toBytesRockers(this.rockers,obj);
+			rockersProp.setValues(List.of(arr,obj));
+			bin.addProperty(rockersProp);
+		}
+		if(this.controllers!=null){
+			BinaryProperty controllersProp = new BinaryProperty();
+			controllersProp.setKey(new BinaryToken(MIBFile.PROPERTY_CONTROLLERS));
+			BinaryArray arr = new BinaryArray();
+			arr.getTokens().add(new BinaryIntegerSigned(this.controllers.size()));
+			BinaryObject obj = new BinaryObject();
+			this.toBytesControllers(this.controllers,obj);
+			controllersProp.setValues(List.of(arr,obj));
+			bin.addProperty(controllersProp);
+		}
+		if(this.selectors!=null){
+			BinaryProperty selectorsProp = new BinaryProperty();
+			selectorsProp.setKey(new BinaryToken(MIBFile.PROPERTY_SELECTORS));
+			BinaryArray arr = new BinaryArray();
+			arr.getTokens().add(new BinaryIntegerSigned(this.selectors.size()));
+			BinaryObject obj = new BinaryObject();
+			this.toBytesSelectors(this.selectors,obj);
+			selectorsProp.setValues(List.of(arr,obj));
+			bin.addProperty(selectorsProp);
+		}
+		if(this.sliders!=null){
+			BinaryProperty slidersProp = new BinaryProperty();
+			slidersProp.setKey(new BinaryToken(MIBFile.PROPERTY_SLIDER));
+			BinaryArray arr = new BinaryArray();
+			arr.getTokens().add(new BinaryIntegerSigned(this.sliders.size()));
+			BinaryObject obj = new BinaryObject();
+			this.toBytesSliders(this.sliders,obj);
+			slidersProp.setValues(List.of(arr,obj));
+			bin.addProperty(slidersProp);
+		}
+		if(this.complexScenes!=null){
+			BinaryProperty complexScenesProp = new BinaryProperty();
+			complexScenesProp.setKey(new BinaryToken(MIBFile.PROPERTY_SCENES_COMPLEX));
+			BinaryArray arr = new BinaryArray();
+			arr.getTokens().add(new BinaryIntegerSigned(this.complexScenes.size()));
+			BinaryObject obj = new BinaryObject();
+			this.toBytesScenesComplex(this.complexScenes,obj);
+			complexScenesProp.setValues(List.of(arr,obj));
+			bin.addProperty(complexScenesProp);
+		}
+		if(this.inputs!=null){
+			BinaryProperty inputsProp = new BinaryProperty();
+			inputsProp.setKey(new BinaryToken(MIBFile.PROPERTY_INPUTS));
+			BinaryArray arr = new BinaryArray();
+			arr.getTokens().add(new BinaryIntegerSigned(this.inputs.size()));
+			BinaryObject obj = new BinaryObject();
+			this.toBytesInputs(this.inputs,obj);
+			inputsProp.setValues(List.of(arr,obj));
+			bin.addProperty(inputsProp);
+		}
+		if(this.scenes!=null){
+			BinaryProperty scenesProp = new BinaryProperty();
+			scenesProp.setKey(new BinaryToken(MIBFile.PROPERTY_SCENES));
+			BinaryArray arr = new BinaryArray();
+			arr.getTokens().add(new BinaryIntegerSigned(this.scenes.size()));
+			BinaryObject obj = new BinaryObject();
+			this.toBytesScenes(this.scenes,obj);
+			scenesProp.setValues(List.of(arr,obj));
+			bin.addProperty(scenesProp);
+		}
+		if(this.buttons!=null){
+			BinaryProperty buttonsProp = new BinaryProperty();
+			buttonsProp.setKey(new BinaryToken(MIBFile.PROPERTY_BUTTONS));
+			BinaryArray arr = new BinaryArray();
+			arr.getTokens().add(new BinaryIntegerSigned(this.buttons.size()));
+			BinaryObject obj = new BinaryObject();
+			this.toBytesButtons(this.buttons,obj);
+			buttonsProp.setValues(List.of(arr,obj));
+			bin.addProperty(buttonsProp);
+		}
 		return bin.toBytes();
+	}
+
+	private void toBytesColorings(Colorings colorings,BinaryObject obj){
+		for(Map.Entry<String,Coloring> me : colorings.entrySet()){
+			BinaryProperty coloringProp = new BinaryProperty();
+			coloringProp.setKey(new BinaryToken(MIBFile.PROPERTY_COLORING));
+			BinaryString str = new BinaryString(me.getKey());
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesColoring(me.getValue(),subObj);
+			coloringProp.setValues(List.of(str,subObj));
+			obj.addProperty(coloringProp);
+		}
+	}
+
+	private void toBytesImages(Images images,BinaryObject obj){
+		for(Map.Entry<String,Image> me : images.entrySet()){
+			BinaryProperty imageProp = new BinaryProperty();
+			imageProp.setKey(new BinaryToken(MIBFile.PROPERTY_IMAGE));
+			BinaryString str = new BinaryString(me.getKey());
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesImage(me.getValue(),subObj);
+			imageProp.setValues(List.of(str,subObj));
+			obj.addProperty(imageProp);
+		}
+	}
+
+	private void toBytesTexts(Texts texts,BinaryObject obj){
+		for(Map.Entry<String,Text> me : texts.entrySet()){
+			BinaryProperty textProp = new BinaryProperty();
+			textProp.setKey(new BinaryToken(MIBFile.PROPERTY_TEXT));
+			BinaryString str = new BinaryString(me.getKey());
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesText(me.getValue(),subObj);
+			textProp.setValues(List.of(str,subObj));
+			obj.addProperty(textProp);
+		}
+	}
+
+	private void toBytesFrames(Frames frames,BinaryObject obj){
+		for(Map.Entry<String,Frame> me : frames.entrySet()){
+			BinaryProperty frameProp = new BinaryProperty();
+			frameProp.setKey(new BinaryToken(MIBFile.PROPERTY_FRAME));
+			BinaryString str = new BinaryString(me.getKey());
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesFrame(me.getValue(),subObj);
+			frameProp.setValues(List.of(str,subObj));
+			obj.addProperty(frameProp);
+		}
+	}
+
+	private void toBytesArrows(Arrows arrows,BinaryObject obj){
+		for(Map.Entry<String,Arrow> me : arrows.entrySet()){
+			BinaryProperty arrowProp = new BinaryProperty();
+			arrowProp.setKey(new BinaryToken(MIBFile.PROPERTY_ARROW));
+			BinaryString str = new BinaryString(me.getKey());
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesArrow(me.getValue(),subObj);
+			arrowProp.setValues(List.of(str,subObj));
+			obj.addProperty(arrowProp);
+		}
+	}
+
+	private void toBytesRockers(Rockers rockers,BinaryObject obj){
+		for(Map.Entry<String,Rocker> me : rockers.entrySet()){
+			BinaryProperty rockerProp = new BinaryProperty();
+			rockerProp.setKey(new BinaryToken(MIBFile.PROPERTY_ROCKER));
+			BinaryString str = new BinaryString(me.getKey());
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesRocker(me.getValue(),subObj);
+			rockerProp.setValues(List.of(str,subObj));
+			obj.addProperty(rockerProp);
+		}
+	}
+
+	private void toBytesControllers(Controllers controllers,BinaryObject obj){
+		for(Map.Entry<String,Controller> me : controllers.entrySet()){
+			BinaryProperty controllerProp = new BinaryProperty();
+			controllerProp.setKey(new BinaryToken(MIBFile.PROPERTY_CONTROLLER));
+			BinaryString str = new BinaryString(me.getKey());
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesController(me.getValue(),subObj);
+			controllerProp.setValues(List.of(str,subObj));
+			obj.addProperty(controllerProp);
+		}
+	}
+
+	private void toBytesSelectors(Selectors selectors,BinaryObject obj){
+		for(Map.Entry<String,Selector> me : selectors.entrySet()){
+			BinaryProperty selectorProp = new BinaryProperty();
+			selectorProp.setKey(new BinaryToken(MIBFile.PROPERTY_SELECTOR));
+			BinaryString str = new BinaryString(me.getKey());
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesSelector(me.getValue(),subObj);
+			selectorProp.setValues(List.of(str,subObj));
+			obj.addProperty(selectorProp);
+		}
+	}
+
+	private void toBytesSliders(Sliders sliders,BinaryObject obj){
+		for(Map.Entry<String,Slider> me : sliders.entrySet()){
+			BinaryProperty sliderProp = new BinaryProperty();
+			sliderProp.setKey(new BinaryToken(MIBFile.PROPERTY_SLIDER));
+			BinaryString str = new BinaryString(me.getKey());
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesSlider(me.getValue(),subObj);
+			sliderProp.setValues(List.of(str,subObj));
+			obj.addProperty(sliderProp);
+		}
+	}
+
+	private void toBytesScenesComplex(ComplexScenes complexScenes,BinaryObject obj){
+		for(Map.Entry<String,ComplexScene> me : complexScenes.entrySet()){
+			BinaryProperty complexSceneProp = new BinaryProperty();
+			complexSceneProp.setKey(new BinaryToken(MIBFile.PROPERTY_SCENE_COMPLEX));
+			BinaryString str = new BinaryString(me.getKey());
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesSceneComplex(me.getValue(),subObj);
+			complexSceneProp.setValues(List.of(str,subObj));
+			obj.addProperty(complexSceneProp);
+		}
+	}
+
+	private void toBytesInputs(Inputs inputs,BinaryObject obj){
+		for(Map.Entry<String,Input> me : inputs.entrySet()){
+			BinaryProperty inputProp = new BinaryProperty();
+			inputProp.setKey(new BinaryToken(MIBFile.PROPERTY_INPUT));
+			BinaryString str = new BinaryString(me.getKey());
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesInput(me.getValue(),subObj);
+			inputProp.setValues(List.of(str,subObj));
+			obj.addProperty(inputProp);
+		}
+	}
+
+	private void toBytesScenes(Scenes scenes,BinaryObject obj){
+		for(Map.Entry<String,Scene> me : scenes.entrySet()){
+			BinaryProperty sceneProp = new BinaryProperty();
+			sceneProp.setKey(new BinaryToken(MIBFile.PROPERTY_SCENE));
+			BinaryString str = new BinaryString(me.getKey());
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesScene(me.getValue(),subObj);
+			sceneProp.setValues(List.of(str,subObj));
+			obj.addProperty(sceneProp);
+		}
+	}
+
+	private void toBytesButtons(Buttons buttons,BinaryObject obj){
+		for(Map.Entry<String,Button> me : buttons.entrySet()){
+			BinaryProperty buttonProp = new BinaryProperty();
+			buttonProp.setKey(new BinaryToken(MIBFile.PROPERTY_BUTTON));
+			BinaryString str = new BinaryString(me.getKey());
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesButton(me.getValue(),subObj);
+			buttonProp.setValues(List.of(str,subObj));
+			obj.addProperty(buttonProp);
+		}
+	}
+
+	private void toBytesColoring(Coloring coloring,BinaryObject obj){
+		if(coloring.getTint()!=null){
+			BinaryProperty coloringsProp = new BinaryProperty();
+			coloringsProp.setKey(new BinaryToken(MIBFile.PROPERTY_TINT));
+			BinaryList list = new BinaryList(BinaryToken.TOKEN_INTEGER_SIGNED);
+			list.getTokens().add(new BinaryIntegerSigned(coloring.getTint().getAlpha()));
+			list.getTokens().add(new BinaryIntegerSigned(coloring.getTint().getRed()));
+			list.getTokens().add(new BinaryIntegerSigned(coloring.getTint().getGreen()));
+			list.getTokens().add(new BinaryIntegerSigned(coloring.getTint().getBlue()));
+			coloringsProp.setValues(List.of(list));
+			obj.addProperty(coloringsProp);
+		}
+		if(coloring.getRectangle()!=null){
+			BinaryProperty rectangleProp = new BinaryProperty();
+			rectangleProp.setKey(new BinaryToken(MIBFile.PROPERTY_RECTANGLE));
+			BinaryList list = new BinaryList(BinaryToken.TOKEN_INTEGER_SIGNED);
+			list.getTokens().add(new BinaryIntegerSigned(coloring.getRectangle().getX1()));
+			list.getTokens().add(new BinaryIntegerSigned(coloring.getRectangle().getY1()));
+			list.getTokens().add(new BinaryIntegerSigned(coloring.getRectangle().getX2()));
+			list.getTokens().add(new BinaryIntegerSigned(coloring.getRectangle().getY2()));
+			rectangleProp.setValues(List.of(list));
+			obj.addProperty(rectangleProp);
+		}
+		if(coloring.getParent()!=null){
+			BinaryProperty parentProp = new BinaryProperty();
+			parentProp.setKey(new BinaryToken(MIBFile.PROPERTY_PARENT));
+			BinaryString string = new BinaryString(coloring.getParent());
+			parentProp.setValues(List.of(string));
+			obj.addProperty(parentProp);
+		}
+	}
+
+	private void toBytesImage(Image image,BinaryObject obj){
+		if(image.getX28()!=null){
+			BinaryProperty x28prop = new BinaryProperty();
+			x28prop.setKey(new BinaryToken(MIBFile.PROPERTY_x28));
+			BinaryString string = new BinaryString(image.getX28());
+			x28prop.setValues(List.of(string));
+			obj.addProperty(x28prop);
+		}
+		if(image.getPositioning()!=null){
+			BinaryProperty positioningProp = new BinaryProperty();
+			positioningProp.setKey(new BinaryToken(MIBFile.PROPERTY_POSITIONING));
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesPositioning(image.getPositioning(),subObj);
+			positioningProp.setValues(List.of(subObj));
+			obj.addProperty(positioningProp);
+		}
+	}
+
+	private void toBytesText(Text text,BinaryObject obj){
+		if(text.getX33()!=null){
+			BinaryProperty x33prop = new BinaryProperty();
+			x33prop.setKey(new BinaryToken(MIBFile.PROPERTY_x33));
+			BinaryIntegerSigned integer = new BinaryIntegerSigned(text.getX33());
+			x33prop.setValues(List.of(integer));
+			obj.addProperty(x33prop);
+		}
+		if(text.getPositioning()!=null){
+			BinaryProperty positioningProp = new BinaryProperty();
+			positioningProp.setKey(new BinaryToken(MIBFile.PROPERTY_POSITIONING));
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesPositioning(text.getPositioning(),subObj);
+			positioningProp.setValues(List.of(subObj));
+			obj.addProperty(positioningProp);
+		}
+	}
+
+	private void toBytesFrame(Frame frame,BinaryObject obj){
+		if(frame.getBorder()!=null){
+			BinaryProperty borderProp = new BinaryProperty();
+			borderProp.setKey(new BinaryToken(MIBFile.PROPERTY_BORDER));
+			BinaryList list = new BinaryList(BinaryToken.TOKEN_STRING);
+			list.getTokens().add(new BinaryString(frame.getBorder().getUpperLeft()));
+			list.getTokens().add(new BinaryString(frame.getBorder().getTop()));
+			list.getTokens().add(new BinaryString(frame.getBorder().getUpperRight()));
+			list.getTokens().add(new BinaryString(frame.getBorder().getRight()));
+			list.getTokens().add(new BinaryString(frame.getBorder().getBottomRight()));
+			list.getTokens().add(new BinaryString(frame.getBorder().getBottom()));
+			list.getTokens().add(new BinaryString(frame.getBorder().getBottomLeft()));
+			list.getTokens().add(new BinaryString(frame.getBorder().getLeft()));
+			borderProp.setValues(List.of(list));
+			obj.addProperty(borderProp);
+		}
+		if(frame.getTint()!=null){
+			BinaryProperty tintProp = new BinaryProperty();
+			tintProp.setKey(new BinaryToken(MIBFile.PROPERTY_TINT));
+			BinaryList list = new BinaryList(BinaryToken.TOKEN_INTEGER_SIGNED);
+			list.getTokens().add(new BinaryIntegerSigned(frame.getTint().getBorder().getAlpha()));
+			list.getTokens().add(new BinaryIntegerSigned(frame.getTint().getBorder().getRed()));
+			list.getTokens().add(new BinaryIntegerSigned(frame.getTint().getBorder().getGreen()));
+			list.getTokens().add(new BinaryIntegerSigned(frame.getTint().getBorder().getBlue()));
+			list.getTokens().add(new BinaryIntegerSigned(frame.getTint().getBackground().getAlpha()));
+			list.getTokens().add(new BinaryIntegerSigned(frame.getTint().getBackground().getRed()));
+			list.getTokens().add(new BinaryIntegerSigned(frame.getTint().getBackground().getGreen()));
+			list.getTokens().add(new BinaryIntegerSigned(frame.getTint().getBackground().getBlue()));
+			tintProp.setValues(List.of(list));
+			obj.addProperty(tintProp);
+		}
+		if(frame.getX33()!=null){
+			BinaryProperty x33prop = new BinaryProperty();
+			x33prop.setKey(new BinaryToken(MIBFile.PROPERTY_x33));
+			BinaryIntegerSigned integer = new BinaryIntegerSigned(frame.getX33());
+			x33prop.setValues(List.of(integer));
+			obj.addProperty(x33prop);
+		}
+		if(frame.getPositioning()!=null){
+			BinaryProperty positioningProp = new BinaryProperty();
+			positioningProp.setKey(new BinaryToken(MIBFile.PROPERTY_POSITIONING));
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesPositioning(frame.getPositioning(),subObj);
+			positioningProp.setValues(List.of(subObj));
+			obj.addProperty(positioningProp);
+		}
+	}
+
+	private void toBytesArrow(Arrow arrow,BinaryObject obj){
+		if(arrow.getX28()!=null){
+			BinaryProperty x28Prop = new BinaryProperty();
+			x28Prop.setKey(new BinaryToken(MIBFile.PROPERTY_x28));
+			BinaryList list = new BinaryList(BinaryToken.TOKEN_STRING);
+			list.getTokens().add(new BinaryString(arrow.getX28().getP1()));
+			list.getTokens().add(new BinaryString(arrow.getX28().getP2()));
+			list.getTokens().add(new BinaryString(arrow.getX28().getP3()));
+			list.getTokens().add(new BinaryString(arrow.getX28().getP4()));
+			list.getTokens().add(new BinaryString(arrow.getX28().getP5()));
+			list.getTokens().add(new BinaryString(arrow.getX28().getP6()));
+			x28Prop.setValues(List.of(list));
+			obj.addProperty(x28Prop);
+		}
+		if(arrow.getX2B()!=null){
+			BinaryProperty x2BProp = new BinaryProperty();
+			x2BProp.setKey(new BinaryToken(MIBFile.PROPERTY_x2B));
+			BinaryList list = new BinaryList(BinaryToken.TOKEN_INTEGER_SIGNED);
+			list.getTokens().add(new BinaryIntegerSigned(arrow.getX2B().getP1()));
+			list.getTokens().add(new BinaryIntegerSigned(arrow.getX2B().getP2()));
+			list.getTokens().add(new BinaryIntegerSigned(arrow.getX2B().getP3()));
+			list.getTokens().add(new BinaryIntegerSigned(arrow.getX2B().getP4()));
+			list.getTokens().add(new BinaryIntegerSigned(arrow.getX2B().getP5()));
+			x2BProp.setValues(List.of(list));
+			obj.addProperty(x2BProp);
+		}
+		if(arrow.getX2C()!=null){
+			BinaryProperty x2Cprop = new BinaryProperty();
+			x2Cprop.setKey(new BinaryToken(MIBFile.PROPERTY_x2C));
+			BinaryIntegerSigned integer = new BinaryIntegerSigned(arrow.getX2C());
+			x2Cprop.setValues(List.of(integer));
+			obj.addProperty(x2Cprop);
+		}
+		if(arrow.getX32()!=null){
+			BinaryProperty x32prop = new BinaryProperty();
+			x32prop.setKey(new BinaryToken(MIBFile.PROPERTY_x32));
+			BinaryIntegerSigned integer = new BinaryIntegerSigned(arrow.getX32());
+			x32prop.setValues(List.of(integer));
+			obj.addProperty(x32prop);
+		}
+		if(arrow.getPositioning()!=null){
+			BinaryProperty positioningProp = new BinaryProperty();
+			positioningProp.setKey(new BinaryToken(MIBFile.PROPERTY_POSITIONING));
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesPositioning(arrow.getPositioning(),subObj);
+			positioningProp.setValues(List.of(subObj));
+			obj.addProperty(positioningProp);
+		}
+	}
+
+	private void toBytesRocker(Rocker rocker,BinaryObject obj){
+		if(rocker.getX28()!=null){
+			BinaryProperty x28prop = new BinaryProperty();
+			x28prop.setKey(new BinaryToken(MIBFile.PROPERTY_x28));
+			BinaryString string = new BinaryString(rocker.getX28());
+			x28prop.setValues(List.of(string));
+			obj.addProperty(x28prop);
+		}
+		if(rocker.getArrow()!=null){
+			BinaryProperty arrowProp = new BinaryProperty();
+			arrowProp.setKey(new BinaryToken(MIBFile.PROPERTY_ARROW));
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesArrow(rocker.getArrow(),subObj);
+			arrowProp.setValues(List.of(subObj));
+			obj.addProperty(arrowProp);
+		}
+	}
+
+	private void toBytesController(Controller controller,BinaryObject obj){
+		if(controller.getX2C()!=null){
+			BinaryProperty x2Cprop = new BinaryProperty();
+			x2Cprop.setKey(new BinaryToken(MIBFile.PROPERTY_x2C));
+			BinaryIntegerSigned integer = new BinaryIntegerSigned(controller.getX2C());
+			x2Cprop.setValues(List.of(integer));
+			obj.addProperty(x2Cprop);
+		}
+		if(controller.getX33()!=null){
+			BinaryProperty x33prop = new BinaryProperty();
+			x33prop.setKey(new BinaryToken(MIBFile.PROPERTY_x33));
+			BinaryIntegerSigned integer = new BinaryIntegerSigned(controller.getX33());
+			x33prop.setValues(List.of(integer));
+			obj.addProperty(x33prop);
+		}
+		if(controller.getPositioning()!=null){
+			BinaryProperty positioningProp = new BinaryProperty();
+			positioningProp.setKey(new BinaryToken(MIBFile.PROPERTY_POSITIONING));
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesPositioning(controller.getPositioning(),subObj);
+			positioningProp.setValues(List.of(subObj));
+			obj.addProperty(positioningProp);
+		}
+		if(controller.getFrame()!=null){
+			BinaryProperty frameProp = new BinaryProperty();
+			frameProp.setKey(new BinaryToken(MIBFile.PROPERTY_FRAME));
+			BinaryString string = new BinaryString(controller.getFrame());
+			frameProp.setValues(List.of(string));
+			obj.addProperty(frameProp);
+		}
+		if(controller.getArrows()!=null){
+			BinaryProperty arrowsProp = new BinaryProperty();
+			arrowsProp.setKey(new BinaryToken(MIBFile.PROPERTY_ARROWS));
+			BinaryString arrow1 = new BinaryString(controller.getArrows().getArrow1());
+			BinaryString arrow2 = new BinaryString(controller.getArrows().getArrow2());
+			arrowsProp.setValues(List.of(arrow1,arrow2));
+			obj.addProperty(arrowsProp);
+		}
+	}
+
+	private void toBytesSelector(Selector selector,BinaryObject obj){
+		if(selector.getX2E()!=null){
+			BinaryProperty x2Eprop = new BinaryProperty();
+			x2Eprop.setKey(new BinaryToken(MIBFile.PROPERTY_x2E));
+			BinaryList list = new BinaryList(BinaryToken.TOKEN_FLOAT);
+			list.getTokens().add(new BinaryFloat(selector.getX2E()[0]));
+			list.getTokens().add(new BinaryFloat(selector.getX2E()[1]));
+			list.getTokens().add(new BinaryFloat(selector.getX2E()[2]));
+			list.getTokens().add(new BinaryFloat(selector.getX2E()[3]));
+			list.getTokens().add(new BinaryFloat(selector.getX2E()[4]));
+			list.getTokens().add(new BinaryFloat(selector.getX2E()[5]));
+			list.getTokens().add(new BinaryFloat(selector.getX2E()[6]));
+			list.getTokens().add(new BinaryFloat(selector.getX2E()[7]));
+			list.getTokens().add(new BinaryFloat(selector.getX2E()[8]));
+			x2Eprop.setValues(List.of(list));
+			obj.addProperty(x2Eprop);
+		}
+		if(selector.getX2F()!=null){
+			BinaryProperty x2Fprop = new BinaryProperty();
+			x2Fprop.setKey(new BinaryToken(MIBFile.PROPERTY_x2F));
+			BinaryList list = new BinaryList(BinaryToken.TOKEN_INTEGER_SIGNED);
+			for(int i=0;i<selector.getX2F().length;i++){
+				list.getTokens().add(new BinaryIntegerSigned(selector.getX2F()[i]));
+			}
+			x2Fprop.setValues(List.of(list));
+			obj.addProperty(x2Fprop);
+		}
+		if(selector.getX33()!=null){
+			BinaryProperty x33Prop = new BinaryProperty();
+			x33Prop.setKey(new BinaryToken(MIBFile.PROPERTY_x33));
+			BinaryIntegerSigned integer1 = new BinaryIntegerSigned(selector.getX33().getP1());
+			BinaryIntegerSigned integer2 = new BinaryIntegerSigned(selector.getX33().getP2());
+			BinaryFloat float1 = new BinaryFloat(selector.getX33().getP3());
+			x33Prop.setValues(List.of(integer1,integer2,float1));
+			obj.addProperty(x33Prop);
+		}
+		if(selector.getPositioning()!=null){
+			BinaryProperty positioningProp = new BinaryProperty();
+			positioningProp.setKey(new BinaryToken(MIBFile.PROPERTY_POSITIONING));
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesPositioning(selector.getPositioning(),subObj);
+			positioningProp.setValues(List.of(subObj));
+			obj.addProperty(positioningProp);
+		}
+	}
+
+	private void toBytesSlider(Slider slider,BinaryObject obj){
+		if(slider.getX33()!=null){
+			BinaryProperty x33prop = new BinaryProperty();
+			x33prop.setKey(new BinaryToken(MIBFile.PROPERTY_x33));
+			BinaryIntegerSigned integer1 = new BinaryIntegerSigned(slider.getX33().getP1());
+			BinaryIntegerSigned integer2 = new BinaryIntegerSigned(slider.getX33().getP2());
+			x33prop.setValues(List.of(integer1,integer2));
+			obj.addProperty(x33prop);
+		}
+		if(slider.getImages()!=null){
+			BinaryProperty imagesProp = new BinaryProperty();
+			imagesProp.setKey(new BinaryToken(MIBFile.PROPERTY_IMAGES));
+			BinaryString string1 = new BinaryString(slider.getImages().getBar());
+			BinaryString string2 = new BinaryString(slider.getImages().getTab());
+			imagesProp.setValues(List.of(string1,string2));
+			obj.addProperty(imagesProp);
+		}
+		if(slider.getPositioning()!=null){
+			BinaryProperty positioningProp = new BinaryProperty();
+			positioningProp.setKey(new BinaryToken(MIBFile.PROPERTY_POSITIONING));
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesPositioning(slider.getPositioning(),subObj);
+			positioningProp.setValues(List.of(subObj));
+			obj.addProperty(positioningProp);
+		}
+		if(slider.getArrows()!=null){
+			BinaryProperty arrowsProp = new BinaryProperty();
+			arrowsProp.setKey(new BinaryToken(MIBFile.PROPERTY_ARROWS));
+			BinaryString string1 = new BinaryString(slider.getArrows().getArrow1());
+			BinaryString string2 = new BinaryString(slider.getArrows().getArrow2());
+			arrowsProp.setValues(List.of(string1,string2));
+			obj.addProperty(arrowsProp);
+		}
+	}
+
+	private void toBytesSceneComplex(ComplexScene complexScene,BinaryObject obj){
+		if(complexScene.getName()!=null){
+			BinaryProperty nameProp = new BinaryProperty();
+			nameProp.setKey(new BinaryToken(MIBFile.PROPERTY_NAME));
+			BinaryString string = new BinaryString(complexScene.getName());
+			nameProp.setValues(List.of(string));
+			obj.addProperty(nameProp);
+		}
+		if(complexScene.getX2E()!=null){
+			BinaryProperty x2Eprop = new BinaryProperty();
+			x2Eprop.setKey(new BinaryToken(MIBFile.PROPERTY_x2E));
+			BinaryList list = new BinaryList(BinaryToken.TOKEN_FLOAT);
+			list.getTokens().add(new BinaryFloat(complexScene.getX2E()[0]));
+			list.getTokens().add(new BinaryFloat(complexScene.getX2E()[1]));
+			list.getTokens().add(new BinaryFloat(complexScene.getX2E()[2]));
+			list.getTokens().add(new BinaryFloat(complexScene.getX2E()[3]));
+			list.getTokens().add(new BinaryFloat(complexScene.getX2E()[4]));
+			list.getTokens().add(new BinaryFloat(complexScene.getX2E()[5]));
+			list.getTokens().add(new BinaryFloat(complexScene.getX2E()[6]));
+			list.getTokens().add(new BinaryFloat(complexScene.getX2E()[7]));
+			list.getTokens().add(new BinaryFloat(complexScene.getX2E()[8]));
+			x2Eprop.setValues(List.of(list));
+			obj.addProperty(x2Eprop);
+		}
+		if(complexScene.getX33()!=null){
+			BinaryProperty x33prop = new BinaryProperty();
+			x33prop.setKey(new BinaryToken(MIBFile.PROPERTY_x33));
+			BinaryIntegerSigned integer1 = new BinaryIntegerSigned(complexScene.getX33().getP1());
+			BinaryIntegerSigned integer2 = new BinaryIntegerSigned(complexScene.getX33().getP2());
+			x33prop.setValues(List.of(integer1,integer2));
+			obj.addProperty(x33prop);
+		}
+		if(complexScene.getPositioning()!=null){
+			BinaryProperty positioningProp = new BinaryProperty();
+			positioningProp.setKey(new BinaryToken(MIBFile.PROPERTY_POSITIONING));
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesPositioning(complexScene.getPositioning(),subObj);
+			positioningProp.setValues(List.of(subObj));
+			obj.addProperty(positioningProp);
+		}
+		if(complexScene.getFrame()!=null){
+			BinaryProperty frameProp = new BinaryProperty();
+			frameProp.setKey(new BinaryToken(MIBFile.PROPERTY_FRAME));
+			BinaryString string = new BinaryString(complexScene.getFrame());
+			frameProp.setValues(List.of(string));
+			obj.addProperty(frameProp);
+		}
+	}
+
+	private void toBytesInput(Input input,BinaryObject obj){
+		if(input.getFont()!=null){
+			BinaryProperty fontProp = new BinaryProperty();
+			fontProp.setKey(new BinaryToken(MIBFile.PROPERTY_FONT));
+			BinaryString string = new BinaryString(input.getFont());
+			fontProp.setValues(List.of(string));
+			obj.addProperty(fontProp);
+		}
+		if(input.getX2B()!=null){
+			BinaryProperty x2BProp = new BinaryProperty();
+			x2BProp.setKey(new BinaryToken(MIBFile.PROPERTY_x2B));
+			BinaryList list = new BinaryList(BinaryToken.TOKEN_INTEGER_SIGNED);
+			list.getTokens().add(new BinaryIntegerSigned(input.getX2B()[0]));
+			list.getTokens().add(new BinaryIntegerSigned(input.getX2B()[1]));
+			list.getTokens().add(new BinaryIntegerSigned(input.getX2B()[2]));
+			list.getTokens().add(new BinaryIntegerSigned(input.getX2B()[3]));
+			list.getTokens().add(new BinaryIntegerSigned(input.getX2B()[4]));
+			list.getTokens().add(new BinaryIntegerSigned(input.getX2B()[5]));
+			list.getTokens().add(new BinaryIntegerSigned(input.getX2B()[6]));
+			list.getTokens().add(new BinaryIntegerSigned(input.getX2B()[7]));
+			list.getTokens().add(new BinaryIntegerSigned(input.getX2B()[8]));
+			x2BProp.setValues(List.of(list));
+			obj.addProperty(x2BProp);
+		}
+		if(input.getLimit()!=null){
+			BinaryProperty fontProp = new BinaryProperty();
+			fontProp.setKey(new BinaryToken(MIBFile.PROPERTY_LIMIT));
+			BinaryIntegerSigned integer = new BinaryIntegerSigned(input.getLimit());
+			fontProp.setValues(List.of(integer));
+			obj.addProperty(fontProp);
+		}
+		if(input.getPositioning()!=null){
+			BinaryProperty positioningProp = new BinaryProperty();
+			positioningProp.setKey(new BinaryToken(MIBFile.PROPERTY_POSITIONING));
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesPositioning(input.getPositioning(),subObj);
+			positioningProp.setValues(List.of(subObj));
+			obj.addProperty(positioningProp);
+		}
+	}
+
+	private void toBytesScene(Scene scene,BinaryObject obj){
+		if(scene.getName()!=null){
+			BinaryProperty nameProp = new BinaryProperty();
+			nameProp.setKey(new BinaryToken(MIBFile.PROPERTY_NAME));
+			BinaryString string = new BinaryString(scene.getName());
+			nameProp.setValues(List.of(string));
+			obj.addProperty(nameProp);
+		}
+		if(scene.getPositioning()!=null){
+			BinaryProperty positioningProp = new BinaryProperty();
+			positioningProp.setKey(new BinaryToken(MIBFile.PROPERTY_POSITIONING));
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesPositioning(scene.getPositioning(),subObj);
+			positioningProp.setValues(List.of(subObj));
+			obj.addProperty(positioningProp);
+		}
+	}
+
+	private void toBytesButton(Button button,BinaryObject obj){
+		if(button.getX2B()!=null){
+			BinaryProperty x2BProp = new BinaryProperty();
+			x2BProp.setKey(new BinaryToken(MIBFile.PROPERTY_x2B));
+			BinaryList list = new BinaryList(BinaryToken.TOKEN_INTEGER_SIGNED);
+			list.getTokens().add(new BinaryIntegerSigned(button.getX2B().getP1()));
+			list.getTokens().add(new BinaryIntegerSigned(button.getX2B().getP2()));
+			list.getTokens().add(new BinaryIntegerSigned(button.getX2B().getP3()));
+			list.getTokens().add(new BinaryIntegerSigned(button.getX2B().getP4()));
+			list.getTokens().add(new BinaryIntegerSigned(button.getX2B().getP5()));
+			x2BProp.setValues(List.of(list));
+			obj.addProperty(x2BProp);
+		}
+		if(button.getX32()!=null){
+			BinaryProperty x32prop = new BinaryProperty();
+			x32prop.setKey(new BinaryToken(MIBFile.PROPERTY_x32));
+			BinaryIntegerSigned integer = new BinaryIntegerSigned(button.getX32());
+			x32prop.setValues(List.of(integer));
+			obj.addProperty(x32prop);
+		}
+		if(button.getX33()!=null){
+			BinaryProperty x33prop = new BinaryProperty();
+			x33prop.setKey(new BinaryToken(MIBFile.PROPERTY_x33));
+			BinaryIntegerSigned integer = new BinaryIntegerSigned(button.getX33());
+			x33prop.setValues(List.of(integer));
+			obj.addProperty(x33prop);
+		}
+		if(button.getPositioning()!=null){
+			BinaryProperty positioningProp = new BinaryProperty();
+			positioningProp.setKey(new BinaryToken(MIBFile.PROPERTY_POSITIONING));
+			BinaryObject subObj = new BinaryObject();
+			this.toBytesPositioning(button.getPositioning(),subObj);
+			positioningProp.setValues(List.of(subObj));
+			obj.addProperty(positioningProp);
+		}
+	}
+
+	private void toBytesPositioning(Positioning positioning,BinaryObject obj){
+		if(positioning.getRectangle()!=null){
+			BinaryProperty rectangleProp = new BinaryProperty();
+			rectangleProp.setKey(new BinaryToken(MIBFile.PROPERTY_RECTANGLE));
+			BinaryList list = new BinaryList(BinaryToken.TOKEN_INTEGER_SIGNED);
+			list.getTokens().add(new BinaryIntegerSigned(positioning.getRectangle().getX1()));
+			list.getTokens().add(new BinaryIntegerSigned(positioning.getRectangle().getY1()));
+			list.getTokens().add(new BinaryIntegerSigned(positioning.getRectangle().getX2()));
+			list.getTokens().add(new BinaryIntegerSigned(positioning.getRectangle().getY2()));
+			rectangleProp.setValues(List.of(list));
+			obj.addProperty(rectangleProp);
+		}
+		if(positioning.getParent()!=null){
+			BinaryProperty parentProp = new BinaryProperty();
+			parentProp.setKey(new BinaryToken(MIBFile.PROPERTY_PARENT));
+			BinaryString string = new BinaryString(positioning.getParent());
+			parentProp.setValues(List.of(string));
+			obj.addProperty(parentProp);
+		}
+		if(positioning.getX32()!=null){
+			BinaryProperty parentProp = new BinaryProperty();
+			parentProp.setKey(new BinaryToken(MIBFile.PROPERTY_x32));
+			BinaryIntegerSigned integer = new BinaryIntegerSigned(positioning.getX32());
+			parentProp.setValues(List.of(integer));
+			obj.addProperty(parentProp);
+		}
 	}
 
 	public static MIBFile from(byte[] bytes){
@@ -599,7 +1370,7 @@ public class MIBFile{
 					background.setRed(((BinaryIntegerSigned) list.getTokens().get(5)).getIntegerSigned());
 					background.setGreen(((BinaryIntegerSigned) list.getTokens().get(6)).getIntegerSigned());
 					background.setBlue(((BinaryIntegerSigned) list.getTokens().get(7)).getIntegerSigned());
-					tint.setBorder(background);
+					tint.setBackground(background);
 				}
 				frame.setTint(tint);
 				continue;
@@ -979,7 +1750,7 @@ public class MIBFile{
 				", controllers=" + controllers +
 				", selectors=" + selectors +
 				", sliders=" + sliders +
-				", scene42s=" + complexScenes +
+				", complexScenes=" + complexScenes +
 				", inputs=" + inputs +
 				", scenes=" + scenes +
 				", buttons=" + buttons +
