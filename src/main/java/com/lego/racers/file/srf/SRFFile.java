@@ -15,20 +15,24 @@ public class SRFFile{
 	}
 
 	public byte[] toBytes(){
-		short stringCount = (short) this.strings.size();
 		short charCount = 0;
-		for(String str : this.strings){
+		String[] stringArr = this.strings.toArray(new String[0]);
+		for(int i=0;i<stringArr.length;i++){
+			stringArr[i] += "\0";
+		}
+		short stringCount = (short) stringArr.length;
+		for(String str : stringArr){
 			charCount += str.getBytes(StandardCharsets.UTF_16LE).length;
 		}
 		ByteBuffer bb = ByteBuffer.allocate(2+2+stringCount*2+charCount*2).order(ByteOrder.LITTLE_ENDIAN);
 		bb.putShort(stringCount);
 		bb.putShort(charCount);
 		short index = 0;
-		for(String str : this.strings){
+		for(String str : stringArr){
 			bb.putShort(index);
 			index += str.getBytes(StandardCharsets.UTF_16LE).length/2;
 		}
-		for(String str : this.strings){
+		for(String str : stringArr){
 			bb.put(str.getBytes(StandardCharsets.UTF_16LE));
 		}
 		return bb.array();

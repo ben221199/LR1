@@ -137,6 +137,10 @@ public class JAMNode{
 		return this.folders.put(name,node);
 	}
 
+	public JAMNode removeFolder(String name){
+		return this.folders.remove(name);
+	}
+
 	public Map<String,JAMNode> getFolders(){
 		return this.folders;
 	}
@@ -147,6 +151,10 @@ public class JAMNode{
 
 	public byte[] setFile(String name,byte[] content){
 		return this.files.put(name,content);
+	}
+
+	public byte[] removeFile(String name){
+		return this.files.remove(name);
 	}
 
 	public Map<String,byte[]> getFiles(){

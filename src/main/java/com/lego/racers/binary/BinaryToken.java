@@ -31,6 +31,10 @@ public class BinaryToken{
 		return this.token;
 	}
 
+	public boolean isKey(){
+		return this.token>=0x27;
+	}
+
 	public byte[] toBytes(){
 		return new byte[]{this.token};
 	}
