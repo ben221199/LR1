@@ -35,6 +35,10 @@ public class BinaryToken{
 		return this.token>=0x27;
 	}
 
+	public boolean isStructInstance(){
+		return this instanceof BinaryStructInstance;
+	}
+
 	public byte[] toBytes(){
 		return new byte[]{this.token};
 	}

@@ -2,7 +2,7 @@ package com.lego.racers.file.msb;
 
 import com.lego.racers.binary.BinaryFile;
 
-public class MSBFile {
+public class MSBFile{
 
 	public static MSBFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);
@@ -46,6 +46,12 @@ public class MSBFile {
 //			}
 //		}
 		return adb;
+	}
+
+	@Override
+	public String toString() {
+		return "MSBFile{" +
+				'}';
 	}
 
 }

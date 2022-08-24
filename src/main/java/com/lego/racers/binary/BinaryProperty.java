@@ -6,6 +6,7 @@ import java.util.List;
 public class BinaryProperty{
 
 	private List<BinaryToken> tokens = new ArrayList<>();
+	private boolean isStructInstance;
 
 	public List<BinaryToken> getTokens(){
 		return this.tokens;
@@ -26,6 +27,14 @@ public class BinaryProperty{
 		}
 	}
 
+	public boolean isStructInstance(){
+		return this.isStructInstance;
+	}
+
+	public void setStructInstance(boolean isStructInstance){
+		this.isStructInstance = isStructInstance;
+	}
+
 	public List<BinaryToken> getValues(){
 		return this.tokens.subList(1,this.tokens.size());
 	}
@@ -41,6 +50,7 @@ public class BinaryProperty{
 	public String toString() {
 		return "BinaryProperty{" +
 				"key=" + this.getKey() +
+				", isStructInstance=" + isStructInstance +
 				", values=" + this.getValues() +
 				'}';
 	}

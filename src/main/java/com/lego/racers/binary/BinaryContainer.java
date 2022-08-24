@@ -19,6 +19,22 @@ public abstract class BinaryContainer extends BinaryToken{
 		List<BinaryProperty> properties = new ArrayList<>();
 		BinaryProperty property = null;
 		for(BinaryToken token : this.tokens){
+			if(token.isStructInstance()){
+				BinaryStructInstance structInstance = (BinaryStructInstance) token;
+				for(BinaryToken subToken : structInstance.getTokens()){
+					if(subToken.isKey()){
+						property = new BinaryProperty();
+						property.setStructInstance(true);
+						property.getTokens().add(subToken);
+						properties.add(property);
+						continue;
+					}
+					if(property!=null){
+						property.getTokens().add(subToken);
+					}
+				}
+				continue;
+			}
 			if(token.isKey()){
 				property = new BinaryProperty();
 				property.getTokens().add(token);
