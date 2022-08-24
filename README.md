@@ -25,7 +25,7 @@ This library supports the following file types:
  - `CCB`
  - `CDB` - <ins>**C**</ins>utscene <ins>**D**</ins>ata <ins>**B**</ins>inary
  - `CEB` - <ins>**C**</ins>utscene <ins>**E**</ins>vent <ins>**B**</ins>inary
- - `CMB`
+ - `CMB` - <ins>**C**</ins>assis <ins>**M**</ins>odel <ins>**B**</ins>inary
  - `CPB` - <ins>**C**</ins>heck<ins>**p**</ins>oint <ins>**B**</ins>inary
  - `CRB`
  - `DDB` - <ins>**D**</ins>river <ins>**D**</ins>ata <ins>**B**</ins>inary
