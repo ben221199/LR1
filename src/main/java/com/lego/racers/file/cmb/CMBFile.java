@@ -126,7 +126,7 @@ public class CMBFile{
 		if(chassis.getX2F()!=null){
 			BinaryProperty x2FProp = new BinaryProperty();
 			x2FProp.setKey(new BinaryToken(CMBFile.PROPERTY_x2F));
-			BinaryFloat f1 = new BinaryFloat(chassis.getX2C());
+			BinaryFloat f1 = new BinaryFloat(chassis.getX2F());
 			x2FProp.setValues(List.of(f1));
 			obj.addProperty(x2FProp);
 		}
