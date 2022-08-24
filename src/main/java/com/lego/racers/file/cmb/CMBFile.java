@@ -34,17 +34,25 @@ public class CMBFile{
 	public static final byte PROPERTY_x31 = 0x31;
 	public static final byte PROPERTY_x32 = 0x32;
 	public static final byte PROPERTY_x33 = 0x33;
-	public static final byte PROPERTY_x34 = 0x34;
-	public static final byte PROPERTY_x35 = 0x35;
-	public static final byte PROPERTY_x36 = 0x36;
-	public static final byte PROPERTY_x37 = 0x37;
-	public static final byte PROPERTY_x38 = 0x38;
+	public static final byte PROPERTY_MATERIALS = 0x34;
+	public static final byte PROPERTY_TEXTURES = 0x35;
+	public static final byte PROPERTY__GDB = 0x36;
+	public static final byte PROPERTY_SKELETONS = 0x37;
+	public static final byte PROPERTY_ANIMATIONS = 0x38;
 	public static final byte PROPERTY_x39 = 0x39;
 	public static final byte PROPERTY_x3A = 0x3A;
 	public static final byte PROPERTY_x3B = 0x3B;
 	public static final byte PROPERTY_x3C = 0x3C;
 
 	private ChassisList chassisList;
+
+	public ChassisList getChassisList(){
+		return this.chassisList;
+	}
+
+	public void setChassisList(ChassisList chassisList){
+		this.chassisList = chassisList;
+	}
 
 	public byte[] toBytes(){
 		BinaryFile bin = new BinaryFile();
@@ -201,38 +209,38 @@ public class CMBFile{
 	}
 
 	private void toBytesWheels(Wheels wheels,BinaryObject obj){
-		if(wheels.getX34()!=null){
+		if(wheels.getMaterials()!=null){
 			BinaryProperty x34Prop = new BinaryProperty();
-			x34Prop.setKey(new BinaryToken(CMBFile.PROPERTY_x34));
-			BinaryString string = new BinaryString(wheels.getX34());
+			x34Prop.setKey(new BinaryToken(CMBFile.PROPERTY_MATERIALS));
+			BinaryString string = new BinaryString(wheels.getMaterials());
 			x34Prop.setValues(List.of(string));
 			obj.addProperty(x34Prop);
 		}
-		if(wheels.getX35()!=null){
+		if(wheels.getTextures()!=null){
 			BinaryProperty x35Prop = new BinaryProperty();
-			x35Prop.setKey(new BinaryToken(CMBFile.PROPERTY_x35));
-			BinaryString string = new BinaryString(wheels.getX35());
+			x35Prop.setKey(new BinaryToken(CMBFile.PROPERTY_TEXTURES));
+			BinaryString string = new BinaryString(wheels.getTextures());
 			x35Prop.setValues(List.of(string));
 			obj.addProperty(x35Prop);
 		}
-		if(wheels.getX36()!=null){
+		if(wheels.get_GDB()!=null){
 			BinaryProperty x36Prop = new BinaryProperty();
-			x36Prop.setKey(new BinaryToken(CMBFile.PROPERTY_x36));
-			BinaryString string = new BinaryString(wheels.getX36());
+			x36Prop.setKey(new BinaryToken(CMBFile.PROPERTY__GDB));
+			BinaryString string = new BinaryString(wheels.get_GDB());
 			x36Prop.setValues(List.of(string));
 			obj.addProperty(x36Prop);
 		}
-		if(wheels.getX37()!=null){
+		if(wheels.getSkeletons()!=null){
 			BinaryProperty x37Prop = new BinaryProperty();
-			x37Prop.setKey(new BinaryToken(CMBFile.PROPERTY_x37));
-			BinaryString string = new BinaryString(wheels.getX37());
+			x37Prop.setKey(new BinaryToken(CMBFile.PROPERTY_SKELETONS));
+			BinaryString string = new BinaryString(wheels.getSkeletons());
 			x37Prop.setValues(List.of(string));
 			obj.addProperty(x37Prop);
 		}
-		if(wheels.getX38()!=null){
+		if(wheels.getAnimations()!=null){
 			BinaryProperty x38Prop = new BinaryProperty();
-			x38Prop.setKey(new BinaryToken(CMBFile.PROPERTY_x38));
-			BinaryString string = new BinaryString(wheels.getX38());
+			x38Prop.setKey(new BinaryToken(CMBFile.PROPERTY_ANIMATIONS));
+			BinaryString string = new BinaryString(wheels.getAnimations());
 			x38Prop.setValues(List.of(string));
 			obj.addProperty(x38Prop);
 		}
@@ -381,29 +389,29 @@ public class CMBFile{
 	private static void fromWheels(Chassis chassis,BinaryObject obj){
 		Wheels wheels = new Wheels();
 		for(BinaryProperty prop : obj.getProperties()){
-			if(prop.getKey().getToken()==CMBFile.PROPERTY_x34){
+			if(prop.getKey().getToken()==CMBFile.PROPERTY_MATERIALS){
 				BinaryString string = (BinaryString) prop.getValues().get(0);
-				wheels.setX34(string.getString());
+				wheels.setMaterials(string.getString());
 				continue;
 			}
-			if(prop.getKey().getToken()==CMBFile.PROPERTY_x35){
+			if(prop.getKey().getToken()==CMBFile.PROPERTY_TEXTURES){
 				BinaryString string = (BinaryString) prop.getValues().get(0);
-				wheels.setX35(string.getString());
+				wheels.setTextures(string.getString());
 				continue;
 			}
-			if(prop.getKey().getToken()==CMBFile.PROPERTY_x36){
+			if(prop.getKey().getToken()==CMBFile.PROPERTY__GDB){
 				BinaryString string = (BinaryString) prop.getValues().get(0);
-				wheels.setX36(string.getString());
+				wheels.set_GDB(string.getString());
 				continue;
 			}
-			if(prop.getKey().getToken()==CMBFile.PROPERTY_x37){
+			if(prop.getKey().getToken()==CMBFile.PROPERTY_SKELETONS){
 				BinaryString string = (BinaryString) prop.getValues().get(0);
-				wheels.setX37(string.getString());
+				wheels.setSkeletons(string.getString());
 				continue;
 			}
-			if(prop.getKey().getToken()==CMBFile.PROPERTY_x38){
+			if(prop.getKey().getToken()==CMBFile.PROPERTY_ANIMATIONS){
 				BinaryString string = (BinaryString) prop.getValues().get(0);
-				wheels.setX38(string.getString());
+				wheels.setAnimations(string.getString());
 				continue;
 			}
 			throw new RuntimeException("Unknown property '"+prop.getKey()+"'.");
