@@ -31,6 +31,11 @@ public class BVBFile{
 	private Positions positions;
 	private _Unknowns142 _unknowns142;
 
+	public byte[] toBytes(){
+		//TODO
+		return new byte[0];
+	}
+
 	public static BVBFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);
 		BVBFile bvb = new BVBFile();

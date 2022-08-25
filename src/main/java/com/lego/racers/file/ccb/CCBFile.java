@@ -2,7 +2,12 @@ package com.lego.racers.file.ccb;
 
 import com.lego.racers.binary.BinaryFile;
 
-public class CCBFile {
+public class CCBFile{
+
+	public byte[] toBytes(){
+		//TODO
+		return new byte[0];
+	}
 
 	public static CCBFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);

@@ -17,7 +17,7 @@ public class Chassis{
 	private X31 x31;
 	private Integer x32;
 	private Integer x33;
-	private String x39;
+	private String bricks;
 	private Integer x3A;
 	private Integer x3B;
 	private Integer x3C;
@@ -110,12 +110,12 @@ public class Chassis{
 		this.x33 = x33;
 	}
 
-	public String getX39(){
-		return this.x39;
+	public String getBricks(){
+		return this.bricks;
 	}
 
-	public void setX39(String x39){
-		this.x39 = x39;
+	public void setBricks(String bricks){
+		this.bricks = bricks;
 	}
 
 	public Integer getX3A(){
@@ -146,6 +146,7 @@ public class Chassis{
 	public String toString() {
 		return "Chassis{" +
 				"wheels=" + wheels +
+				", x2A=" + Arrays.toString(x2A) +
 				", seat=" + seat +
 				", x2C=" + x2C +
 				", x2D=" + Arrays.toString(x2D) +
@@ -155,7 +156,7 @@ public class Chassis{
 				", x31=" + x31 +
 				", x32=" + x32 +
 				", x33=" + x33 +
-				", x39='" + x39 + '\'' +
+				", bricks='" + bricks + '\'' +
 				", x3A=" + x3A +
 				", x3B=" + x3B +
 				", x3C=" + x3C +

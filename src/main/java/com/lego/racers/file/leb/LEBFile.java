@@ -149,6 +149,11 @@ public class LEBFile{
 		this.chassis = chassis;
 	}
 
+	public byte[] toBytes(){
+		//TODO
+		return new byte[0];
+	}
+
 	public static LEBFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);
 		LEBFile leb = new LEBFile();

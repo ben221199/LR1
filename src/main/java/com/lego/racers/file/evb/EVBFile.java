@@ -2,7 +2,12 @@ package com.lego.racers.file.evb;
 
 import com.lego.racers.binary.BinaryFile;
 
-public class EVBFile {
+public class EVBFile{
+
+	public byte[] toBytes(){
+		//TODO
+		return new byte[0];
+	}
 
 	public static EVBFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);

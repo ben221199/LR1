@@ -35,6 +35,11 @@ public class GHBFile{
 		this.ghost = ghost;
 	}
 
+	public byte[] toBytes(){
+		//TODO
+		return new byte[0];
+	}
+
 	public static GHBFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);
 		GHBFile ghb = new GHBFile();

@@ -2,7 +2,12 @@ package com.lego.racers.file.tmb;
 
 import com.lego.racers.binary.BinaryFile;
 
-public class TMBFile {
+public class TMBFile{
+
+	public byte[] toBytes(){
+		//TODO
+		return new byte[0];
+	}
 
 	public static TMBFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);

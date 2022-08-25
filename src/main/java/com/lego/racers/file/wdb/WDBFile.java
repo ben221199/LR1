@@ -2,7 +2,12 @@ package com.lego.racers.file.wdb;
 
 import com.lego.racers.binary.BinaryFile;
 
-public class WDBFile {
+public class WDBFile{
+
+	public byte[] toBytes(){
+		//TODO
+		return new byte[0];
+	}
 
 	public static WDBFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);

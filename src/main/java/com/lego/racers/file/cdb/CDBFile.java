@@ -61,6 +61,11 @@ public class CDBFile{
 	private Cutscenes cutscenes;
 	private SceneFiles sceneFiles;
 
+	public byte[] toBytes(){
+		//TODO
+		return new byte[0];
+	}
+
 	public static CDBFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);
 		CDBFile cdb = new CDBFile();

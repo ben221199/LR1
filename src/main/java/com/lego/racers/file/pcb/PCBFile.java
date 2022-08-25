@@ -2,7 +2,12 @@ package com.lego.racers.file.pcb;
 
 import com.lego.racers.binary.BinaryFile;
 
-public class PCBFile {
+public class PCBFile{
+
+	public byte[] toBytes(){
+		//TODO
+		return new byte[0];
+	}
 
 	public static PCBFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);

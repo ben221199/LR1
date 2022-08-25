@@ -25,6 +25,11 @@ public class TRBFile{
 
 	private Triggers triggers;
 
+	public byte[] toBytes(){
+		//TODO
+		return new byte[0];
+	}
+
 	public static TRBFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);
 		TRBFile trb = new TRBFile();

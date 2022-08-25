@@ -4,6 +4,11 @@ import com.lego.racers.binary.BinaryFile;
 
 public class MSBFile{
 
+	public byte[] toBytes(){
+		//TODO
+		return new byte[0];
+	}
+
 	public static MSBFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);
 		MSBFile adb = new MSBFile();

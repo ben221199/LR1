@@ -49,6 +49,11 @@ public class HZBFile{
 
 	private Hazards hazards;
 
+	public byte[] toBytes(){
+		//TODO
+		return new byte[0];
+	}
+
 	public static HZBFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);
 		HZBFile hzb = new HZBFile();

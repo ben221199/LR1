@@ -39,7 +39,7 @@ public class CMBFile{
 	public static final byte PROPERTY__GDB = 0x36;
 	public static final byte PROPERTY_SKELETONS = 0x37;
 	public static final byte PROPERTY_ANIMATIONS = 0x38;
-	public static final byte PROPERTY_x39 = 0x39;
+	public static final byte PROPERTY_BRICKS = 0x39;
 	public static final byte PROPERTY_x3A = 0x3A;
 	public static final byte PROPERTY_x3B = 0x3B;
 	public static final byte PROPERTY_x3C = 0x3C;
@@ -178,10 +178,10 @@ public class CMBFile{
 			x33Prop.setValues(List.of(i));
 			obj.addProperty(x33Prop);
 		}
-		if(chassis.getX39()!=null){
+		if(chassis.getBricks()!=null){
 			BinaryProperty x39Prop = new BinaryProperty();
-			x39Prop.setKey(new BinaryToken(CMBFile.PROPERTY_x39));
-			BinaryString i = new BinaryString(chassis.getX39());
+			x39Prop.setKey(new BinaryToken(CMBFile.PROPERTY_BRICKS));
+			BinaryString i = new BinaryString(chassis.getBricks());
 			x39Prop.setValues(List.of(i));
 			obj.addProperty(x39Prop);
 		}
@@ -361,9 +361,9 @@ public class CMBFile{
 				chassis.setX33(integer.getIntegerSigned());
 				continue;
 			}
-			if(prop.getKey().getToken()==CMBFile.PROPERTY_x39){//Only GAMEDATA
+			if(prop.getKey().getToken()==CMBFile.PROPERTY_BRICKS){//Only GAMEDATA
 				BinaryString string = (BinaryString) prop.getValues().get(0);
-				chassis.setX39(string.getString());
+				chassis.setBricks(string.getString());
 				continue;
 			}
 			if(prop.getKey().getToken()==CMBFile.PROPERTY_x3A){//Only GAMEDATA

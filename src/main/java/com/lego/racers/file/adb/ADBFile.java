@@ -2,7 +2,12 @@ package com.lego.racers.file.adb;
 
 import com.lego.racers.binary.BinaryFile;
 
-public class ADBFile {
+public class ADBFile{
+
+	public byte[] toBytes(){
+		//TODO
+		return new byte[0];
+	}
 
 	public static ADBFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);

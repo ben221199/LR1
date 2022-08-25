@@ -31,6 +31,11 @@ public class BDBFile{
 	private Regions regions;
 	private VisibleRegions visibleRegions;
 
+	public byte[] toBytes(){
+		//TODO
+		return new byte[0];
+	}
+
 	public static BDBFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);
 		BDBFile bdb = new BDBFile();

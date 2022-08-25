@@ -2,7 +2,12 @@ package com.lego.racers.file.rab;
 
 import com.lego.racers.binary.BinaryFile;
 
-public class RABFile {
+public class RABFile{
+
+	public byte[] toBytes(){
+		//TODO
+		return new byte[0];
+	}
 
 	public static RABFile from(byte[] bytes){
 		BinaryFile bin = BinaryFile.from(bytes);
