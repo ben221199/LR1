@@ -48,7 +48,7 @@ This library supports the following file types:
  - `RAB`
  - `RCB`
  - `RRB` - (?) <ins>**R**</ins>ace <ins>**R**</ins>obot <ins>**B**</ins>inary
- - `SDB`
+ - `SDB` - <ins>**S**</ins>keleton <ins>**D**</ins>efinition <ins>**B**</ins>inary
  - `SKB` - <ins>**S**</ins><ins>**k**</ins>y <ins>**B**</ins>inary
  - `SPB` - <ins>**S**</ins>tart<ins>**p**</ins>osition <ins>**B**</ins>inary
  - `TDB` - <ins>**T**</ins>exture <ins>**D**</ins>efinition <ins>**B**</ins>inary
