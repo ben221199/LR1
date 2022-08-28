@@ -19,28 +19,28 @@ _TODO_
 This library supports the following file types:
 
 **LEGO Binary**
- - `ADB` - <ins>**A**</ins>nimation <ins>**D**</ins>ata <ins>**B**</ins>inary
- - `BDB` - (?) <ins>**B**</ins>ox <ins>**D**</ins>ata <ins>**B**</ins>inary
+ - `ADB` - <ins>**A**</ins>nimation <ins>**D**</ins>efinition <ins>**B**</ins>inary
+ - `BDB` - (?) <ins>**B**</ins>ox <ins>**D**</ins>efinition <ins>**B**</ins>inary
  - `BVB` - <ins>**B**</ins>ounding <ins>**V**</ins>olumes <ins>**B**</ins>inary
  - `CCB`
- - `CDB` - <ins>**C**</ins>utscene <ins>**D**</ins>ata <ins>**B**</ins>inary
+ - `CDB` - <ins>**C**</ins>utscene <ins>**D**</ins>efinition <ins>**B**</ins>inary
  - `CEB` - <ins>**C**</ins>utscene <ins>**E**</ins>vent <ins>**B**</ins>inary
- - `CMB` - <ins>**C**</ins>assis <ins>**M**</ins>odel <ins>**B**</ins>inary
+ - `CMB` - <ins>**C**</ins>hassis <ins>**M**</ins>odel <ins>**B**</ins>inary
  - `CPB` - <ins>**C**</ins>heck<ins>**p**</ins>oint <ins>**B**</ins>inary
  - `CRB`
- - `DDB` - <ins>**D**</ins>river <ins>**D**</ins>ata <ins>**B**</ins>inary
+ - `DDB` - <ins>**D**</ins>river <ins>**D**</ins>efinition <ins>**B**</ins>inary
  - `EMB` - <ins>**E**</ins><ins>**m**</ins>itter <ins>**B**</ins>inary
  - `EVB` - <ins>**E**</ins><ins>**v**</ins>ent <ins>**B**</ins>inary
- - `FDB` - <ins>**F**</ins>ont <ins>**D**</ins>ata <ins>**B**</ins>inary
+ - `FDB` - <ins>**F**</ins>ont <ins>**D**</ins>efinition <ins>**B**</ins>inary
  - `GCB`
- - `GDB` - <ins>**G**</ins>raph <ins>**D**</ins>ata <ins>**B**</ins>inary
+ - `GDB` - <ins>**G**</ins>raph <ins>**D**</ins>efinition <ins>**B**</ins>inary
  - `GHB` - <ins>**G**</ins><ins>**h**</ins>ost <ins>**B**</ins>inary
  - `HZB` - <ins>**H**</ins>a<ins>**z**</ins>ards <ins>**B**</ins>inary
- - `IDB` - <ins>**I**</ins>mage <ins>**D**</ins>ata <ins>**B**</ins>inary
+ - `IDB` - <ins>**I**</ins>mage <ins>**D**</ins>efinition <ins>**B**</ins>inary
  - `LEB` - <ins>**L**</ins><ins>**E**</ins>GO <ins>**B**</ins>inary
  - `LSB` - <ins>**L**</ins>oading <ins>**S**</ins>creen <ins>**B**</ins>inary
  - `MAB` - <ins>**M**</ins>aterial <ins>**A**</ins>nimations <ins>**B**</ins>inary
- - `MDB` - <ins>**M**</ins>aterial <ins>**D**</ins>ata <ins>**B**</ins>inary
+ - `MDB` - <ins>**M**</ins>aterial <ins>**D**</ins>efinition <ins>**B**</ins>inary
  - `MIB`
  - `MSB`
  - `PCB`
@@ -51,12 +51,12 @@ This library supports the following file types:
  - `SDB`
  - `SKB` - <ins>**S**</ins><ins>**k**</ins>y <ins>**B**</ins>inary
  - `SPB` - <ins>**S**</ins>tart<ins>**p**</ins>osition <ins>**B**</ins>inary
- - `TDB` - <ins>**T**</ins>exture <ins>**D**</ins>ata <ins>**B**</ins>inary
+ - `TDB` - <ins>**T**</ins>exture <ins>**D**</ins>efinition <ins>**B**</ins>inary
  - `TGB` - <ins>**T**</ins>ri<ins>**g**</ins>ger <ins>**B**</ins>inary
  - `TIB` - <ins>**T**</ins><ins>**i**</ins>mer <ins>**B**</ins>inary
  - `TMB`
  - `TRB`
- - `WDB`
+ - `WDB` - <ins>**W**</ins>orld <ins>**D**</ins>efinition <ins>**B**</ins>inary
  
 **Other LEGO Files**
  - `JAM` - *Unknown meaning*
