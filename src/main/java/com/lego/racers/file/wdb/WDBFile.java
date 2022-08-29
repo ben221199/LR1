@@ -13,6 +13,7 @@ import com.lego.racers.binary.object.Position;
 import com.lego.racers.file.cdb.object.Color;
 import com.lego.racers.file.cdb.object.Direction;
 import com.lego.racers.file.cdb.object.Rotation;
+import com.lego.racers.file.jam.JAMNodeFile;
 import com.lego.racers.file.wdb.object.AmbientLight;
 import com.lego.racers.file.wdb.object.AmbientLights;
 import com.lego.racers.file.wdb.object.Animations;
@@ -41,7 +42,7 @@ import com.lego.racers.file.wdb.object.Textures;
 import com.lego.racers.file.wdb.object.X3E;
 import com.lego.racers.file.wdb.object.X3Es;
 
-public class WDBFile{
+public class WDBFile extends JAMNodeFile{
 
 	public static final byte PROPERTY_TEXTURE = 0x27;
 	public static final byte PROPERTY_MATERIAL = 0x28;

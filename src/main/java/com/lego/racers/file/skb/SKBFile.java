@@ -9,6 +9,7 @@ import com.lego.racers.binary.BinaryString;
 import com.lego.racers.binary.BinaryStruct;
 import com.lego.racers.binary.BinaryStructInstance;
 import com.lego.racers.binary.BinaryToken;
+import com.lego.racers.file.jam.JAMNodeFile;
 import com.lego.racers.file.skb.object.Color;
 import com.lego.racers.file.skb.object.Sky;
 import com.lego.racers.file.skb.object.SkyGradient;
@@ -16,7 +17,7 @@ import com.lego.racers.file.skb.object.SkyGradients;
 
 import java.util.Map;
 
-public class SKBFile{
+public class SKBFile extends JAMNodeFile{
 
 	public static final byte PROPERTY_SKY = 0x2C;			//Block array only
 	public static final byte PROPERTY_SKYGRADIENT = 0x27;	//Block array too

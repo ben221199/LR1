@@ -1,8 +1,9 @@
 package com.lego.racers.file.tmb;
 
 import com.lego.racers.binary.BinaryFile;
+import com.lego.racers.file.jam.JAMNodeFile;
 
-public class TMBFile{
+public class TMBFile extends JAMNodeFile{
 
 	public byte[] toBytes(){
 		//TODO

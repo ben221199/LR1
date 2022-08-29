@@ -17,8 +17,9 @@ import com.lego.racers.file.bdb.object.Tree;
 import com.lego.racers.file.bdb.object.TreeLeaf;
 import com.lego.racers.file.bdb.object.TreeParent;
 import com.lego.racers.file.bdb.object.VisibleRegions;
+import com.lego.racers.file.jam.JAMNodeFile;
 
-public class BDBFile{
+public class BDBFile extends JAMNodeFile{
 
 	public static final byte BLOCK_TREE_PARENT = 0x28;
 	public static final byte BLOCK_TREE_LEAF = 0x29;

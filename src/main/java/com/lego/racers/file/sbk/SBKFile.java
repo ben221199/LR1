@@ -1,9 +1,11 @@
 package com.lego.racers.file.sbk;
 
+import com.lego.racers.file.jam.JAMNodeFile;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class SBKFile{
+public class SBKFile extends JAMNodeFile{
 
 	private List<String> lines = new ArrayList<>();
 

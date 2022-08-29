@@ -10,12 +10,13 @@ import com.lego.racers.binary.BinaryString;
 import com.lego.racers.binary.BinaryStruct;
 import com.lego.racers.binary.BinaryToken;
 import com.lego.racers.binary.object.Position;
+import com.lego.racers.file.jam.JAMNodeFile;
 import com.lego.racers.file.trb.object.Trigger;
 import com.lego.racers.file.trb.object.Triggers;
 
 import java.util.List;
 
-public class TRBFile{
+public class TRBFile extends JAMNodeFile{
 
 	public static final byte PROPERTY_TRIGGER = 0x27;
 	public static final byte PROPERTY_x29 = 0x29;

@@ -25,8 +25,9 @@ import com.lego.racers.file.ceb.object._Unknowns2;
 import com.lego.racers.file.ceb.object._Unknowns3;
 import com.lego.racers.file.ceb.object._Unknowns4;
 import com.lego.racers.file.ceb.object._Unknowns5;
+import com.lego.racers.file.jam.JAMNodeFile;
 
-public class CEBFile{
+public class CEBFile extends JAMNodeFile{
 
 	public static final byte BLOCK__UNKNOWN3 = 0x2B;
 	public static final byte BLOCK_SOUND_EFFECT = 0x2F;

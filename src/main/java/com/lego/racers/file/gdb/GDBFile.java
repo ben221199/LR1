@@ -25,10 +25,11 @@ import com.lego.racers.file.gdb.object.SkeletonIndicesMeta;
 import com.lego.racers.file.gdb.object.TMPColoredVertex5Floats;
 import com.lego.racers.file.gdb.object.TMPColoredVertexInteger;
 import com.lego.racers.file.gdb.object.VerticesRangeIndicesMeta;
+import com.lego.racers.file.jam.JAMNodeFile;
 
 import java.util.List;
 
-public class GDBFile{
+public class GDBFile extends JAMNodeFile{
 
 	//39, 41, 42, 45, 46, [51>]
 	public static final byte BLOCK_MATERIALS = 0x27;

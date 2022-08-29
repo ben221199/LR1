@@ -11,6 +11,7 @@ import com.lego.racers.binary.BinaryString;
 import com.lego.racers.binary.BinaryStruct;
 import com.lego.racers.binary.BinaryToken;
 import com.lego.racers.binary.object.ColorARGB;
+import com.lego.racers.file.jam.JAMNodeFile;
 import com.lego.racers.file.mib.object.Arrow;
 import com.lego.racers.file.mib.object.Arrows;
 import com.lego.racers.file.mib.object.Button;
@@ -45,7 +46,7 @@ import com.lego.racers.file.mib.object.X2B;
 import java.util.List;
 import java.util.Map;
 
-public class MIBFile{
+public class MIBFile extends JAMNodeFile{
 
 	public static final byte PROPERTY_AMOUNT = 0x27;
 	public static final byte PROPERTY_COLORINGS = 0x37;

@@ -9,10 +9,11 @@ import com.lego.racers.binary.BinaryStruct;
 import com.lego.racers.binary.BinaryStructInstance;
 import com.lego.racers.binary.BinaryToken;
 import com.lego.racers.binary.object.Position;
+import com.lego.racers.file.jam.JAMNodeFile;
 import com.lego.racers.file.tgb.object.Trigger;
 import com.lego.racers.file.tgb.object.Triggers;
 
-public class TGBFile{
+public class TGBFile extends JAMNodeFile{
 
 	public static final byte BLOCK_TRIGGER = 0x27;
 

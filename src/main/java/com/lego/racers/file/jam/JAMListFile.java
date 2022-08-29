@@ -3,7 +3,7 @@ package com.lego.racers.file.jam;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-public class JAMListFile{
+public class JAMListFile extends JAMNodeFile{
 
 	private String name;
 	private int offset;

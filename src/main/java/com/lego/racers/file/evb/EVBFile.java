@@ -1,8 +1,9 @@
 package com.lego.racers.file.evb;
 
 import com.lego.racers.binary.BinaryFile;
+import com.lego.racers.file.jam.JAMNodeFile;
 
-public class EVBFile{
+public class EVBFile extends JAMNodeFile{
 
 	public byte[] toBytes(){
 		//TODO

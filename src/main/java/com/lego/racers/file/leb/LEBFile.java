@@ -8,6 +8,7 @@ import com.lego.racers.binary.BinaryString;
 import com.lego.racers.binary.BinaryToken;
 import com.lego.racers.binary.object.Position;
 import com.lego.racers.file.bvb.object.Positions;
+import com.lego.racers.file.jam.JAMNodeFile;
 import com.lego.racers.file.leb.object.BrickColors;
 import com.lego.racers.file.leb.object.CarSets;
 import com.lego.racers.file.leb.object.ColorNames;
@@ -35,7 +36,7 @@ import com.lego.racers.file.leb.object.Triangles;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LEBFile{
+public class LEBFile extends JAMNodeFile{
 
 	public static final byte PROPERTY_PARTS = 0x27;
 	public static final byte PROPERTY_TRIANGLES = 0x28;

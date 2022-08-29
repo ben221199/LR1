@@ -9,10 +9,11 @@ import com.lego.racers.binary.BinaryToken;
 import com.lego.racers.file.ddb.object.Driver;
 import com.lego.racers.file.ddb.object.Drivers;
 import com.lego.racers.file.ddb.object.TMPDriverObject;
+import com.lego.racers.file.jam.JAMNodeFile;
 
 import java.util.Map;
 
-public class DDBFile{
+public class DDBFile extends JAMNodeFile{
 
 	public static final byte BLOCK_DRIVERS = 0x27;
 

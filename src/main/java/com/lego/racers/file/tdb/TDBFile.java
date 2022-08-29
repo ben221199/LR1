@@ -8,13 +8,14 @@ import com.lego.racers.binary.BinaryString;
 import com.lego.racers.binary.BinaryStruct;
 import com.lego.racers.binary.BinaryStructInstance;
 import com.lego.racers.binary.BinaryToken;
+import com.lego.racers.file.jam.JAMNodeFile;
 import com.lego.racers.file.tdb.object.Texture;
 import com.lego.racers.file.tdb.object.Textures;
 import com.lego.racers.binary.object.TransparentColor;
 
 import java.util.Map;
 
-public class TDBFile{
+public class TDBFile extends JAMNodeFile{
 
 	public static final byte BLOCK_TEXTURES = 0x27;
 

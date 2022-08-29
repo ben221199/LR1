@@ -6,13 +6,14 @@ import com.lego.racers.binary.BinaryIntegerSigned;
 import com.lego.racers.binary.BinaryObject;
 import com.lego.racers.binary.BinaryString;
 import com.lego.racers.binary.BinaryToken;
+import com.lego.racers.file.jam.JAMNodeFile;
 import com.lego.racers.file.mab.object.Animation;
 import com.lego.racers.file.mab.object.Animations;
 import com.lego.racers.file.mab.object.Frames;
 
 import java.util.Map;
 
-public class MABFile{
+public class MABFile extends JAMNodeFile{
 
 	public static final byte BLOCK_ANIMATION = 0x28;
 

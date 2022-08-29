@@ -21,12 +21,13 @@ import com.lego.racers.file.adb.object.Rotation;
 import com.lego.racers.file.adb.object.Rotations;
 import com.lego.racers.file.adb.object.Sequence;
 import com.lego.racers.file.adb.object.Sequences;
+import com.lego.racers.file.jam.JAMNodeFile;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class ADBFile{
+public class ADBFile extends JAMNodeFile{
 
 	public static final byte PROPERTY_DATA = 0x27;
 	public static final byte PROPERTY_OFFSET = 0x28;

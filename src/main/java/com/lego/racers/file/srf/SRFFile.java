@@ -1,12 +1,14 @@
 package com.lego.racers.file.srf;
 
+import com.lego.racers.file.jam.JAMNodeFile;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SRFFile{
+public class SRFFile extends JAMNodeFile{
 
 	private List<String> strings = new ArrayList<>();
 

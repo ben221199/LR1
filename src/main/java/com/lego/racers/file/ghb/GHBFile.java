@@ -15,8 +15,9 @@ import com.lego.racers.file.ghb.object.Ghost;
 import com.lego.racers.file.ghb.object.Node;
 import com.lego.racers.file.ghb.object.Nodes;
 import com.lego.racers.file.ghb.object.Orientation;
+import com.lego.racers.file.jam.JAMNodeFile;
 
-public class GHBFile{
+public class GHBFile extends JAMNodeFile{
 
 	public static final byte PROPERTY_NODES = 0x27;
 	public static final byte PROPERTY_START_POSITION = 0x28;

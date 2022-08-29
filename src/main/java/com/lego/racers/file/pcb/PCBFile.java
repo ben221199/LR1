@@ -1,8 +1,9 @@
 package com.lego.racers.file.pcb;
 
 import com.lego.racers.binary.BinaryFile;
+import com.lego.racers.file.jam.JAMNodeFile;
 
-public class PCBFile{
+public class PCBFile extends JAMNodeFile{
 
 	public byte[] toBytes(){
 		//TODO

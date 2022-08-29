@@ -8,10 +8,11 @@ import com.lego.racers.binary.BinaryList;
 import com.lego.racers.binary.BinaryObject;
 import com.lego.racers.binary.BinaryString;
 import com.lego.racers.binary.BinaryToken;
+import com.lego.racers.file.jam.JAMNodeFile;
 import com.lego.racers.file.lsb.object.Icon;
 import com.lego.racers.file.lsb.object.LoadingScreen;
 
-public class LSBFile{
+public class LSBFile extends JAMNodeFile{
 
 	public static final byte PROPERTY_LOADING_SCREEN = 0x27;
 	public static final byte PROPERTY_MAP_IMAGE = 0x28;

@@ -1,8 +1,9 @@
 package com.lego.racers.file.ccb;
 
 import com.lego.racers.binary.BinaryFile;
+import com.lego.racers.file.jam.JAMNodeFile;
 
-public class CCBFile{
+public class CCBFile extends JAMNodeFile{
 
 	public byte[] toBytes(){
 		//TODO

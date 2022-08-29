@@ -30,11 +30,12 @@ import com.lego.racers.file.hzb.object.X32;
 import com.lego.racers.file.hzb.object.PositionAndInteger;
 import com.lego.racers.file.hzb.object.X3F;
 import com.lego.racers.file.hzb.object.X49;
+import com.lego.racers.file.jam.JAMNodeFile;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class HZBFile{
+public class HZBFile extends JAMNodeFile{
 
 	public static final byte PROPERTY_HAZARDS = 0x27;
 

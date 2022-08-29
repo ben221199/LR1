@@ -12,12 +12,13 @@ import com.lego.racers.file.emb.object.Emitter;
 import com.lego.racers.file.emb.object.Emitters;
 import com.lego.racers.file.emb.object.Gravity;
 import com.lego.racers.file.emb.object.TMPEmitterObject;
+import com.lego.racers.file.jam.JAMNodeFile;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class EMBFile{
+public class EMBFile extends JAMNodeFile{
 
 	public static final byte BLOCK_EMITTERS = 0x27;
 

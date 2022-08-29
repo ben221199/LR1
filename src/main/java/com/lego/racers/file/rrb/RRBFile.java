@@ -13,11 +13,12 @@ import com.lego.racers.binary.BinaryStruct;
 import com.lego.racers.binary.BinaryStructInstance;
 import com.lego.racers.binary.BinaryToken;
 import com.lego.racers.binary.object.Position;
+import com.lego.racers.file.jam.JAMNodeFile;
 import com.lego.racers.file.rrb.object.Node;
 import com.lego.racers.file.rrb.object.Nodes;
 import com.lego.racers.file.rrb.object.Orientation;
 
-public class RRBFile{
+public class RRBFile extends JAMNodeFile{
 
 	public static final byte PROPERTY_NODES = 0x27;
 	public static final byte PROPERTY_START_ORIENTATION = 0x28;

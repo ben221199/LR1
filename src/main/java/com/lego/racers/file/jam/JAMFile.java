@@ -6,7 +6,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Arrays;
 
-public class JAMFile{
+public class JAMFile extends JAMNodeFile{
 
 	private byte[] magic;
 	private JAMNode root;

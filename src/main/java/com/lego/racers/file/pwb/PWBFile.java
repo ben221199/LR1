@@ -8,6 +8,7 @@ import com.lego.racers.binary.BinaryObject;
 import com.lego.racers.binary.BinaryStruct;
 import com.lego.racers.binary.BinaryStructInstance;
 import com.lego.racers.binary.BinaryToken;
+import com.lego.racers.file.jam.JAMNodeFile;
 import com.lego.racers.file.pwb.object.ColoredPowerup;
 import com.lego.racers.file.pwb.object.ColoredPowerups;
 import com.lego.racers.binary.object.Position;
@@ -15,7 +16,7 @@ import com.lego.racers.file.pwb.object.Powerup;
 import com.lego.racers.file.pwb.object.WhitePowerup;
 import com.lego.racers.file.pwb.object.WhitePowerups;
 
-public class PWBFile{
+public class PWBFile extends JAMNodeFile{
 
 	public static final byte BLOCK_POWERUPS_COLORED = 0x27;
 	public static final byte BLOCK_POWERUPS_WHITE = 0x2F;

@@ -1,8 +1,9 @@
 package com.lego.racers.file.msb;
 
 import com.lego.racers.binary.BinaryFile;
+import com.lego.racers.file.jam.JAMNodeFile;
 
-public class MSBFile{
+public class MSBFile extends JAMNodeFile{
 
 	public byte[] toBytes(){
 		//TODO

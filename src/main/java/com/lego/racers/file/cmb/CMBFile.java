@@ -16,11 +16,12 @@ import com.lego.racers.file.cmb.object.ChassisList;
 import com.lego.racers.file.cmb.object.Wheels;
 import com.lego.racers.file.cmb.object.X30;
 import com.lego.racers.file.cmb.object.X31;
+import com.lego.racers.file.jam.JAMNodeFile;
 
 import java.util.List;
 import java.util.Map;
 
-public class CMBFile{
+public class CMBFile extends JAMNodeFile{
 
 	public static final byte PROPERTY_CHASSIS = 0x27;
 	public static final byte PROPERTY_WHEELS = 0x28;

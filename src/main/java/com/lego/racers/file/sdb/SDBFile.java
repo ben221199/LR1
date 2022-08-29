@@ -10,6 +10,7 @@ import com.lego.racers.binary.BinaryString;
 import com.lego.racers.binary.BinaryStruct;
 import com.lego.racers.binary.BinaryToken;
 import com.lego.racers.binary.object.Position;
+import com.lego.racers.file.jam.JAMNodeFile;
 import com.lego.racers.file.sdb.object.Rotation;
 import com.lego.racers.file.sdb.object.Skeleton;
 import com.lego.racers.file.sdb.object.Skeletons;
@@ -17,7 +18,7 @@ import com.lego.racers.file.sdb.object.Skeletons;
 import java.util.List;
 import java.util.Map;
 
-public class SDBFile{
+public class SDBFile extends JAMNodeFile{
 
 	public static final byte PROPERTY_SKELETON = 0x27;
 	public static final byte PROPERTY_OFFSET = 0x28;

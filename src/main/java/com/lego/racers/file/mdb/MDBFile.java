@@ -8,6 +8,7 @@ import com.lego.racers.binary.BinaryString;
 import com.lego.racers.binary.BinaryStruct;
 import com.lego.racers.binary.BinaryStructInstance;
 import com.lego.racers.binary.BinaryToken;
+import com.lego.racers.file.jam.JAMNodeFile;
 import com.lego.racers.file.mdb.object.AmbientColor;
 import com.lego.racers.file.mdb.object.DiffuseColor;
 import com.lego.racers.file.mdb.object.Material;
@@ -15,7 +16,7 @@ import com.lego.racers.file.mdb.object.Materials;
 
 import java.util.Map;
 
-public class MDBFile{
+public class MDBFile extends JAMNodeFile{
 
 	public static final byte BLOCK_MATERIALS = 0x27;
 

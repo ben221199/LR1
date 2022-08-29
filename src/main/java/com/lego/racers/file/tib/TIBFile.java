@@ -5,11 +5,12 @@ import com.lego.racers.binary.BinaryFile;
 import com.lego.racers.binary.BinaryIntegerSigned;
 import com.lego.racers.binary.BinaryObject;
 import com.lego.racers.binary.BinaryToken;
+import com.lego.racers.file.jam.JAMNodeFile;
 import com.lego.racers.file.spb.SPBFile;
 import com.lego.racers.file.tib.object._Timer;
 import com.lego.racers.file.tib.object._Timers;
 
-public class TIBFile{
+public class TIBFile extends JAMNodeFile{
 
 	public static final byte BLOCK__TIMERS = 0x27;
 

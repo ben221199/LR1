@@ -153,12 +153,29 @@ public class JAMNode{
 		return this.files.put(name,content);
 	}
 
+	public JAMNodeFile getNodeFile(String name){
+		return JAMNodeFile.fromBytes(name,this.getFile(name));
+	}
+
+	public JAMNodeFile setNodeFile(String name,JAMNodeFile content){
+		this.setFile(name,content.toBytes());
+		return content;
+	}
+
 	public byte[] removeFile(String name){
 		return this.files.remove(name);
 	}
 
 	public Map<String,byte[]> getFiles(){
 		return this.files;
+	}
+
+	public Map<String,JAMNodeFile> getNodeFiles(){
+		Map<String,JAMNodeFile> map = new LinkedHashMap<>();
+		for(Map.Entry<String,byte[]> me : this.getFiles().entrySet()){
+			map.put(me.getKey(),JAMNodeFile.fromBytes(me.getKey(),me.getValue()));
+		}
+		return map;
 	}
 
 	@Override

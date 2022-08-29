@@ -26,8 +26,9 @@ import com.lego.racers.file.cdb.object.Rotation;
 import com.lego.racers.file.cdb.object.SceneFiles;
 import com.lego.racers.file.cdb.object._Unknown54;
 import com.lego.racers.file.cdb.object._Unknowns54;
+import com.lego.racers.file.jam.JAMNodeFile;
 
-public class CDBFile{
+public class CDBFile extends JAMNodeFile{
 
 	public static final byte BLOCK_CUTSCENE = 0x27;
 	public static final byte BLOCK_CAMERA = 0x29;

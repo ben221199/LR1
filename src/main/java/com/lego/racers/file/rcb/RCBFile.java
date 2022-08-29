@@ -1,8 +1,9 @@
 package com.lego.racers.file.rcb;
 
 import com.lego.racers.binary.BinaryFile;
+import com.lego.racers.file.jam.JAMNodeFile;
 
-public class RCBFile{
+public class RCBFile extends JAMNodeFile{
 
 	public byte[] toBytes(){
 		//TODO

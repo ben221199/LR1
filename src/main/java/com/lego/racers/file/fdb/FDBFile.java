@@ -10,12 +10,13 @@ import com.lego.racers.binary.BinaryToken;
 import com.lego.racers.binary.object.TransparentColor;
 import com.lego.racers.file.fdb.object.Font;
 import com.lego.racers.file.fdb.object.Fonts;
+import com.lego.racers.file.jam.JAMNodeFile;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class FDBFile{
+public class FDBFile extends JAMNodeFile{
 
 	public static final byte BLOCK_FONTS = 0x27;
 

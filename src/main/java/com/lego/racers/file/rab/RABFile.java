@@ -1,8 +1,9 @@
 package com.lego.racers.file.rab;
 
 import com.lego.racers.binary.BinaryFile;
+import com.lego.racers.file.jam.JAMNodeFile;
 
-public class RABFile{
+public class RABFile extends JAMNodeFile{
 
 	public byte[] toBytes(){
 		//TODO

@@ -12,8 +12,9 @@ import com.lego.racers.file.cpb.object.Checkpoints;
 import com.lego.racers.file.cpb.object.Direction;
 import com.lego.racers.file.cpb.object.Location;
 import com.lego.racers.file.cpb.object.Timing;
+import com.lego.racers.file.jam.JAMNodeFile;
 
-public class CPBFile{
+public class CPBFile extends JAMNodeFile{
 
 	public static final byte BLOCK_CHECKPOINTS = 0x27;
 

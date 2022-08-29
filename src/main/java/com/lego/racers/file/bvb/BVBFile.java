@@ -18,8 +18,9 @@ import com.lego.racers.file.bvb.object._Unknowns142;
 import com.lego.racers.file.bvb.object._Unknowns39;
 import com.lego.racers.file.bvb.object._Unknowns45;
 import com.lego.racers.file.bvb.object.Positions;
+import com.lego.racers.file.jam.JAMNodeFile;
 
-public class BVBFile{
+public class BVBFile extends JAMNodeFile{
 
 	public static final byte PROPERTY_39 = 0x27;
 	public static final byte PROPERTY_45 = 0x2D;

@@ -11,10 +11,11 @@ import com.lego.racers.binary.BinaryToken;
 import com.lego.racers.file.idb.object.Color;
 import com.lego.racers.file.idb.object.Image;
 import com.lego.racers.file.idb.object.Images;
+import com.lego.racers.file.jam.JAMNodeFile;
 
 import java.util.Map;
 
-public class IDBFile{
+public class IDBFile extends JAMNodeFile{
 
 	public static final byte BLOCK_IMAGE = 0x27;
 

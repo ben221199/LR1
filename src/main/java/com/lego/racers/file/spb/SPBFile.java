@@ -9,13 +9,14 @@ import com.lego.racers.binary.BinaryStruct;
 import com.lego.racers.binary.BinaryStructInstance;
 import com.lego.racers.binary.BinaryToken;
 import com.lego.racers.binary.object.Position;
+import com.lego.racers.file.jam.JAMNodeFile;
 import com.lego.racers.file.spb.object.Orientation;
 import com.lego.racers.file.spb.object.Startposition;
 import com.lego.racers.file.spb.object.Startpositions;
 
 import java.util.Map;
 
-public class SPBFile{
+public class SPBFile extends JAMNodeFile{
 
 	public static final byte BLOCK_STARTPOSITIONS = 0x27;
 
