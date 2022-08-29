@@ -33,7 +33,7 @@ This library supports the following file types:
  - `EVB` - <ins>**E**</ins><ins>**v**</ins>ent <ins>**B**</ins>inary
  - `FDB` - <ins>**F**</ins>ont <ins>**D**</ins>efinition <ins>**B**</ins>inary
  - `GCB`
- - `GDB` - <ins>**G**</ins>raph <ins>**D**</ins>efinition <ins>**B**</ins>inary
+ - `GDB` - <ins>**G**</ins>raphic <ins>**D**</ins>efinition <ins>**B**</ins>inary
  - `GHB` - <ins>**G**</ins><ins>**h**</ins>ost <ins>**B**</ins>inary
  - `HZB` - <ins>**H**</ins>a<ins>**z**</ins>ards <ins>**B**</ins>inary
  - `IDB` - <ins>**I**</ins>mage <ins>**D**</ins>efinition <ins>**B**</ins>inary
@@ -55,7 +55,7 @@ This library supports the following file types:
  - `TGB` - <ins>**T**</ins>ri<ins>**g**</ins>ger <ins>**B**</ins>inary
  - `TIB` - <ins>**T**</ins><ins>**i**</ins>mer <ins>**B**</ins>inary
  - `TMB`
- - `TRB`
+ - `TRB` - <ins>**T**</ins><ins>**r**</ins>igger <ins>**B**</ins>inary
  - `WDB` - <ins>**W**</ins>orld <ins>**D**</ins>efinition <ins>**B**</ins>inary
  
 **Other LEGO Files**
