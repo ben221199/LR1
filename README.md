@@ -1,10 +1,9 @@
 # LEGO Racers
 
+[![Codecov](https://codecov.io/gh/ben221199/LR1/graph/badge.svg)](https://codecov.io/gh/ben221199/LR1)
+[![Java CI with Maven](https://github.com/ben221199/LR1/actions/workflows/maven.yml/badge.svg)](https://github.com/ben221199/LR1/actions/workflows/maven.yml)
+
 This Java library enables you to mod LEGO Racers.
-
-## Status
-
-[![Build Status](https://travis-ci.com/ben221199/LR1.svg?branch=master)](https://travis-ci.com/ben221199/LR1)
 
 ## Installation
 
